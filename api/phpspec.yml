@@ -1,4 +1,4 @@
 suites:
-  api_template:
+  opensid:
     namespace: App
     psr4_prefix: App

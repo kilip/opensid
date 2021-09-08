@@ -8,7 +8,7 @@ ARG PHP_VERSION=8.0
 ARG CADDY_VERSION=2
 
 # "php" stage
-FROM php:${PHP_VERSION}-fpm-alpine AS api_template_php
+FROM php:${PHP_VERSION}-fpm-alpine AS opensid_php
 
 # persistent / runtime deps
 RUN apk add --no-cache \
@@ -76,7 +76,7 @@ RUN set -eux; \
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 RUN ln -s $PHP_INI_DIR/php.ini-production $PHP_INI_DIR/php.ini
-COPY docker/php/conf.d/php.prod.ini $PHP_INI_DIR/conf.d/api_template.ini
+COPY docker/php/conf.d/php.prod.ini $PHP_INI_DIR/conf.d/opensid.ini
 
 COPY docker/php/php-fpm.d/zz-docker.conf /usr/local/etc/php-fpm.d/zz-docker.conf
 
@@ -128,7 +128,7 @@ CMD ["php-fpm"]
 
 # "caddy" stage
 # depends on the "php" stage above
-FROM caddy:${CADDY_VERSION}-builder-alpine AS api_template_caddy_builder
+FROM caddy:${CADDY_VERSION}-builder-alpine AS opensid_caddy_builder
 
 RUN xcaddy build \
     --with github.com/dunglas/mercure \
@@ -136,11 +136,11 @@ RUN xcaddy build \
     --with github.com/dunglas/vulcain \
     --with github.com/dunglas/vulcain/caddy
 
-FROM caddy:${CADDY_VERSION} AS api_template_caddy
+FROM caddy:${CADDY_VERSION} AS opensid_caddy
 
 WORKDIR /srv/api
 
 COPY --from=dunglas/mercure:v0.11 /srv/public /srv/mercure-assets/
-COPY --from=api_template_caddy_builder /usr/bin/caddy /usr/bin/caddy
-COPY --from=api_template_php /srv/api/public public/
+COPY --from=opensid_caddy_builder /usr/bin/caddy /usr/bin/caddy
+COPY --from=opensid_php /srv/api/public public/
 COPY docker/caddy/Caddyfile /etc/caddy/Caddyfile

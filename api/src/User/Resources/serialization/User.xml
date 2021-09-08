@@ -1,17 +1,24 @@
 <serializer xmlns="http://symfony.com/schema/dic/serializer-mapping">
     <class name="App\User\Model\User">
         <attribute name="id">
+            <group>user:read</group>
             <group>admin:user:read</group>
         </attribute>
         <attribute name="username">
+            <group>user:read</group>
+            <group>user:write</group>
             <group>admin:user:read</group>
             <group>admin:user:write</group>
         </attribute>
         <attribute name="email">
+            <group>user:read</group>
+            <group>user:write</group>
             <group>admin:user:read</group>
             <group>admin:user:write</group>
         </attribute>
         <attribute name="plainPassword">
+            <group>user:read</group>
+            <group>user:write</group>
             <group>admin:user:write</group>
         </attribute>
     </class>

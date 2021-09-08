@@ -18,6 +18,7 @@ class User
     protected string $email;
     protected ?string $password;
     protected ?string $plainPassword;
+    protected string $nama;
 
     public function __construct(
         string $username,
