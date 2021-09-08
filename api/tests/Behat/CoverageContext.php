@@ -55,8 +55,7 @@ final class CoverageContext implements Context
     public static function teardown()
     {
         $feature = getenv('FEATURE') ?: 'behat';
-        (new PHP())->process(self::$coverage, __DIR__."/../../build/php/coverage-$feature.cov");
-        (new PHP())->process(self::$coverage, __DIR__."/../../build/clover/coverage-$feature.xml");
+        (new PHP())->process(self::$coverage, __DIR__."/../../build/logs/coverage-$feature.xml");
     }
 
     /**
