@@ -320,7 +320,7 @@ jobs:
       - name: Run Behat tests
         run: |
           if [ "$COVERAGE" = '1' ]; then
-            ./vendor/bin/behat --colors --no-interaction --profile=default-coverage
+            ./vendor/bin/behat --colors --no-interaction --profile=coverage
           else
             ./vendor/bin/behat --colors --no-interaction
           fi
