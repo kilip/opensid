@@ -121,7 +121,6 @@ jobs:
         php:
           - '7.4'
           - '8.0'
-          - '8.1'
         include:
           - php: '8.0'
             coverage: true
@@ -196,7 +195,6 @@ jobs:
         php:
           - '7.4'
           - '8.0'
-          - '8.1'
         include:
           - php: '8.0'
             coverage: true
@@ -271,7 +269,6 @@ jobs:
         php:
           - '7.4'
           - '8.0'
-          - '8.1'
         include:
           - php: '8.0'
             coverage: true
