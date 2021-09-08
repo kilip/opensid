@@ -167,6 +167,7 @@ jobs:
       - name: Run Behat tests
         run: |
           ./vendor/bin/behat --colors --no-interaction
+          ls -l build/clover
         working-directory: api
       - name: Upload coverage results to Codecov
         if: matrix.coverage
@@ -175,7 +176,7 @@ jobs:
           files: ./api/build/clover/coverage-behat.xml
           name: behat-php${{ matrix.php }}
           flags: behat
-          fail_ci_if_error: true
+          fail_ci_if_error: false
 
   # deploy
   #deploy:
