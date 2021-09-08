@@ -163,11 +163,17 @@ jobs:
           ./bin/console -e test doctrine:database:create
           ./bin/console -e test doctrine:migrations:migrate
           ./bin/console -e test doctrine:schema:create
-          mkdir -p build/clover build/php
         working-directory: api
+      - name: Create build dir
+        if: matrix.coverage
+        run: mkdir -p build/clover build/php
       - name: Run Behat tests
         run: |
-          ./vendor/bin/behat --colors --no-interaction
+          if [ "$COVERAGE" = '1' ]; then
+            ./vendor/bin/behat --colors --no-interaction --profile=default-coverage
+          else
+            ./vendor/bin/behat --colors --no-interaction
+          fi
         working-directory: api
       - name: Upload coverage results to Codecov
         if: matrix.coverage
