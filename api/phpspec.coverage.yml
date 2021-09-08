@@ -1,0 +1,12 @@
+suites:
+  api_template:
+    namespace: App
+    psr4_prefix: App
+extensions:
+  FriendsOfPhpSpec\PhpSpec\CodeCoverage\CodeCoverageExtension:
+    whitelist:
+      - src
+    format:
+      - clover
+    output:
+      clover: build/logs/phpspec.xml
