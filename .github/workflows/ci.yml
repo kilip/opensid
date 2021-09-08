@@ -112,7 +112,7 @@ jobs:
         working-directory: api
 
   behat:
-    name: 'Behat Testing'
+    name: Behat (PHP ${{ matrix.php }})
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -140,7 +140,7 @@ jobs:
           php-version: ${{ matrix.php }}
           tools: pecl, composer
           extensions: intl, bcmath, curl, openssl, mbstring, pdo_pgsql
-          coverage: none
+          coverage: pcov
           ini-values: memory_limit=-1
       - name: Get composer cache directory
         id: composercache
@@ -153,13 +153,11 @@ jobs:
           restore-keys: ${{ runner.os }}-composer-
       - name: Update project dependencies
         run: composer update --no-interaction --no-progress --ansi
-      - name: Install PHPUnit
-        run: vendor/bin/simple-phpunit --version
-      - name: Clear test app cache
-        run: tests/Fixtures/app/console cache:clear --ansi
+        working-directory: api
       - name: Run Behat tests
         run: |
           ./vendor/bin/behat --out=std --no-interaction
+        working-directory: api
 
   # deploy
   #deploy:
