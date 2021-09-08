@@ -1,6 +1,6 @@
-API Platform Template
+OpenSID API
 ====
-GitHub template for API Platform project
+OpenSID versi API dengan mengunakan [API Platform](https://api-platform.com/)
 
 [![License](https://img.shields.io/github/license/kilip/api-platform-template?style=flat-square)](https://github.com/kilip/api-platform-template/blob/main/LICENSE)
 [![Build](https://img.shields.io/github/workflow/status/kilip/api-platform-template/CI?style=flat-square)](https://github.com/kilip/api-platform-template/actions/workflows/ci.yml)
