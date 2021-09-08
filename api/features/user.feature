@@ -9,7 +9,7 @@ Feature:
 
   Scenario: Add new user
     Given I don't have user with username "test"
-    When I send a POST request to "/users" with body:
+    When I send a POST request to "/register" with body:
     """
     {
       "username": "test",

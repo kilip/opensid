@@ -1,11 +1,11 @@
 version: '3.4'
 services:
     php:
-        container_name: api_template.php
-        image: ghcr.io/kilip/api-platform-template/php-dev
+        container_name: opensid.php
+        image: ghcr.io/kilip/opensid/php-dev
         build:
             context: ./
-            target: api_template_php
+            target: opensid_php
             dockerfile: docker/Dockerfile
         depends_on:
             - database
@@ -21,11 +21,11 @@ services:
             start_period: 30s
 
     caddy:
-        image: ghcr.io/kilip/api-platform-template/caddy-dev
-        container_name: api_template.caddy
+        image: ghcr.io/kilip/opensid/caddy-dev
+        container_name: opensid.caddy
         build:
             context: ./
-            target: api_template_caddy
+            target: opensid_caddy
             dockerfile: docker/Dockerfile
         depends_on:
             - php
@@ -55,23 +55,23 @@ services:
               protocol: udp
 
     pwa:
-        image: ghcr.io/kilip/api-platform-template/pwa
-        container_name: api_template.pwa
+        image: ghcr.io/kilip/opensid/pwa
+        container_name: opensid.pwa
         build:
             context: ./
-            target: api_template_pwa_prod
+            target: opensid_pwa_prod
             dockerfile: ./docker/pwa/Dockerfile
         environment:
-            API_TEMPLATE_CLIENT_GENERATOR_ENTRYPOINT: http://caddy
+            OPENSID_CLIENT_GENERATOR_ENTRYPOINT: http://caddy
             NEXT_PUBLIC_ENTRYPOINT: http://caddy
 
     database:
-        container_name: api_template.database
+        container_name: opensid.database
         image: postgres
         environment:
-            - POSTGRES_DB=api_template
-            - POSTGRES_PASSWORD=api_template
-            - POSTGRES_USER=api_template
+            - POSTGRES_DB=opensid
+            - POSTGRES_PASSWORD=opensid
+            - POSTGRES_USER=opensid
         ports:
             - "5432:5432"
         volumes:
