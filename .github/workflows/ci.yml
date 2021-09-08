@@ -343,6 +343,10 @@ jobs:
         node:
           - '14'
           - '16'
+        include:
+          - node: '16'
+            coverage: true
+      fail-fast: false
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
@@ -353,8 +357,16 @@ jobs:
       - name: Install dependencies
         run: yarn
         working-directory: pwa
+      - name: Enable code coverage
+        if: matrix.coverage
+        run: echo "COVERAGE=1" >> $GITHUB_ENV
       - name: Running tests
-        run: yarn test
+        run: |
+          if [ "$COVERAGE" = '1' ]; then
+            yarn test
+          else
+            yarn test --coverage=false
+          fi
         working-directory: pwa
       - name: Upload coverage results to Codecov
         if: matrix.coverage
