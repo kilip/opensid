@@ -151,13 +151,28 @@ jobs:
           path: ${{ steps.composercache.outputs.dir }}
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.json') }}
           restore-keys: ${{ runner.os }}-composer-
+      - name: Enable code coverage
+        if: matrix.coverage
+        run: echo "COVERAGE=1" >> $GITHUB_ENV
       - name: Update project dependencies
         run: composer update --no-interaction --no-progress --ansi
+        working-directory: api
+      - name: Prepare Test
+        run: |
+          ./bin/console -e test doctrine:schema:create
         working-directory: api
       - name: Run Behat tests
         run: |
           ./vendor/bin/behat --out=std --no-interaction
         working-directory: api
+      - name: Upload coverage results to Codecov
+        if: matrix.coverage
+        uses: codecov/codecov-action@v1
+        with:
+          files: ./api/build/clover/coverage-behat.xml
+          name: behat-php${{ matrix.php }}
+          flags: behat
+          fail_ci_if_error: true
 
   # deploy
   #deploy:
