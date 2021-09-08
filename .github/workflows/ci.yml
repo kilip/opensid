@@ -8,7 +8,8 @@ on:
     branches: ['main']
 
 env:
-  DOYO_CI: 1
+  COMPOSER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  SYMFONY_DEPRECATIONS_HELPER: disabled=1
 
 jobs:
   php-cs-fixer:
@@ -159,11 +160,13 @@ jobs:
         working-directory: api
       - name: Prepare Test
         run: |
+          ./bin/console -e test doctrine:database:create
+          ./bin/console -e test doctrine:migrations:migrate
           ./bin/console -e test doctrine:schema:create
         working-directory: api
       - name: Run Behat tests
         run: |
-          ./vendor/bin/behat --out=std --no-interaction
+          ./vendor/bin/behat --colors --no-interaction
         working-directory: api
       - name: Upload coverage results to Codecov
         if: matrix.coverage
