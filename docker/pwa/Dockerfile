@@ -6,7 +6,7 @@
 ARG NODE_VERSION=14
 
 # "common" stage
-FROM node:${NODE_VERSION}-alpine AS api_template_pwa_common
+FROM node:${NODE_VERSION}-alpine AS opensid_pwa_common
 
 EXPOSE 3000
 
@@ -26,9 +26,9 @@ VOLUME /usr/src/pwa/node_modules
 
 # "development" stage
 # depends on the "common" stage above
-FROM api_template_pwa_common AS api_template_pwa_dev
+FROM opensid_pwa_common AS opensid_pwa_dev
 
-ENV API_TEMPLATE_CLIENT_GENERATOR_OUTPUT .
+ENV OPENSID_CLIENT_GENERATOR_OUTPUT .
 RUN yarn global add @api-platform/client-generator
 
 CMD ["yarn", "dev"]
@@ -36,7 +36,7 @@ CMD ["yarn", "dev"]
 
 # "build" stage
 # depends on the "common" stage above
-FROM api_template_pwa_common AS api_template_pwa_prod
+FROM opensid_pwa_common AS opensid_pwa_prod
 
 ENV NODE_ENV production
 ARG NEXT_PUBLIC_ENTRYPOINT

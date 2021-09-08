@@ -9,30 +9,19 @@
 
 declare(strict_types=1);
 
-namespace Tests\App\Behat;
+namespace Tests\App\Testing\Concerns;
 
 use App\User\Model\User;
-use Behat\Behat\Context\Context;
-use Doctrine\Persistence\ManagerRegistry;
-use Doctrine\Persistence\ObjectManager;
 
-class UserContext implements Context
+trait InteractsWithUser
 {
-    private ObjectManager $manager;
-
-    public function __construct(
-        ManagerRegistry $registry
-    ) {
-        $this->manager = $registry->getManagerForClass(User::class);
-    }
-
     /**
      * @Given I don't have user with username :username
      * @Given Saya tidak memiliki user :username
      */
     public function iDonTHaveUser(string $username)
     {
-        $manager    = $this->manager;
+        $manager    = $this->getContainer()->get('doctrine')->getManagerForClass(User::class);
         $repository = $manager->getRepository(User::class);
         $user       = $repository->findOneBy([
             'username' => $username,
