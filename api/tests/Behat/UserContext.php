@@ -28,6 +28,7 @@ class UserContext implements Context
 
     /**
      * @Given I don't have user with username :username
+     * @Given Saya tidak memiliki user :username
      */
     public function iDonTHaveUser(string $username)
     {

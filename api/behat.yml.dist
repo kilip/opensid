@@ -7,7 +7,7 @@ default:
         - behatch:context:rest
         - Tests\App\Behat\UserContext
         - 'Behat\MinkExtension\Context\MinkContext'
-        - 'Tests\App\Behat\CoverageContext'
+        #- 'Tests\App\Behat\CoverageContext'
 
   extensions:
     FriendsOfBehat\SymfonyExtension:
@@ -15,7 +15,7 @@ default:
       kernel:
         environment: test
     Behat\MinkExtension:
-      base_url: 'http://localhost/'
+      base_url: 'http://example.com/'
       files_path: 'features/files'
       sessions:
         default:
