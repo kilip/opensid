@@ -159,7 +159,7 @@ jobs:
         if: matrix.coverage
         run: echo "COVERAGE=1" >> $GITHUB_ENV
       - name: Update project dependencies
-        run: composer update --no-interaction --no-progress --ansi -W --ignore-platform-reqs
+        run: composer update --no-interaction --no-progress --ansi
         working-directory: api
       - name: Prepare Test
         run: |
@@ -234,7 +234,7 @@ jobs:
         if: matrix.coverage
         run: echo "COVERAGE=1" >> $GITHUB_ENV
       - name: Update project dependencies
-        run: composer update --no-interaction --no-progress --ansi -W --ignore-platform-reqs
+        run: composer update --no-interaction --no-progress --ansi
         working-directory: api
       - name: Prepare Test
         run: |
@@ -309,7 +309,7 @@ jobs:
         if: matrix.coverage
         run: echo "COVERAGE=1" >> $GITHUB_ENV
       - name: Update project dependencies
-        run: composer update --no-interaction --no-progress --ansi -W --ignore-platform-reqs
+        run: composer update --no-interaction --no-progress --ansi
         working-directory: api
       - name: Prepare Test
         run: |
