@@ -12,16 +12,26 @@ declare(strict_types=1);
 namespace Tests\App\API;
 
 use ApiPlatform\Core\Bridge\Symfony\Bundle\Test\ApiTestCase;
-use Hautelook\AliceBundle\PhpUnit\RecreateDatabaseTrait;
+use Symfony\Component\HttpFoundation\Response;
+use Tests\App\Testing\Concerns\InteractsWithUser;
 
 class UserTest extends ApiTestCase
 {
-    use RecreateDatabaseTrait;
+    use InteractsWithUser;
 
-    public function test_get_user()
+    public function test_register()
     {
+        $this->iDonTHaveUser('test');
         $client   = static::createClient();
-        $client->request('GET', '/users', []);
+        $client->request('POST', '/register', [
+            'json' => [
+                'username' => 'test',
+                'email' => 'test@example.com',
+            ],
+        ]);
         $this->assertResponseIsSuccessful();
+        $this->assertResponseStatusCodeSame(Response::HTTP_CREATED);
+        $this->assertJsonContains(['username' => 'test']);
+        $this->assertJsonContains(['email' => 'test@example.com']);
     }
 }
