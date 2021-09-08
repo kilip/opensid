@@ -356,7 +356,14 @@ jobs:
       - name: Running tests
         run: yarn test
         working-directory: pwa
-
+      - name: Upload coverage results to Codecov
+        if: matrix.coverage
+        uses: codecov/codecov-action@v1
+        with:
+          files: ./pwa/coverage/clover.xml
+          name: jest-node${{ matrix.node }}
+          flags: jest
+          fail_ci_if_error: false
   # deploy
   #deploy:
   #  if: github.ref == 'refs/heads/main'
