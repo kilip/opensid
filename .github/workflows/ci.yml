@@ -189,7 +189,7 @@ jobs:
 
   # phpunit
   phpunit:
-    name: PHPSpec (PHP ${{ matrix.php }})
+    name: PHPUnit (PHP ${{ matrix.php }})
     runs-on: ubuntu-latest
     strategy:
       matrix:
