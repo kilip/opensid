@@ -163,6 +163,7 @@ jobs:
           ./bin/console -e test doctrine:database:create
           ./bin/console -e test doctrine:migrations:migrate
           ./bin/console -e test doctrine:schema:create
+          mkdir -p build/clover
         working-directory: api
       - name: Run Behat tests
         run: |
