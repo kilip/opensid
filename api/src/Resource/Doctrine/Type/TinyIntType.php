@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the OpenSID project.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+declare(strict_types=1);
+
 namespace OpenSID\Resource\Doctrine\Type;
 
 use Doctrine\DBAL\ParameterType;
@@ -10,13 +19,14 @@ use Doctrine\DBAL\Types\Type;
 
 class TinyIntType extends Type
 {
-    const TYPE_NAME = 'tinyint';
+    public const TYPE_NAME = 'tinyint';
 
     /**
      * @param $value
-     * @param AbstractPlatform $platform
-     * @return int
+     *
      * @throws ConversionException
+     *
+     * @return int
      */
     public function convertToDatabaseValue($value, AbstractPlatform $platform)
     {
@@ -24,16 +34,14 @@ class TinyIntType extends Type
             return null;
         }
 
-        if (!is_int($value)) {
-            throw new ConversionException('Expected integer, got ' . gettype($value));
+        if ( ! \is_int($value)) {
+            throw new ConversionException('Expected integer, got '.\gettype($value));
         }
 
         return $value;
     }
 
     /**
-     * @param mixed $value
-     * @param AbstractPlatform $platform
      * @return int
      */
     public function convertToPHPValue($value, AbstractPlatform $platform)
@@ -48,14 +56,14 @@ class TinyIntType extends Type
     /**
      * Gets the SQL declaration snippet for a field of this type.
      *
-     * @param array                                     $fieldDeclaration The field declaration.
-     * @param \Doctrine\DBAL\Platforms\AbstractPlatform $platform         The currently used database platform.
+     * @param array                                     $fieldDeclaration the field declaration
+     * @param \Doctrine\DBAL\Platforms\AbstractPlatform $platform         the currently used database platform
      *
      * @return string
      */
     public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform)
     {
-        if (!$platform instanceof MySqlPlatform) {
+        if ( ! $platform instanceof MySqlPlatform) {
             throw new \Exception('This type only support mysql');
         }
 
@@ -69,8 +77,6 @@ class TinyIntType extends Type
 
         return $sql.$unsigned;
     }
-
-
 
     /**
      * @return string

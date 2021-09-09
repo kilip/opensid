@@ -1,5 +1,12 @@
 <?php
 
+/*
+ * This file is part of the OpenSID project.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 declare(strict_types=1);
 
 namespace DoctrineMigrations;
@@ -29,8 +36,6 @@ final class Version20210909143204 extends AbstractMigration
         $this->createUUID('pertanyaan');
         $this->createUUID('setting_sms');
         $this->createUUID('tweb_penduduk_map');
-
-
     }
 
     public function down(Schema $schema): void
@@ -89,5 +94,4 @@ final class Version20210909143204 extends AbstractMigration
         $this->addSql('alter table pertanyaan change q26 `26` int(2) DEFAULT NULL');
         $this->addSql('alter table pertanyaan change q28 `28` int(2) DEFAULT NULL');
     }
-
 }
