@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "be73eb3fbaa18ca676a0421490cc8431",
+    "content-hash": "cc5a5a7885381340ffa7b1d4fe9b1f95",
     "packages": [
         {
             "name": "api-platform/core",
@@ -9333,6 +9333,56 @@
                 "source": "https://github.com/justinrainbow/json-schema/tree/5.2.11"
             },
             "time": "2021-07-22T09:24:00+00:00"
+        },
+        {
+            "name": "kalibora/doctrine-type-tinyint",
+            "version": "v0.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kalibora/doctrine-type-tinyint.git",
+                "reference": "c73eb5b4e1204111ffcd5ae4bc1b92f219037969"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kalibora/doctrine-type-tinyint/zipball/c73eb5b4e1204111ffcd5ae4bc1b92f219037969",
+                "reference": "c73eb5b4e1204111ffcd5ae4bc1b92f219037969",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/dbal": "^2.9",
+                "php": ">=7.1.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.16",
+                "phpstan/phpstan": "^0.11.19",
+                "phpstan/phpstan-strict-rules": "^0.11.1",
+                "phpunit/phpunit": "^7.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Kalibora\\DoctrineType\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Toshiyuki Fujita",
+                    "email": "kalibora@gmail.com"
+                }
+            ],
+            "description": "Doctrine custom type for MySQL tinyint",
+            "keywords": [
+                "doctrine"
+            ],
+            "support": {
+                "issues": "https://github.com/kalibora/doctrine-type-tinyint/issues",
+                "source": "https://github.com/kalibora/doctrine-type-tinyint/tree/v0.1.1"
+            },
+            "time": "2019-11-22T10:46:35+00:00"
         },
         {
             "name": "netresearch/jsonmapper",

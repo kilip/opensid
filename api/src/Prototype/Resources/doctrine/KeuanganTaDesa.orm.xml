@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="OpenSID\Prototype\Model\KeuanganTaDesa" table="keuangan_ta_desa">
+    <indexes>
+      <index name="id_keuangan_ta_desa_master_fk" columns="id_keuangan_master"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="tahun" type="string" column="Tahun" length="100" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="kdDesa" type="string" column="Kd_Desa" length="100" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="nmKades" type="string" column="Nm_Kades" length="100" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="jbtKades" type="string" column="Jbt_Kades" length="100" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="nmSekdes" type="string" column="Nm_Sekdes" length="100" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="nipSekdes" type="string" column="NIP_Sekdes" length="100" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="jbtSekdes" type="string" column="Jbt_Sekdes" length="100" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="nmKaurKeu" type="string" column="Nm_Kaur_Keu" length="100" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="jbtKaurKeu" type="string" column="Jbt_Kaur_Keu" length="100" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="nmBendahara" type="string" column="Nm_Bendahara" length="100" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="jbtBendahara" type="string" column="Jbt_Bendahara" length="100" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="noPerdes" type="string" column="No_Perdes" length="100" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="tglPerdes" type="string" column="Tgl_Perdes" length="100" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="noPerdesPb" type="string" column="No_Perdes_PB" length="100" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="tglPerdesPb" type="string" column="Tgl_Perdes_PB" length="100" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="noPerdesPj" type="string" column="No_Perdes_PJ" length="100" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="tglPerdesPj" type="string" column="Tgl_Perdes_PJ" length="100" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="alamat" type="string" column="Alamat" length="250" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="ibukota" type="string" column="Ibukota" length="100" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="status" type="string" column="Status" length="100" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="npwp" type="string" column="NPWP" length="100" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <many-to-one field="idKeuanganMaster" target-entity="KeuanganMaster" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_keuangan_master" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

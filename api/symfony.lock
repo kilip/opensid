@@ -200,6 +200,9 @@
     "justinrainbow/json-schema": {
         "version": "5.2.11"
     },
+    "kalibora/doctrine-type-tinyint": {
+        "version": "v0.1.1"
+    },
     "laminas/laminas-code": {
         "version": "4.4.2"
     },

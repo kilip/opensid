@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="OpenSID\Prototype\Model\MutasiInventarisTanah" table="mutasi_inventaris_tanah">
+    <indexes>
+      <index name="FK_mutasi_inventaris_tanah" columns="id_inventaris_tanah"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="jenisMutasi" type="string" column="jenis_mutasi" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="tahunMutasi" type="date" column="tahun_mutasi" nullable="false"/>
+    <field name="hargaJual" type="float" column="harga_jual" precision="10" scale="0" nullable="true"/>
+    <field name="sumbangkan" type="string" column="sumbangkan" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="keterangan" type="text" column="keterangan" length="65535" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="createdAt" type="datetime" column="created_at" nullable="false">
+      <options>
+        <option name="default">CURRENT_TIMESTAMP</option>
+      </options>
+    </field>
+    <field name="createdBy" type="integer" column="created_by" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="updatedAt" type="datetime" column="updated_at" nullable="false">
+      <options>
+        <option name="default">CURRENT_TIMESTAMP</option>
+      </options>
+    </field>
+    <field name="updatedBy" type="integer" column="updated_by" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="visible" type="integer" column="visible" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <many-to-one field="idInventarisTanah" target-entity="InventarisTanah" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_inventaris_tanah" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

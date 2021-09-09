@@ -6,4 +6,5 @@ parameters:
     checkMissingIterableValueType: false
     excludePaths:
         - src/*/*/Resources
+        - src/Prototype
         - tests/sandbox

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    <entity name="OpenSID\Prototype\Model\Cdesa" table="cdesa">
+        <unique-constraints>
+            <unique-constraint name="nomor" columns="nomor"/>
+        </unique-constraints>
+        <id name="id" column="id" type="integer">
+            <generator strategy="IDENTITY"/>
+        </id>
+        <field name="nomor" type="string" column="nomor" length="20" nullable="false">
+            <options>
+                <option name="fixed"/>
+            </options>
+        </field>
+        <field name="namaKepemilikan" type="string" column="nama_kepemilikan" length="100" nullable="false">
+            <options>
+                <option name="fixed"/>
+            </options>
+        </field>
+        <field name="jenisPemilik" type="tinyint" column="jenis_pemilik" nullable="false">
+            <options>
+                <option name="default">0</option>
+            </options>
+        </field>
+        <field name="namaPemilikLuar" type="string" column="nama_pemilik_luar" length="100" nullable="true">
+            <options>
+                <option name="fixed"/>
+            </options>
+        </field>
+        <field name="alamatPemilikLuar" type="string" column="alamat_pemilik_luar" length="200" nullable="true">
+            <options>
+                <option name="fixed"/>
+            </options>
+        </field>
+        <field name="createdAt" type="datetime" column="created_at" nullable="false">
+            <options>
+                <option name="default">CURRENT_TIMESTAMP</option>
+            </options>
+        </field>
+        <field name="createdBy" type="integer" column="created_by" nullable="false">
+            <options>
+                <option name="unsigned"/>
+            </options>
+        </field>
+        <field name="updatedAt" type="datetime" column="updated_at" nullable="false">
+            <options>
+                <option name="default">CURRENT_TIMESTAMP</option>
+            </options>
+        </field>
+        <field name="updatedBy" type="integer" column="updated_by" nullable="false">
+            <options>
+                <option name="unsigned"/>
+            </options>
+        </field>
+    </entity>
+</doctrine-mapping>

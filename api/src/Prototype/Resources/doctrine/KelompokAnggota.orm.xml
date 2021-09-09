@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="OpenSID\Prototype\Model\KelompokAnggota" table="kelompok_anggota">
+    <indexes>
+      <index name="IDX_EB81B52EA01A4BD8" columns="id_kelompok"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="id_kelompok" columns="id_kelompok,id_penduduk"/>
+    </unique-constraints>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="idPenduduk" type="integer" column="id_penduduk" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="noAnggota" type="string" column="no_anggota" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="keterangan" type="text" column="keterangan" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="jabatan" type="string" column="jabatan" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default">90</option>
+      </options>
+    </field>
+    <field name="noSkJabatan" type="string" column="no_sk_jabatan" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="foto" type="string" column="foto" length="100" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <many-to-one field="idKelompok" target-entity="Kelompok" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_kelompok" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="OpenSID\Prototype\Model\TwebDesaPamong" table="tweb_desa_pamong">
+    <id name="pamongId" type="integer" column="pamong_id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="pamongNama" type="string" column="pamong_nama" length="100" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="pamongNip" type="string" column="pamong_nip" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="pamongNik" type="string" column="pamong_nik" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="jabatan" type="string" column="jabatan" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="pamongStatus" type="string" column="pamong_status" length="45" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="pamongTglTerdaftar" type="date" column="pamong_tgl_terdaftar" nullable="true"/>
+    <field name="pamongTtd" type="tinyint" column="pamong_ttd" nullable="true"/>
+    <field name="foto" type="string" column="foto" length="100" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="idPend" type="integer" column="id_pend" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="pamongTempatlahir" type="string" column="pamong_tempatlahir" length="100" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="pamongTanggallahir" type="date" column="pamong_tanggallahir" nullable="true"/>
+    <field name="pamongSex" type="tinyint" column="pamong_sex" nullable="true"/>
+    <field name="pamongPendidikan" type="integer" column="pamong_pendidikan" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="pamongAgama" type="integer" column="pamong_agama" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="pamongNosk" type="string" column="pamong_nosk" length="30" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="pamongTglsk" type="date" column="pamong_tglsk" nullable="true"/>
+    <field name="pamongMasajab" type="string" column="pamong_masajab" length="120" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="urut" type="integer" column="urut" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="pamongNiap" type="string" column="pamong_niap" length="25" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="pamongPangkat" type="string" column="pamong_pangkat" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="pamongNohenti" type="string" column="pamong_nohenti" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="pamongTglhenti" type="date" column="pamong_tglhenti" nullable="true"/>
+    <field name="pamongUb" type="tinyint" column="pamong_ub" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="atasan" type="integer" column="atasan" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="baganTingkat" type="tinyint" column="bagan_tingkat" nullable="true"/>
+    <field name="baganOffset" type="integer" column="bagan_offset" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="baganLayout" type="string" column="bagan_layout" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="baganWarna" type="string" column="bagan_warna" length="10" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

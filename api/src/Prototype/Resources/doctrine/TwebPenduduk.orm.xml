@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="OpenSID\Prototype\Model\TwebPenduduk" table="tweb_penduduk">
+    <indexes>
+      <index name="id_rtm" columns="id_rtm"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nama" type="string" column="nama" length="100" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="nik" type="decimal" column="nik" precision="16" scale="0" nullable="false"/>
+    <field name="idKk" type="integer" column="id_kk" nullable="true">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="kkLevel" type="tinyint" column="kk_level" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="idRtm" type="string" column="id_rtm" length="30" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="rtmLevel" type="integer" column="rtm_level" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="sex" type="tinyint" column="sex" nullable="true"/>
+    <field name="tempatlahir" type="string" column="tempatlahir" length="100" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="tanggallahir" type="date" column="tanggallahir" nullable="true"/>
+    <field name="agamaId" type="integer" column="agama_id" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="pendidikanKkId" type="integer" column="pendidikan_kk_id" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="pendidikanSedangId" type="integer" column="pendidikan_sedang_id" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="pekerjaanId" type="integer" column="pekerjaan_id" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="statusKawin" type="tinyint" column="status_kawin" nullable="true"/>
+    <field name="warganegaraId" type="tinyint" column="warganegara_id" nullable="false">
+      <options>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="dokumenPasport" type="string" column="dokumen_pasport" length="45" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="dokumenKitas" type="string" column="dokumen_kitas" length="45" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="ayahNik" type="string" column="ayah_nik" length="16" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="ibuNik" type="string" column="ibu_nik" length="16" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="namaAyah" type="string" column="nama_ayah" length="100" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="namaIbu" type="string" column="nama_ibu" length="100" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="foto" type="string" column="foto" length="100" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="golonganDarahId" type="integer" column="golongan_darah_id" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="idCluster" type="integer" column="id_cluster" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="status" type="integer" column="status" nullable="true">
+      <options>
+        <option name="unsigned">1</option>
+      </options>
+    </field>
+    <field name="alamatSebelumnya" type="string" column="alamat_sebelumnya" length="200" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="alamatSekarang" type="string" column="alamat_sekarang" length="200" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="statusDasar" type="tinyint" column="status_dasar" nullable="false">
+      <options>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="hamil" type="integer" column="hamil" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="cacatId" type="integer" column="cacat_id" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="sakitMenahunId" type="integer" column="sakit_menahun_id" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="aktaLahir" type="string" column="akta_lahir" length="40" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="aktaPerkawinan" type="string" column="akta_perkawinan" length="40" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="tanggalperkawinan" type="date" column="tanggalperkawinan" nullable="true"/>
+    <field name="aktaPerceraian" type="string" column="akta_perceraian" length="40" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="tanggalperceraian" type="date" column="tanggalperceraian" nullable="true"/>
+    <field name="caraKbId" type="tinyint" column="cara_kb_id" nullable="true"/>
+    <field name="telepon" type="string" column="telepon" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="tanggalAkhirPaspor" type="date" column="tanggal_akhir_paspor" nullable="true"/>
+    <field name="noKkSebelumnya" type="string" column="no_kk_sebelumnya" length="30" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="ktpEl" type="tinyint" column="ktp_el" nullable="true"/>
+    <field name="statusRekam" type="tinyint" column="status_rekam" nullable="true"/>
+    <field name="waktuLahir" type="string" column="waktu_lahir" length="5" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="tempatDilahirkan" type="tinyint" column="tempat_dilahirkan" nullable="true"/>
+    <field name="jenisKelahiran" type="tinyint" column="jenis_kelahiran" nullable="true"/>
+    <field name="kelahiranAnakKe" type="tinyint" column="kelahiran_anak_ke" nullable="true"/>
+    <field name="penolongKelahiran" type="tinyint" column="penolong_kelahiran" nullable="true"/>
+    <field name="beratLahir" type="smallint" column="berat_lahir" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="panjangLahir" type="string" column="panjang_lahir" length="10" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="tagIdCard" type="string" column="tag_id_card" length="15" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="createdAt" type="datetime" column="created_at" nullable="false">
+      <options>
+        <option name="default">CURRENT_TIMESTAMP</option>
+      </options>
+    </field>
+    <field name="createdBy" type="integer" column="created_by" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="updatedAt" type="datetime" column="updated_at" nullable="false">
+      <options>
+        <option name="default">CURRENT_TIMESTAMP</option>
+      </options>
+    </field>
+    <field name="updatedBy" type="integer" column="updated_by" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="idAsuransi" type="tinyint" column="id_asuransi" nullable="true"/>
+    <field name="noAsuransi" type="string" column="no_asuransi" length="100" nullable="true">
+      <options>
+        <option name="fixed">1</option>
+      </options>
+    </field>
+    <field name="email" type="string" column="email" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="bahasaId" type="integer" column="bahasa_id" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="ket" type="text" column="ket" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

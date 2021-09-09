@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="OpenSID\Prototype\Model\Outbox" table="outbox">
+    <indexes>
+      <index name="outbox_date" columns="SendingDateTime,SendingTimeOut"/>
+      <index name="outbox_sender" columns="SenderID"/>
+    </indexes>
+    <id name="id" type="integer" column="ID">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="updatedindb" type="datetime" column="UpdatedInDB" nullable="false">
+      <options>
+        <option name="default">CURRENT_TIMESTAMP</option>
+      </options>
+    </field>
+    <field name="insertintodb" type="datetime" column="InsertIntoDB" nullable="false">
+      <options>
+        <option name="default">CURRENT_TIMESTAMP</option>
+      </options>
+    </field>
+    <field name="sendingdatetime" type="datetime" column="SendingDateTime" nullable="false">
+      <options>
+        <option name="default">CURRENT_TIMESTAMP</option>
+      </options>
+    </field>
+    <field name="sendbefore" type="time" column="SendBefore" nullable="false">
+      <options>
+        <option name="default">23:59:59</option>
+      </options>
+    </field>
+    <field name="sendafter" type="time" column="SendAfter" nullable="false">
+      <options>
+        <option name="default">00:00:00</option>
+      </options>
+    </field>
+    <field name="text" type="text" column="Text" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="destinationnumber" type="string" column="DestinationNumber" length="20" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="coding" type="string" column="Coding" length="0" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">Default_No_Compression</option>
+      </options>
+    </field>
+    <field name="udh" type="text" column="UDH" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="class" type="integer" column="Class" nullable="true">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">-1</option>
+      </options>
+    </field>
+    <field name="textdecoded" type="text" column="TextDecoded" length="65535" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="multipart" type="string" column="MultiPart" length="0" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default">false</option>
+      </options>
+    </field>
+    <field name="relativevalidity" type="integer" column="RelativeValidity" nullable="true">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">-1</option>
+      </options>
+    </field>
+    <field name="senderid" type="string" column="SenderID" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="sendingtimeout" type="datetime" column="SendingTimeOut" nullable="true"/>
+    <field name="deliveryreport" type="string" column="DeliveryReport" length="0" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default">default</option>
+      </options>
+    </field>
+    <field name="creatorid" type="text" column="CreatorID" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>
