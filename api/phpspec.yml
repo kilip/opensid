@@ -1,4 +1,4 @@
 suites:
   opensid:
-    namespace: App
-    psr4_prefix: App
+    namespace: OpenSID
+    psr4_prefix: OpenSID

@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the api-template project.
+ * This file is part of the OpenSID project.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -9,25 +9,62 @@
 
 declare(strict_types=1);
 
-namespace App\User\Model;
+namespace OpenSID\User\Model;
 
-class User
+use DateTimeImmutable;
+use OpenSID\User\Contracts\GroupInterface;
+use OpenSID\User\Contracts\UserInterface;
+
+class User implements UserInterface
 {
     protected string $id;
     protected string $username;
+    protected ?string $password      = null;
+    protected ?string $plainPassword = null;
+    protected GroupInterface $group;
     protected string $email;
-    protected ?string $password;
-    protected ?string $plainPassword;
-    protected string $nama;
+    protected ?DateTimeImmutable $lastLogin = null;
+    protected bool $active                  = true;
+    protected ?string $nama                 = null;
+    protected ?string $company              = null;
+    protected ?string $phone                = null;
+    protected ?string $foto                 = null;
+    protected ?string $session              = null;
 
-    public function __construct(
-        string $username,
-        string $email,
-        ?string $plainPassword = null
-    ) {
-        $this->username      = $username;
-        $this->email         = $email;
-        $this->plainPassword = $plainPassword;
+    /**
+     * @var string[]
+     */
+    protected array $roles = [];
+
+    public function __construct()
+    {
+    }
+
+    public function hasRole(string $role): bool
+    {
+        return \in_array($role, $this->getRoles(), true);
+    }
+
+    public function setRoles(array $roles): void
+    {
+        $this->roles = $roles;
+    }
+
+    public function getRoles(): array
+    {
+        $roles   = $this->roles;
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
+    }
+
+    public function getSalt(): ?string
+    {
+        return null;
+    }
+
+    public function eraseCredentials(): void
+    {
     }
 
     public function getId(): string
@@ -35,9 +72,57 @@ class User
         return $this->id;
     }
 
+    public function getSession(): ?string
+    {
+        return $this->session;
+    }
+
+    public function setSession(?string $session): void
+    {
+        $this->session = $session;
+    }
+
     public function getUsername(): string
     {
         return $this->username;
+    }
+
+    public function setUsername(string $username): void
+    {
+        $this->username = $username;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getPassword(): ?string
+    {
+        return $this->password;
+    }
+
+    public function setPassword(?string $password): void
+    {
+        $this->password = $password;
+    }
+
+    public function getPlainPassword(): ?string
+    {
+        return $this->plainPassword;
+    }
+
+    public function setPlainPassword(?string $plainPassword): void
+    {
+        $this->plainPassword = $plainPassword;
+    }
+
+    public function getGroup(): GroupInterface
+    {
+        return $this->group;
+    }
+
+    public function setGroup(GroupInterface $group): void
+    {
+        $this->group = $group;
     }
 
     public function getEmail(): string
@@ -45,13 +130,68 @@ class User
         return $this->email;
     }
 
-    public function getPassword(): ?string
+    public function setEmail(string $email): void
     {
-        return $this->password;
+        $this->email = $email;
     }
 
-    public function getPlainPassword(): ?string
+    public function getLastLogin(): ?DateTimeImmutable
     {
-        return $this->plainPassword;
+        return $this->lastLogin;
+    }
+
+    public function setLastLogin(?DateTimeImmutable $lastLogin): void
+    {
+        $this->lastLogin = $lastLogin;
+    }
+
+    public function isActive(): bool
+    {
+        return $this->active;
+    }
+
+    public function setActive(bool $active): void
+    {
+        $this->active = $active;
+    }
+
+    public function getNama(): ?string
+    {
+        return $this->nama;
+    }
+
+    public function setNama(?string $nama): void
+    {
+        $this->nama = $nama;
+    }
+
+    public function getCompany(): ?string
+    {
+        return $this->company;
+    }
+
+    public function setCompany(?string $company): void
+    {
+        $this->company = $company;
+    }
+
+    public function getPhone(): ?string
+    {
+        return $this->phone;
+    }
+
+    public function setPhone(?string $phone): void
+    {
+        $this->phone = $phone;
+    }
+
+    public function getFoto(): ?string
+    {
+        return $this->foto;
+    }
+
+    public function setFoto(?string $foto): void
+    {
+        $this->foto = $foto;
     }
 }

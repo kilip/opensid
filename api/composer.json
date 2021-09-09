@@ -14,13 +14,13 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "src/"
+            "OpenSID\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "spec\\App\\": "spec",
-            "Tests\\App\\": "tests/"
+            "Tests\\OpenSID\\": "tests",
+            "spec\\OpenSID\\": "spec"
         }
     },
     "replace": {
@@ -62,6 +62,7 @@
         "doctrine/orm": "^2.9",
         "doyo/modular-bundle": "dev-master",
         "hautelook/alice-bundle": "^2.9",
+        "lexik/jwt-authentication-bundle": "^2.12",
         "nelmio/cors-bundle": "^2.1",
         "phpdocumentor/reflection-docblock": "^5.2",
         "symfony/asset": "5.3.*",
@@ -102,6 +103,7 @@
         "symfony/css-selector": "5.3.*",
         "symfony/debug-bundle": "5.3.*",
         "symfony/http-client": "5.3.*",
+        "symfony/maker-bundle": "^1.33",
         "symfony/phpunit-bridge": "^5.3",
         "symfony/stopwatch": "5.3.*",
         "symfony/web-profiler-bundle": "5.3.*",

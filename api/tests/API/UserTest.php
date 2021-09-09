@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the api-template project.
+ * This file is part of the OpenSID project.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -9,15 +9,17 @@
 
 declare(strict_types=1);
 
-namespace Tests\App\API;
+namespace Tests\OpenSID\API;
 
 use ApiPlatform\Core\Bridge\Symfony\Bundle\Test\ApiTestCase;
+use Hautelook\AliceBundle\PhpUnit\RecreateDatabaseTrait;
 use Symfony\Component\HttpFoundation\Response;
-use Tests\App\Testing\Concerns\InteractsWithUser;
+use Tests\OpenSID\Testing\Concerns\InteractsWithUser;
 
 class UserTest extends ApiTestCase
 {
     use InteractsWithUser;
+    use RecreateDatabaseTrait;
 
     public function test_register()
     {

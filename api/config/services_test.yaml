@@ -3,5 +3,5 @@ services:
         autowire: true
         autoconfigure: true
 
-    Tests\App\Behat\:
+    Tests\OpenSID\Behat\:
         resource: '../tests/Behat/*'

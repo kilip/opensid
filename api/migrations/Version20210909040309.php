@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the api-template project.
+ * This file is part of the OpenSID project.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -17,16 +17,16 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20210908045923 extends AbstractMigration
+final class Version20210909040309 extends AbstractMigration
 {
     public function getDescription(): string
     {
-        return 'Add UUID extension into database';
+        return 'Initial Version';
     }
 
     public function up(Schema $schema): void
     {
-        $this->addSql('CREATE EXTENSION IF NOT EXISTS "uuid-ossp"');
+        // this up() migration is auto-generated, please modify it to your needs
     }
 
     public function down(Schema $schema): void

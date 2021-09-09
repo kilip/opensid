@@ -1,5 +1,5 @@
 <resources xmlns="https://api-platform.com/schema/metadata">
-    <resource class="App\User\Model\User">
+    <resource class="OpenSID\User\Model\User">
         <attribute name="security">is_granted('ROLE_ADMIN')</attribute>
         <attribute name="normalization_context">
             <attribute name="groups">admin:user:read</attribute>

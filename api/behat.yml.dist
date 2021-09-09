@@ -5,14 +5,15 @@ default:
         - behatch:context:json
         - behatch:context:table
         - behatch:context:rest
-        - Tests\App\Behat\UserContext
-        - 'Behat\MinkExtension\Context\MinkContext'
+        - Tests\OpenSID\Behat\UserContext
+        - Behat\MinkExtension\Context\MinkContext
 
   extensions:
     FriendsOfBehat\SymfonyExtension:
-      bootstrap: './tests/bootstrap.php'
+      bootstrap: 'tests/bootstrap.php'
       kernel:
         environment: test
+        class: OpenSID\Kernel
     Behat\MinkExtension:
       base_url: 'http://example.com/'
       files_path: 'features/files'
@@ -28,6 +29,6 @@ coverage:
         - behatch:context:json
         - behatch:context:table
         - behatch:context:rest
-        - Tests\App\Behat\UserContext
-        - 'Behat\MinkExtension\Context\MinkContext'
-        - 'Tests\App\Behat\CoverageContext'
+        - Tests\OpenSID\Behat\UserContext
+        - Behat\MinkExtension\Context\MinkContext
+        - Tests\OpenSID\Behat\CoverageContext
