@@ -25,7 +25,7 @@ trait InteractsWithUser
     public function initContainer(ContainerInterface $container): void
     {
         $this->userPersister = $container->get('opensid.user.persister.user');
-        $this->userManager = $container->get('doctrine')->getManager();
+        $this->userManager   = $container->get('doctrine')->getManager();
     }
 
     public function iDonTHaveUser(string $username): void
@@ -63,9 +63,9 @@ trait InteractsWithUser
 
     protected function getUserManager(): ObjectManager
     {
-        if(is_null($this->userManager)){
-            if(method_exists($this, 'getContainer')){
-                $container = $this->getContainer();
+        if (null === $this->userManager) {
+            if (method_exists($this, 'getContainer')) {
+                $container          = $this->getContainer();
                 $this->userManager  = $container->get('doctrine')->getManager();
             }
         }

@@ -12,15 +12,14 @@ declare(strict_types=1);
 namespace Tests\OpenSID\API;
 
 use ApiPlatform\Core\Bridge\Symfony\Bundle\Test\ApiTestCase;
-use Doctrine\Persistence\ObjectManager;
 use Hautelook\AliceBundle\PhpUnit\RecreateDatabaseTrait;
-use Symfony\Bridge\Doctrine\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Response;
 use Tests\OpenSID\Testing\Concerns\InteractsWithUser;
 
 class UserTest extends ApiTestCase
 {
-    use InteractsWithUser, RecreateDatabaseTrait;
+    use InteractsWithUser;
+    use RecreateDatabaseTrait;
 
     public function test_register()
     {

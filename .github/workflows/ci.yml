@@ -163,7 +163,6 @@ jobs:
       - name: Prepare Test
         run: |
           ./bin/console -e test doctrine:database:create
-          ./bin/console -e test doctrine:migrations:migrate
           ./bin/console -e test doctrine:schema:create
         working-directory: api
       - name: Create build dir
@@ -237,7 +236,6 @@ jobs:
       - name: Prepare Test
         run: |
           ./bin/console -e test doctrine:database:create
-          ./bin/console -e test doctrine:migrations:migrate
           ./bin/console -e test doctrine:schema:create
         working-directory: api
       - name: Create build dir
@@ -311,7 +309,6 @@ jobs:
       - name: Prepare Test
         run: |
           ./bin/console -e test doctrine:database:create
-          ./bin/console -e test doctrine:migrations:migrate
           ./bin/console -e test doctrine:schema:create
         working-directory: api
       - name: Create build dir
