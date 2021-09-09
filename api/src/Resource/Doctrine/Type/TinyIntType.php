@@ -22,13 +22,11 @@ class TinyIntType extends Type
     public const TYPE_NAME = 'tinyint';
 
     /**
-     * @param $value
+     * @param mixed|null $value
      *
      * @throws ConversionException
-     *
-     * @return int
      */
-    public function convertToDatabaseValue($value, AbstractPlatform $platform)
+    public function convertToDatabaseValue($value, AbstractPlatform $platform): ?int
     {
         if (null === $value) {
             return null;
@@ -42,12 +40,12 @@ class TinyIntType extends Type
     }
 
     /**
-     * @return int
+     * @param mixed|null $value
      */
-    public function convertToPHPValue($value, AbstractPlatform $platform)
+    public function convertToPHPValue($value, AbstractPlatform $platform): ?int
     {
         if (null === $value) {
-            return $value;
+            return null;
         }
 
         return (int) $value;
@@ -56,21 +54,22 @@ class TinyIntType extends Type
     /**
      * Gets the SQL declaration snippet for a field of this type.
      *
-     * @param array                                     $fieldDeclaration the field declaration
-     * @param \Doctrine\DBAL\Platforms\AbstractPlatform $platform         the currently used database platform
+     * @param array            $column   the field declaration
+     * @param AbstractPlatform $platform the currently used database platform
      *
-     * @return string
+     * @throws \Exception
+     * @psalm-suppress InvalidScalarArgument
      */
-    public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform)
+    public function getSQLDeclaration(array $column, AbstractPlatform $platform): string
     {
         if ( ! $platform instanceof MySqlPlatform) {
             throw new \Exception('This type only support mysql');
         }
 
-        $unsigned = $fieldDeclaration['unsigned'] ? ' UNSIGNED' : '';
+        $unsigned = $column['unsigned'] ? ' UNSIGNED' : '';
 
-        if (true === $fieldDeclaration['length']) {
-            $sql = sprintf('tinyint(%d)', $fieldDeclaration['length']);
+        if (true === $column['length']) {
+            $sql = sprintf('tinyint(%d)', $column['length']);
         } else {
             $sql = 'tinyint';
         }
@@ -78,20 +77,15 @@ class TinyIntType extends Type
         return $sql.$unsigned;
     }
 
-    /**
-     * @return string
-     */
-    public function __toString()
+    public function __toString(): string
     {
         return 'tinyint';
     }
 
     /**
      * Gets the name of this type.
-     *
-     * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return self::TYPE_NAME;
     }
