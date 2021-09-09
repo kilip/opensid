@@ -162,8 +162,8 @@ jobs:
         working-directory: api
       - name: Prepare Test
         run: |
-          ./bin/console -e test doctrine:query:sql 'CREATE EXTENSION IF NOT EXISTS "uuid-ossp"'
           ./bin/console -e test doctrine:database:create
+          ./bin/console -e test doctrine:query:sql 'CREATE EXTENSION IF NOT EXISTS "uuid-ossp"'
           ./bin/console -e test doctrine:schema:create
         working-directory: api
       - name: Create build dir
@@ -236,8 +236,8 @@ jobs:
         working-directory: api
       - name: Prepare Test
         run: |
-          ./bin/console -e test doctrine:query:sql 'CREATE EXTENSION IF NOT EXISTS "uuid-ossp"'
           ./bin/console -e test doctrine:database:create
+          ./bin/console -e test doctrine:query:sql 'CREATE EXTENSION IF NOT EXISTS "uuid-ossp"'
           ./bin/console -e test doctrine:schema:create
         working-directory: api
       - name: Create build dir
@@ -310,8 +310,8 @@ jobs:
         working-directory: api
       - name: Prepare Test
         run: |
-          ./bin/console -e test doctrine:query:sql 'CREATE EXTENSION IF NOT EXISTS "uuid-ossp"'
           ./bin/console -e test doctrine:database:create
+          ./bin/console -e test doctrine:query:sql 'CREATE EXTENSION IF NOT EXISTS "uuid-ossp"'
           ./bin/console -e test doctrine:schema:create
         working-directory: api
       - name: Create build dir
