@@ -12,7 +12,6 @@ declare(strict_types=1);
 namespace Tests\OpenSID\Behat;
 
 use Behat\Behat\Context\Context;
-use Hautelook\AliceBundle\PhpUnit\RecreateDatabaseTrait;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\KernelInterface;
@@ -25,8 +24,6 @@ use Symfony\Component\HttpKernel\KernelInterface;
  */
 final class DemoContext implements Context
 {
-    use RecreateDatabaseTrait;
-
     private KernelInterface $kernel;
 
     /** @var Response|null */
