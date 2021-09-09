@@ -1,8 +1,6 @@
 doctrine:
   dbal:
     url: '%env(resolve:DATABASE_URL)%'
-    driver: pdo_mysql
-    server_version: mariadb-10.3.31
     mapping_types:
       enum: string
     # IMPORTANT: You MUST configure your server version,
