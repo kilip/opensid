@@ -10,6 +10,7 @@ on:
 env:
   COMPOSER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   SYMFONY_DEPRECATIONS_HELPER: disabled=1
+  DATABASE_URL: "sqlite:///:memory:"
 
 jobs:
   php-cs-fixer:
@@ -125,18 +126,9 @@ jobs:
           - php: '8.0'
             coverage: true
       fail-fast: false
-    env:
-      DATABASE_URL: postgres://opensid:opensid@localhost/opensid
-      PGPASSWORD: opensid
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Setup postgres
-        run: |
-          sudo systemctl start postgresql
-          sudo -u postgres psql -d template1 -c "CREATE USER opensid WITH PASSWORD 'opensid' CREATEDB"
-          createdb -h localhost -p 5432 -U opensid opensid
-          pg_isready -d opensid -h localhost -p 5432 -U opensid
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
@@ -199,18 +191,19 @@ jobs:
           - php: '8.0'
             coverage: true
       fail-fast: false
+    services:
+      mysql:
+        image: mariadb:10.5.9
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: opensid
+        ports:
+          - 3306:3306
     env:
-      DATABASE_URL: postgres://opensid:opensid@localhost/opensid
-      PGPASSWORD: opensid
+      DATABASE_URL: mysql://root:root@127.0.0.1/opensid
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Setup postgres
-        run: |
-          sudo systemctl start postgresql
-          sudo -u postgres psql -d template1 -c "CREATE USER opensid WITH PASSWORD 'opensid' CREATEDB"
-          createdb -h localhost -p 5432 -U opensid opensid
-          pg_isready -d opensid -h localhost -p 5432 -U opensid
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
@@ -273,18 +266,19 @@ jobs:
           - php: '8.0'
             coverage: true
       fail-fast: false
+    services:
+      mysql:
+        image: mariadb:10.5.9
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: opensid
+        ports:
+          - 3306:3306
     env:
-      DATABASE_URL: postgres://opensid:opensid@localhost/opensid
-      PGPASSWORD: opensid
+      DATABASE_URL: mysql://root:root@127.0.0.1/opensid
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Setup postgres
-        run: |
-          sudo systemctl start postgresql
-          sudo -u postgres psql -d template1 -c "CREATE USER opensid WITH PASSWORD 'opensid' CREATEDB"
-          createdb -h localhost -p 5432 -U opensid opensid
-          pg_isready -d opensid -h localhost -p 5432 -U opensid
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
