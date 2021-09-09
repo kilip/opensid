@@ -62,10 +62,6 @@ class TinyIntType extends Type
      */
     public function getSQLDeclaration(array $column, AbstractPlatform $platform): string
     {
-        if ( ! $platform instanceof MySqlPlatform) {
-            throw new \Exception('This type only support mysql');
-        }
-
         $unsigned = $column['unsigned'] ? ' UNSIGNED' : '';
 
         if (true === $column['length']) {
