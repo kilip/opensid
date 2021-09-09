@@ -28,4 +28,9 @@ class UserSpec extends ObjectBehavior
     {
         $this->shouldHaveType(User::class);
     }
+
+    public function its_should_initialize_user_role_by_default()
+    {
+        $this->hasRole('ROLE_USER')->shouldReturn(true);
+    }
 }

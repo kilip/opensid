@@ -12,12 +12,15 @@ declare(strict_types=1);
 namespace Tests\OpenSID\API;
 
 use ApiPlatform\Core\Bridge\Symfony\Bundle\Test\ApiTestCase;
+use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\HttpFoundation\Response;
 use Tests\OpenSID\Testing\Concerns\InteractsWithUser;
 
 class UserTest extends ApiTestCase
 {
     use InteractsWithUser;
+
+    protected ObjectManager $manager;
 
     public function test_register()
     {
