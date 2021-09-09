@@ -152,11 +152,6 @@ jobs:
       - name: Update project dependencies
         run: composer update --no-interaction --no-progress --ansi
         working-directory: api
-      - name: Prepare Test
-        run: |
-          ./bin/console -e test doctrine:database:create
-          ./bin/console -e test doctrine:schema:create
-        working-directory: api
       - name: Create build dir
         if: matrix.coverage
         run: mkdir -p build/logs
