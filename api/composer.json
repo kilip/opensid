@@ -14,13 +14,13 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "src/"
+            "OpenSID\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "spec\\App\\": "spec",
-            "Tests\\App\\": "tests/"
+            "Tests\\OpenSID\\": "tests",
+            "spec\\OpenSID\\": "spec"
         }
     },
     "replace": {

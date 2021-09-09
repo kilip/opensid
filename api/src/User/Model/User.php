@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the api-template project.
+ * This file is part of the OpenSID project.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -9,15 +9,18 @@
 
 declare(strict_types=1);
 
-namespace App\User\Model;
+namespace OpenSID\User\Model;
+
+use OpenSID\User\Contracts\GroupInterface;
 
 class User
 {
     protected string $id;
     protected string $username;
-    protected string $email;
     protected ?string $password;
     protected ?string $plainPassword;
+    protected GroupInterface $group;
+    protected string $email;
     protected string $nama;
 
     public function __construct(

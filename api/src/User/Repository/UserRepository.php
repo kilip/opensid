@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the api-template project.
+ * This file is part of the OpenSID project.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -9,11 +9,11 @@
 
 declare(strict_types=1);
 
-namespace App\User\Repository;
+namespace OpenSID\User\Repository;
 
-use App\User\Model\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\NonUniqueResultException;
+use OpenSID\User\Model\User;
 use Symfony\Bridge\Doctrine\Security\User\UserLoaderInterface;
 
 class UserRepository extends ServiceEntityRepository implements UserLoaderInterface
@@ -27,7 +27,7 @@ class UserRepository extends ServiceEntityRepository implements UserLoaderInterf
     {
         $query = <<<EOC
 SELECT u
-FROM App\User\Model\User u
+FROM OpenSID\User\Model\User u
 WHERE u.username = :username
 EOC;
 

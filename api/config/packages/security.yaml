@@ -12,7 +12,7 @@ security:
         users_in_memory: { memory: null }
         users:
           entity:
-            class: 'App\User\Model\User'
+            class: 'OpenSID\User\Model\User'
             property: 'username'
     firewalls:
         dev:
