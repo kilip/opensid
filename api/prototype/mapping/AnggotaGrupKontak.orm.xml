@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="OpenSID\Prototype\Model\AnggotaGrupKontak" table="anggota_grup_kontak">
+    <indexes>
+      <index name="idx_37147_anggota_grup_kontak_ke_kontak_grup" columns="id_grup"/>
+      <index name="idx_37147_anggota_grup_kontak_ke_kontak" columns="id_kontak"/>
+    </indexes>
+    <id name="idGrupKontak" type="bigint" column="id_grup_kontak">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <many-to-one field="idKontak" target-entity="Kontak" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_kontak" referenced-column-name="id_kontak"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idGrup" target-entity="KontakGrup" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_grup" referenced-column-name="id_grup"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

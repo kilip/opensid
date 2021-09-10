@@ -3,9 +3,10 @@ doctrine:
     url: '%env(resolve:DATABASE_URL)%'
     mapping_types:
       enum: string
-      tinyint: tinyint
-    types:
-      tinyint: 'OpenSID\Resource\Doctrine\Type\TinyIntType'
+    schema-filter: "#^doctrine.*#"
+    #  tinyint: tinyint
+    #types:
+    #  tinyint: 'OpenSID\Resource\Doctrine\Type\TinyIntType'
     #types:
     #  tinyint: Kalibora\DoctrineType\TinyintType
 
@@ -17,19 +18,9 @@ doctrine:
     naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
     auto_mapping: true
     mappings:
-      # TODO: remove this mappings after migration completed
-      #prototype:
-      #  is_bundle: false
-      #  type: annotation
-      #  dir: '%kernel.project_dir%/src/Prototype/Model'
-      #  prefix: 'OpenSID\Prototype\Model'
-      #  alias: prototype
       prototype:
         is_bundle: false
         type: xml
-        dir: '%kernel.project_dir%/src/Prototype/Resources/doctrine'
+        dir: '%kernel.project_dir%/prototype/mapping'
         prefix: 'OpenSID\Prototype\Model'
         alias: prototype
-
-
-

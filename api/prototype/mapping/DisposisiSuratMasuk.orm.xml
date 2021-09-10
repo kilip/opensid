@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="OpenSID\Prototype\Model\DisposisiSuratMasuk" table="disposisi_surat_masuk">
+    <indexes>
+      <index name="idx_37271_id_surat_fk" columns="id_surat_masuk"/>
+      <index name="idx_37271_desa_pamong_fk" columns="id_desa_pamong"/>
+    </indexes>
+    <id name="idDisposisi" type="bigint" column="id_disposisi">
+      <generator strategy="IDENTITY"/>
+
+    </id>
+    <field name="disposisiKe" type="string" column="disposisi_ke" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <many-to-one field="idDesaPamong" target-entity="TwebDesaPamong" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_desa_pamong" referenced-column-name="pamong_id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idSuratMasuk" target-entity="SuratMasuk" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_surat_masuk" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

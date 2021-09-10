@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="OpenSID\Prototype\Model\AnalisisRespon" table="analisis_respon">
+    <indexes>
+      <index name="idx_37128_id_indikator" columns="id_indikator"/>
+      <index name="idx_37128_id_periode" columns="id_periode"/>
+      <index name="idx_37128_id_parameter" columns="id_parameter,id_subjek"/>
+    </indexes>
+    <id name="idIndikator" type="bigint" column="id_indikator"/>
+    <id name="idParameter" type="bigint" column="id_parameter"/>
+    <id name="idSubjek" type="bigint" column="id_subjek"/>
+    <id name="idPeriode" type="bigint" column="id_periode"/>
+  </entity>
+</doctrine-mapping>

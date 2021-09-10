@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="OpenSID\Prototype\Model\AnalisisPartisipasi" table="analisis_partisipasi">
+    <indexes>
+      <index name="idx_37103_id_klassifikasi" columns="id_klassifikasi"/>
+      <index name="idx_37103_id_subjek" columns="id_subjek,id_master,id_periode,id_klassifikasi"/>
+      <index name="idx_37103_id_master" columns="id_master"/>
+      <index name="idx_37103_id_periode" columns="id_periode"/>
+    </indexes>
+    <id name="id" type="bigint" column="id">
+      <generator strategy="IDENTITY"/>
+
+    </id>
+    <field name="idSubjek" type="bigint" column="id_subjek" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="idMaster" type="bigint" column="id_master" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="idPeriode" type="bigint" column="id_periode" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="idKlassifikasi" type="bigint" column="id_klassifikasi" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">1</option>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

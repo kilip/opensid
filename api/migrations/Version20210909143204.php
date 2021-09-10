@@ -21,7 +21,7 @@ final class Version20210909143204 extends AbstractMigration
 {
     public function getDescription(): string
     {
-        return '';
+        return 'Persiapan migrasi ke API Platform';
     }
 
     public function up(Schema $schema): void
@@ -36,6 +36,9 @@ final class Version20210909143204 extends AbstractMigration
         $this->createUUID('pertanyaan');
         $this->createUUID('setting_sms');
         $this->createUUID('tweb_penduduk_map');
+
+        $this->addSql('alter table `user` rename to passport_user');
+        $this->addSql('alter table `user_grup` rename to passport_group');
     }
 
     public function down(Schema $schema): void
@@ -51,6 +54,9 @@ final class Version20210909143204 extends AbstractMigration
         $this->dropUUID('pertanyaan');
         $this->dropUuid('setting_sms');
         $this->dropUuid('tweb_penduduk_map');
+
+        $this->addSql('alter table `passport_user` rename to `user`');
+        $this->addSql('alter table `passport_group` rename to `user_grup`');
     }
 
     private function createUUID(string $tableName): void
