@@ -7,7 +7,7 @@
       <index name="idx_38524_sentitems_date" columns="deliverydatetime"/>
       <index name="idx_38524_sentitems_sender" columns="senderid"/>
     </indexes>
-    <id name="id" type="bigint" column="id"/>
+    <id name="id" type="integer" length="11" column="id"/>
     <id name="sequenceposition" type="bigint" column="sequenceposition"/>
     <field name="updatedindb" type="datetime" column="updatedindb" nullable="true"/>
     <field name="insertintodb" type="datetime" column="insertintodb" nullable="false">

@@ -4,7 +4,7 @@
     <indexes>
       <index name="idx_38319_fk_mutasi_inventaris_tanah" columns="id_inventaris_tanah"/>
     </indexes>
-    <id name="id" type="bigint" column="id">
+    <id name="id" type="integer" length="11" column="id">
       <generator strategy="IDENTITY"/>
 
     </id>

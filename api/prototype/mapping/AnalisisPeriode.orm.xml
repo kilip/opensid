@@ -5,7 +5,7 @@
       <index name="idx_37110_id_state" columns="id_state"/>
       <index name="idx_37110_id_master" columns="id_master"/>
     </indexes>
-    <id name="id" type="bigint" column="id">
+    <id name="id" type="integer" length="11" column="id">
       <generator strategy="IDENTITY"/>
 
     </id>

@@ -27,6 +27,7 @@ class UserTest extends ApiTestCase
             'json' => [
                 'username' => 'test',
                 'email' => 'test@example.com',
+                'plainPassword' => 'test',
             ],
         ]);
         $this->assertResponseIsSuccessful();

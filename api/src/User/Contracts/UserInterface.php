@@ -16,6 +16,11 @@ use Symfony\Component\Security\Core\User\UserInterface as BaseUserInterface;
 
 interface UserInterface extends PasswordAuthenticatedUserInterface, BaseUserInterface
 {
+    /**
+     * @return int|string
+     */
+    public function getId();
+
     public function getPlainPassword(): ?string;
 
     public function setPassword(string $password): void;

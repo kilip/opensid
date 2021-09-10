@@ -4,7 +4,7 @@
     <indexes>
       <index name="idx_38632_id_surat_format" columns="surat_format_id"/>
     </indexes>
-    <id name="id" type="bigint" column="id">
+    <id name="id" type="integer" length="11" column="id">
       <generator strategy="IDENTITY"/>
 
     </id>

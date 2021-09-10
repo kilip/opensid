@@ -4,9 +4,11 @@
     <indexes>
       <index name="idx_38256_cdesa_mutasi_fk" columns="id_cdesa_masuk"/>
     </indexes>
-    <id name="id" type="bigint" column="id">
+    <id name="id" type="integer" length="5" column="id">
       <generator strategy="IDENTITY"/>
-
+        <options>
+            <option name="unsigned"/>
+        </options>
     </id>
     <field name="cdesaKeluar" type="integer" column="cdesa_keluar" nullable="true">
       <options>

@@ -6,14 +6,10 @@
             <index name="idx_37057_id_kategori" columns="id_kategori"/>
             <index name="idx_37057_id_tipe" columns="id_tipe"/>
         </indexes>
-        <id name="id" type="bigint" column="id">
+        <id name="id" type="integer" length="11" column="id">
             <generator strategy="IDENTITY"/>
         </id>
-        <field name="idMaster" type="bigint" column="id_master" nullable="false">
-            <options>
-                <option name="unsigned"/>
-            </options>
-        </field>
+        <field name="idMaster" type="integer" length="11" column="id_master"/>
         <field name="nomor" type="integer" column="nomor" nullable="false">
             <options>
                 <option name="unsigned"/>
@@ -24,7 +20,7 @@
                 <option name="fixed"/>
             </options>
         </field>
-        <field name="idTipe" type="smallint" column="id_tipe" nullable="false">
+        <field name="idTipe" type="smallint" length="4" column="id_tipe" nullable="false">
             <options>
                 <option name="unsigned"/>
             </options>
@@ -35,22 +31,10 @@
 
             </options>
         </field>
-        <field name="actAnalisis" type="boolean" column="act_analisis" nullable="false">
-            <options>
-
-            </options>
-        </field>
-        <field name="idKategori" type="integer" column="id_kategori" nullable="false">
-            <options>
-                <option name="unsigned"/>
-            </options>
-        </field>
-        <field name="isPublik" type="boolean" column="is_publik" nullable="false">
-            <options>
-
-            </options>
-        </field>
-        <field name="isTeks" type="boolean" column="is_teks" nullable="false">
+        <field name="actAnalisis" type="smallint" length="1" column="act_analisis"/>
+        <field name="idKategori" type="integer" length="4" column="id_kategori" nullable="false"/>
+        <field name="isPublik" type="boolean" column="is_publik"/>
+        <field name="isTeks" type="boolean" column="is_teks">
             <options>
 
             </options>

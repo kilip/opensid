@@ -4,7 +4,7 @@
     <indexes>
       <index name="idx_37238_fk_pantau_pemudik" columns="id_pemudik"/>
     </indexes>
-    <id name="id" type="bigint" column="id">
+    <id name="id" type="integer" length="11" column="id">
       <generator strategy="IDENTITY"/>
 
     </id>

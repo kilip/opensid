@@ -4,7 +4,7 @@
     <id name="uuid" type="string" column="uuid" length="36">
       <generator strategy="UUID"/>
     </id>
-    <field name="id" type="bigint" column="id" nullable="false">
+    <field name="id" type="integer" length="11" column="id" nullable="false">
       <options>
         <option name="unsigned"/>
       </options>

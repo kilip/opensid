@@ -5,7 +5,7 @@
       <unique-constraint name="idx_38837_no_kk" columns="no_kk"/>
       <unique-constraint name="idx_38837_no_kk_2" columns="no_kk"/>
     </unique-constraints>
-    <id name="id" type="bigint" column="id">
+    <id name="id" type="integer" length="11" column="id">
       <generator strategy="IDENTITY"/>
 
     </id>

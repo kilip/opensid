@@ -4,7 +4,7 @@
     <indexes>
       <index name="idx_38407_nomor_nomor_urut_bidang" columns="nomor,nomor_urut_bidang"/>
     </indexes>
-    <id name="id" type="bigint" column="id">
+    <id name="id" type="integer" length="11" column="id">
       <generator strategy="IDENTITY"/>
 
     </id>

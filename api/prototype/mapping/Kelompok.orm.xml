@@ -8,7 +8,7 @@
     <unique-constraints>
       <unique-constraint name="idx_37452_kode" columns="kode"/>
     </unique-constraints>
-    <id name="id" type="bigint" column="id">
+    <id name="id" type="integer" length="11" column="id">
       <generator strategy="IDENTITY"/>
 
     </id>

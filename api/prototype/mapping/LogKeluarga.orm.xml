@@ -4,15 +4,11 @@
     <unique-constraints>
       <unique-constraint name="idx_38168_id_kk" columns="id_kk,id_peristiwa,tgl_peristiwa"/>
     </unique-constraints>
-    <id name="id" type="bigint" column="id">
+    <id name="id" type="integer" length="11" column="id">
       <generator strategy="IDENTITY"/>
 
     </id>
-    <field name="idKk" type="bigint" column="id_kk" nullable="false">
-      <options>
-        <option name="unsigned"/>
-      </options>
-    </field>
+    <field name="idKk" type="integer" column="id_kk"/>
     <field name="kkSex" type="smallint" column="kk_sex" nullable="true">
       <options>
         <option name="unsigned"/>

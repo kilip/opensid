@@ -4,7 +4,7 @@
     <indexes>
       <index name="idx_38589_id_suplemen" columns="id_suplemen"/>
     </indexes>
-    <id name="id" type="bigint" column="id">
+    <id name="id" type="integer" length="11" column="id">
       <generator strategy="IDENTITY"/>
 
     </id>

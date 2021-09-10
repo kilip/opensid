@@ -5,7 +5,7 @@
       <index name="idx_38343_outbox_date" columns="sendingdatetime,sendingtimeout"/>
       <index name="idx_38343_outbox_sender" columns="senderid"/>
     </indexes>
-    <id name="id" type="bigint" column="id">
+    <id name="id" type="integer" length="11" column="id">
       <generator strategy="IDENTITY"/>
 
     </id>

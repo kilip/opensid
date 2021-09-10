@@ -7,7 +7,7 @@
     <unique-constraints>
       <unique-constraint name="idx_37459_id_kelompok" columns="id_kelompok,id_penduduk"/>
     </unique-constraints>
-    <id name="id" type="bigint" column="id">
+    <id name="id" type="integer" length="11" column="id">
       <generator strategy="IDENTITY"/>
 
     </id>

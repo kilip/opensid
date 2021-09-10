@@ -17,7 +17,10 @@ use OpenSID\User\Contracts\UserInterface;
 
 class User implements UserInterface
 {
-    protected string $id;
+    /**
+     * @var int|string
+     */
+    protected $id;
     protected string $username;
     protected ?string $password      = null;
     protected ?string $plainPassword = null;
@@ -38,6 +41,14 @@ class User implements UserInterface
 
     public function __construct()
     {
+    }
+
+    /**
+     * @return int|string
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 
     public function hasRole(string $role): bool
@@ -65,11 +76,6 @@ class User implements UserInterface
 
     public function eraseCredentials(): void
     {
-    }
-
-    public function getId(): string
-    {
-        return $this->id;
     }
 
     public function getSession(): ?string

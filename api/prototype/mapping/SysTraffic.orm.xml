@@ -9,10 +9,6 @@
         <option name="fixed"/>
       </options>
     </field>
-    <field name="jumlah" type="bigint" column="jumlah" nullable="false">
-      <options>
-        <option name="unsigned"/>
-      </options>
-    </field>
+    <field name="jumlah" type="integer" length="10" column="jumlah" nullable="false"/>
   </entity>
 </doctrine-mapping>

@@ -4,7 +4,7 @@
     <indexes>
       <index name="idx_37867_id_keuangan_ta_rpjm_sasaran_master_fk" columns="id_keuangan_master"/>
     </indexes>
-    <id name="id" type="bigint" column="id">
+    <id name="id" type="integer" length="11" column="id">
       <generator strategy="IDENTITY"/>
 
     </id>
