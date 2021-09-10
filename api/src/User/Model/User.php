@@ -22,10 +22,10 @@ class User implements UserInterface
      */
     protected $id;
     protected string $username;
-    protected ?string $password      = null;
-    protected ?string $plainPassword = null;
-    protected GroupInterface $group;
     protected string $email;
+    protected ?string $password             = null;
+    protected ?string $plainPassword        = null;
+    protected ?GroupInterface $group        = null;
     protected ?DateTimeImmutable $lastLogin = null;
     protected bool $active                  = true;
     protected ?string $nama                 = null;
@@ -121,12 +121,12 @@ class User implements UserInterface
         $this->plainPassword = $plainPassword;
     }
 
-    public function getGroup(): GroupInterface
+    public function getGroup(): ?GroupInterface
     {
         return $this->group;
     }
 
-    public function setGroup(GroupInterface $group): void
+    public function setGroup(?GroupInterface $group): void
     {
         $this->group = $group;
     }
