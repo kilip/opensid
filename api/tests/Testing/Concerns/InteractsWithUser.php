@@ -12,9 +12,9 @@ declare(strict_types=1);
 namespace Tests\OpenSID\Testing\Concerns;
 
 use Doctrine\Persistence\ObjectManager;
-use OpenSID\User\Contracts\UserInterface;
-use OpenSID\User\DataPersister\UserPersister;
-use OpenSID\User\Model\User;
+use OpenSID\Security\Contracts\UserInterface;
+use OpenSID\Security\DataPersister\UserPersister;
+use OpenSID\Security\Model\User;
 use Psr\Container\ContainerInterface;
 
 trait InteractsWithUser

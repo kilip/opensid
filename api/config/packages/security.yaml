@@ -2,12 +2,12 @@ security:
   enable_authenticator_manager: true
   password_hashers:
     Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
-    OpenSID\User\Model\User:
+    OpenSID\Security\Model\User:
       algorithm: auto
   providers:
     users:
       entity:
-        class: 'OpenSID\User\Contracts\UserInterface'
+        class: 'OpenSID\Security\Contracts\UserInterface'
   firewalls:
     dev:
       pattern: ^/(_(profiler|wdt)|css|images|js)/

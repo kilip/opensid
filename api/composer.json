@@ -14,6 +14,7 @@
     },
     "autoload": {
         "psr-4": {
+            "OpenSID\\Prototype\\Model\\": "prototype/model",
             "OpenSID\\": "src/"
         }
     },
@@ -60,8 +61,8 @@
         "doctrine/doctrine-bundle": "^2.4",
         "doctrine/doctrine-migrations-bundle": "^3.1",
         "doctrine/orm": "^2.9",
+        "doyo/alice-bundle": "^2.9",
         "doyo/modular-bundle": "dev-master",
-        "hautelook/alice-bundle": "^2.9",
         "lexik/jwt-authentication-bundle": "^2.12",
         "nelmio/cors-bundle": "^2.1",
         "phpdocumentor/reflection-docblock": "^5.2",
@@ -89,6 +90,7 @@
         "friends-of-behat/symfony-extension": "^2.2",
         "friends-of-phpspec/phpspec-code-coverage": "^6.1",
         "friendsofphp/php-cs-fixer": "^3.1",
+        "kalibora/doctrine-type-tinyint": "^0.1.1",
         "phpspec/phpspec": "^7.1",
         "phpstan/extension-installer": "^1.1",
         "phpstan/phpstan": "^0.12.98",

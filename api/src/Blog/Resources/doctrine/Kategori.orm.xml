@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    <entity name="OpenSID\Blog\Model\Kategori" table="blog_kategori">
+        <id name="id" type="integer" length="5">
+            <generator strategy="IDENTITY"/>
+        </id>
+        <field name="kategori" length="100"/>
+        <field name="tipe" type="integer" length="4"/>
+        <field name="urut" type="smallint" length="4"/>
+        <field name="enabled" type="boolean"/>
+        <field name="parent" type="smallint"/>
+        <field name="slug" length="100" nullable="true"/>
+    </entity>
+</doctrine-mapping>

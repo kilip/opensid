@@ -18,7 +18,7 @@ use Behat\MinkExtension\Context\MinkContext;
 use Behatch\Context\JsonContext;
 use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\Persistence\ObjectManager;
-use OpenSID\User\Model\User;
+use OpenSID\Security\Model\User;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Security\Core\Security;
 use Tests\OpenSID\Testing\Concerns\InteractsWithUser;

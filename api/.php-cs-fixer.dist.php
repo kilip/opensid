@@ -108,6 +108,6 @@ return $config
                 'property',
             ],
         ],
-        'void_return' => false,
+        'void_return' => false
     ])
     ->setFinder($finder);
