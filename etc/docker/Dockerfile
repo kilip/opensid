@@ -88,31 +88,10 @@ VOLUME /var/run/php
 ENV COMPOSER_ALLOW_SUPERUSER=1
 ENV PATH="${PATH}:/root/.composer/vendor/bin"
 
+VOLUME /srv/api
+
 WORKDIR /srv/api
 
-# build for production
-ARG APP_ENV=prod
-
-# prevent the reinstallation of vendors at every changes in the source code
-COPY ./composer.json ./composer.lock ./symfony.lock ./
-RUN set -eux; \
-	composer install --prefer-dist --no-dev --no-scripts --no-progress; \
-	composer clear-cache
-
-# copy only specifically what we need
-COPY ./.env ./
-COPY ./bin bin/
-COPY ./config config/
-COPY ./public public/
-COPY ./src src/
-COPY ./templates templates/
-
-RUN set -eux; \
-	mkdir -p var/cache var/log; \
-	composer dump-autoload --classmap-authoritative --no-dev; \
-	composer dump-env prod; \
-	composer run-script --no-dev post-install-cmd; \
-	chmod +x bin/console; sync
 VOLUME /srv/api/var
 
 COPY etc/docker/php/docker-healthcheck.sh /usr/local/bin/docker-healthcheck
@@ -144,5 +123,4 @@ WORKDIR /srv/api
 
 COPY --from=dunglas/mercure:v0.11 /srv/public /srv/mercure-assets/
 COPY --from=opensid_caddy_builder /usr/bin/caddy /usr/bin/caddy
-COPY --from=opensid_php /srv/api/public public/
 COPY etc/docker/caddy/Caddyfile /etc/caddy/Caddyfile
