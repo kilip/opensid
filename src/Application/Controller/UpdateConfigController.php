@@ -11,13 +11,8 @@ declare(strict_types=1);
 
 namespace OpenSID\Application\Controller;
 
-use ApiPlatform\Core\DataProvider\SerializerAwareDataProviderInterface;
-use ApiPlatform\Core\DataProvider\SerializerAwareDataProviderTrait;
-use Doctrine\Persistence\ObjectManager;
 use OpenSID\Application\Model\Config;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Serializer\SerializerInterface;
 
 class UpdateConfigController
 {
@@ -27,8 +22,7 @@ class UpdateConfigController
      */
     public function __invoke(
         Request $request
-    ): Config
-    {
+    ): Config {
         return $request->attributes->get('data');
     }
 }
