@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    <entity name="OpenSID\Blog\Model\Artikel" table="blog_artikel">
+        <id name="id" type="integer" length="11" column="id">
+            <generator strategy="IDENTITY"/>
+        </id>
+        <field name="gambar" column="gambar" length="200" nullable="true"/>
+        <field name="isi" type="text" column="isi"/>
+        <field name="enabled" type="boolean" column="enabled"/>
+        <field name="tanggalUpload" type="datetime" column="tgl_upload"/>
+        <many-to-one field="kategori" target-entity="OpenSID\Blog\Model\Kategori">
+            <join-column name="id_kategori"/>
+        </many-to-one>
+        <many-to-one field="user" target-entity="OpenSID\Security\Contracts\UserInterface">
+            <join-column name="id_user"/>
+        </many-to-one>
+        <field name="judul" length="100"/>
+        <field name="headline" type="integer" column="headline"/>
+        <field name="gambar1" length="200" nullable="true"/>
+        <field name="gambar2" length="200" nullable="true"/>
+        <field name="gambar3" length="200" nullable="true"/>
+        <field name="dokumen" length="400" nullable="true"/>
+        <field name="linkDokumen" length="200" nullable="true"/>
+        <field name="bolehKomentar" type="boolean"/>
+        <field name="slug" length="200" nullable="true"/>
+        <field name="hit" type="bigint" column="hit"/>
+    </entity>
+</doctrine-mapping>

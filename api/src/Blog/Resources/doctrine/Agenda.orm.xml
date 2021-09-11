@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="OpenSID\Blog\Model\Agenda" table="blog_agenda">
+    <id name="id" type="integer" length="11" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="tanggal" type="datetime" column="tanggal" nullable="true"/>
+    <field name="koordinator" length="50"/>
+    <field name="lokasi" length="100"/>
+    <many-to-one field="artikel" target-entity="OpenSID\Blog\Model\Artikel">
+      <join-columns>
+        <join-column name="id_artikel"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

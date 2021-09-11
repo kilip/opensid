@@ -35,4 +35,9 @@ abstract class AbstractMigration extends BaseAbstractMigration
     {
         $this->addSql('set FOREIGN_KEY_CHECKS=1');
     }
+
+    public function renameTable(Schema $schema, string $from, string $to): void
+    {
+        $this->addSql('alter table '.$from.' rename to '.$to);
+    }
 }

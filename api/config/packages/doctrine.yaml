@@ -3,6 +3,7 @@ doctrine:
     url: '%env(resolve:DATABASE_URL)%'
     mapping_types:
       enum: string
+    schema_filter: '/(^blog|^passport|^doctrine|^user)/'
     #  tinyint: tinyint
     #types:
     #  tinyint: 'OpenSID\Resource\Doctrine\Type\TinyIntType'
@@ -15,16 +16,5 @@ doctrine:
   orm:
     auto_generate_proxy_classes: true
     default_entity_manager: default
-    entity_managers:
-      default:
-        naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
-        auto_mapping: true
-      prototype:
-        connection: default
-        mappings:
-          prototype:
-            is_bundle: false
-            type: xml
-            dir: '%kernel.project_dir%/prototype/mapping'
-            prefix: 'OpenSID\Prototype\Model'
-            alias: prototype
+    naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
+    auto_mapping: true
