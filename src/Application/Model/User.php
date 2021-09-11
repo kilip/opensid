@@ -78,6 +78,11 @@ class User implements UserInterface
         return array_unique($roles);
     }
 
+    public function addRole(string $role): void
+    {
+        $this->roles[] = $role;
+    }
+
     public function getSalt(): ?string
     {
         return null;

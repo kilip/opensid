@@ -1,0 +1,34 @@
+<resources xmlns="https://api-platform.com/schema/metadata">
+    <resource class="OpenSID\Application\Model\Config">
+
+        <attribute name="input_formats">
+            <attribute name="json">
+                <attribute>application/json</attribute>
+
+            </attribute>
+        </attribute>
+        <attribute name="output_formats">
+            <attribute name="json">
+                <attribute>application/json</attribute>
+            </attribute>
+        </attribute>
+
+        <attribute name="normalization_context">
+            <attribute name="group">guest:read</attribute>
+        </attribute>
+        <collectionOperations>
+
+        </collectionOperations>
+        <itemOperations>
+            <itemOperation name="config_update">
+                <attribute name="denormalization_context">
+                    <attribute name="group">admin:write</attribute>
+                </attribute>
+                <attribute name="method">POST</attribute>
+                <attribute name="route_name">opensid_config_update</attribute>
+                <attribute name="status">200</attribute>
+            </itemOperation>
+            <itemOperation name="get"/>
+        </itemOperations>
+    </resource>
+</resources>

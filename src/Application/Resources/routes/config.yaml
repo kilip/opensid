@@ -1,0 +1,8 @@
+opensid_config_update:
+  path: '/api/config'
+  methods: 'POST'
+  defaults:
+    _controller: 'opensid.application.controllers.update_config'
+    _api_resource_class: 'OpenSID\Application\Model\Config'
+    _api_item_operation_name: 'config_update'
+    id: 0
