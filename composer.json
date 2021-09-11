@@ -50,6 +50,12 @@
             "require": "5.3.*"
         }
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/kilip/soyuka-contexts"
+        }
+    ],
     "require": {
         "php": ">=7.4",
         "ext-ctype": "*",
@@ -102,7 +108,7 @@
         "phpunit/phpunit": "^9.5",
         "psalm/plugin-phpunit": "^0.16.1",
         "psalm/plugin-symfony": "^3.0",
-        "soyuka/contexts": "^3.3",
+        "soyuka/contexts": "dev-id-translation as 3.3.3",
         "symfony/browser-kit": "5.3.*",
         "symfony/css-selector": "5.3.*",
         "symfony/debug-bundle": "5.3.*",

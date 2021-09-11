@@ -1,17 +1,16 @@
-Feature: Konfigurasi Identitas Desa
+# language: id
+Fitur: Konfigurasi Identitas Desa
   Agar dapat mulai menggunakan aplikasi
   Sebagai admin
   Saya harus dapat membuat konfigurasi desa
 
-  Background:
-    Given saya login sebagai admin
-    And I add "Accept" header equal to "application/json"
-    And I add "Content-Type" header equal to "application/json"
+  Dasar:
+    Dengan saya login sebagai admin
+    Dan Saya menambahkan header "Accept" dengan nilai "application/json"
+    Dan Saya menambahkan header "Content-Type" dengan nilai "application/json"
 
-
-
-  Scenario: Berhasil mengubah konfigurasi identitas Desa
-    When I send a POST request to "/api/config" with body:
+  Skenario: Berhasil mengubah konfigurasi identitas Desa
+    Dengan Saya mengirim permintaan POST ke "/api/config" dengan isi:
     """
     {
       "kodeDesa": "2345",
@@ -41,15 +40,15 @@ Feature: Konfigurasi Identitas Desa
       "warna": "warna"
     }
     """
-    Then the response status code should be 200
-    And the JSON node kodeDesa should be equal to "2345"
+    Maka kode status respon harus 200
+    Dan nilai JSON pada kodeDesa harusnya sama dengan "2345"
 
-  Scenario: Mengubah identitas desa dengan data invalid
-    When I send a POST request to "/api/config" with body:
+  Skenario: Mengubah identitas desa dengan data invalid
+    Dengan Saya mengirim permintaan POST ke "/api/config" dengan isi:
     """
     {
       "kodePos": "1234567"
     }
     """
-    Then the response status code should be 422
-    And the JSON node detail should be equal to 'kodePos: This value is too long. It should have 6 characters or less.'
+    Maka kode status respon harus 422
+    Dan nilai JSON pada detail harusnya sama dengan 'kodePos: This value is too long. It should have 6 characters or less.'

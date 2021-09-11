@@ -1,4 +1,6 @@
 default:
+  translation:
+    locale: id
   suites:
     default:
       contexts:

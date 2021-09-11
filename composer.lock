@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c5e14f2fe3f30de320bb1560a463a133",
+    "content-hash": "6ea9b949bcb3e280b13f6fcb95b981f0",
     "packages": [
         {
             "name": "api-platform/core",
@@ -11434,16 +11434,16 @@
         },
         {
             "name": "soyuka/contexts",
-            "version": "3.3.3",
+            "version": "dev-id-translation",
             "source": {
                 "type": "git",
-                "url": "https://github.com/soyuka/contexts.git",
-                "reference": "9ed02c426179341403a8af6ffbe8bcbaa6e7cf9f"
+                "url": "https://github.com/kilip/soyuka-contexts.git",
+                "reference": "6a2b830a84fd2090147af06b823ff10eb655cb56"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/soyuka/contexts/zipball/9ed02c426179341403a8af6ffbe8bcbaa6e7cf9f",
-                "reference": "9ed02c426179341403a8af6ffbe8bcbaa6e7cf9f",
+                "url": "https://api.github.com/repos/kilip/soyuka-contexts/zipball/6a2b830a84fd2090147af06b823ff10eb655cb56",
+                "reference": "6a2b830a84fd2090147af06b823ff10eb655cb56",
                 "shasum": ""
             },
             "require": {
@@ -11476,7 +11476,6 @@
                     "Behatch\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "beerware"
             ],
@@ -11488,9 +11487,9 @@
                 "Symfony2"
             ],
             "support": {
-                "source": "https://github.com/soyuka/contexts/tree/3.3.3"
+                "source": "https://github.com/kilip/soyuka-contexts/tree/id-translation"
             },
-            "time": "2021-03-25T14:54:34+00:00"
+            "time": "2021-09-11T17:27:22+00:00"
         },
         {
             "name": "symfony/browser-kit",
@@ -12458,11 +12457,19 @@
             "time": "2015-12-17T08:42:14+00:00"
         }
     ],
-    "aliases": [],
+    "aliases": [
+        {
+            "package": "soyuka/contexts",
+            "version": "dev-id-translation",
+            "alias": "3.3.3",
+            "alias_normalized": "3.3.3.0"
+        }
+    ],
     "minimum-stability": "stable",
     "stability-flags": {
         "doyo/modular-bundle": 20,
-        "doyo/compose": 20
+        "doyo/compose": 20,
+        "soyuka/contexts": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

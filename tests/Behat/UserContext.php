@@ -52,7 +52,7 @@ class UserContext implements Context
     }
 
     /**
-     * @Given I don't have user with username :username
+     * @Given Saya tidak memiliki user :username
      */
     public function iDonTHaveUserWith(string $username)
     {
@@ -60,7 +60,7 @@ class UserContext implements Context
     }
 
     /**
-     * @Given I have user with:
+     * @Given Saya memiliki user dengan:
      */
     public function iHaveUserWith(TableNode $node): void
     {
