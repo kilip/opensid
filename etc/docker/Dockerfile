@@ -78,9 +78,9 @@ RUN set -eux; \
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 RUN ln -s $PHP_INI_DIR/php.ini-production $PHP_INI_DIR/php.ini
-COPY docker/php/conf.d/php.prod.ini $PHP_INI_DIR/conf.d/opensid.ini
+COPY etc/docker/php/conf.d/php.prod.ini $PHP_INI_DIR/conf.d/opensid.ini
 
-COPY docker/php/php-fpm.d/zz-docker.conf /usr/local/etc/php-fpm.d/zz-docker.conf
+COPY etc/docker/php/php-fpm.d/zz-docker.conf /usr/local/etc/php-fpm.d/zz-docker.conf
 
 VOLUME /var/run/php
 
@@ -94,18 +94,18 @@ WORKDIR /srv/api
 ARG APP_ENV=prod
 
 # prevent the reinstallation of vendors at every changes in the source code
-COPY ./api/composer.json ./api/composer.lock ./api/symfony.lock ./
+COPY ./composer.json ./composer.lock ./symfony.lock ./
 RUN set -eux; \
 	composer install --prefer-dist --no-dev --no-scripts --no-progress; \
 	composer clear-cache
 
 # copy only specifically what we need
-COPY ./api/.env ./
-COPY ./api/bin bin/
-COPY ./api/config config/
-COPY ./api/public public/
-COPY ./api/src src/
-COPY ./api/templates templates/
+COPY ./.env ./
+COPY ./bin bin/
+COPY ./config config/
+COPY ./public public/
+COPY ./src src/
+COPY ./templates templates/
 
 RUN set -eux; \
 	mkdir -p var/cache var/log; \
@@ -115,12 +115,12 @@ RUN set -eux; \
 	chmod +x bin/console; sync
 VOLUME /srv/api/var
 
-COPY docker/php/docker-healthcheck.sh /usr/local/bin/docker-healthcheck
+COPY etc/docker/php/docker-healthcheck.sh /usr/local/bin/docker-healthcheck
 RUN chmod +x /usr/local/bin/docker-healthcheck
 
 HEALTHCHECK --interval=10s --timeout=3s --retries=3 CMD ["docker-healthcheck"]
 
-COPY docker/php/docker-entrypoint.sh /usr/local/bin/docker-entrypoint
+COPY etc/docker/php/docker-entrypoint.sh /usr/local/bin/docker-entrypoint
 RUN chmod +x /usr/local/bin/docker-entrypoint
 
 ENV SYMFONY_PHPUNIT_VERSION=9
@@ -145,4 +145,4 @@ WORKDIR /srv/api
 COPY --from=dunglas/mercure:v0.11 /srv/public /srv/mercure-assets/
 COPY --from=opensid_caddy_builder /usr/bin/caddy /usr/bin/caddy
 COPY --from=opensid_php /srv/api/public public/
-COPY docker/caddy/Caddyfile /etc/caddy/Caddyfile
+COPY etc/docker/caddy/Caddyfile /etc/caddy/Caddyfile

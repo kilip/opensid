@@ -6,12 +6,18 @@ services:
         build:
             context: ./
             target: opensid_php
-            dockerfile: docker/Dockerfile
+            dockerfile: ./etc/docker/Dockerfile
         depends_on:
             - database
         restart: unless-stopped
+        environment:
+            APP_ENV: dev
+            DATABASE_URL: 'mysql://root:root@database:3306/opensid'
         volumes:
             - php_socket:/var/run/php
+            - ./:/srv/api:rw,cached
+            - ./etc/docker/php/conf.d/php.dev.ini:/usr/local/etc/php/conf.d/opensid.ini
+
         healthcheck:
             interval: 10s
             timeout: 3s
@@ -24,7 +30,7 @@ services:
         build:
             context: ./
             target: opensid_caddy
-            dockerfile: docker/Dockerfile
+            dockerfile: ./etc/docker/Dockerfile
         depends_on:
             - php
             - pwa
@@ -33,11 +39,14 @@ services:
             SERVER_NAME: ${SERVER_NAME:-localhost, caddy:80}
             MERCURE_PUBLISHER_JWT_KEY: ${MERCURE_PUBLISHER_JWT_KEY:-!ChangeMe!}
             MERCURE_SUBSCRIBER_JWT_KEY: ${MERCURE_SUBSCRIBER_JWT_KEY:-!ChangeMe!}
+            MERCURE_EXTRA_DIRECTIVES: demo
         restart: unless-stopped
         volumes:
             - php_socket:/var/run/php
             - caddy_data:/data
             - caddy_config:/config
+            - ./etc/docker/caddy/Caddyfile:/etc/caddy/Caddyfile:ro
+            - ./api/public:/srv/api/public:ro
         ports:
             # HTTP
             - target: 80
@@ -55,31 +64,22 @@ services:
     pwa:
         image: ghcr.io/kilip/opensid/pwa
         container_name: opensid.pwa
+        restart: unless-stopped
         build:
             context: ./
-            target: opensid_pwa_prod
-            dockerfile: ./docker/pwa/Dockerfile
+            target: opensid_pwa_dev
+            dockerfile: ./etc/docker/pwa/Dockerfile
         environment:
             OPENSID_CLIENT_GENERATOR_ENTRYPOINT: http://caddy
             NEXT_PUBLIC_ENTRYPOINT: http://caddy
-
-    #database:
-    #    container_name: opensid.database
-    #    image: postgres
-    #    environment:
-    #        - POSTGRES_DB=opensid
-    #        - POSTGRES_PASSWORD=opensid
-    #        - POSTGRES_USER=opensid
-    #    ports:
-    #        - "5432:5432"
-    #    volumes:
-    #        - db_data:/var/lib/postgresql/data:rw
-    #        - ./docker/postgres/entrypoint:/docker-entrypoint-init.db
+        volumes:
+            - ./pwa:/usr/src/pwa:rw,cached
     database:
         container_name: 'opensid.database'
         image: 'mariadb:10.3.31'
         ports:
             - '3306:3306'
+        restart: unless-stopped
         environment:
             MYSQL_ROOT_PASSWORD: 'root'
             MYSQL_DATABASE: 'opensid'
@@ -88,11 +88,11 @@ services:
             MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
         volumes:
             - 'mariadb:/var/lib/mysql'
-            - './docker/mysql/init:/docker-entrypoint-initdb.d'
+            - './etc/docker/mysql/init:/docker-entrypoint-initdb.d'
     phpmyadmin:
         container_name: opensid.phpmyadmin
         image: phpmyadmin
-        restart: always
+        restart: unless-stopped
         depends_on:
             -  database
         ports:
