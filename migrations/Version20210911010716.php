@@ -13,7 +13,6 @@ namespace DoctrineMigrations;
 
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Schema\Schema;
-use Doctrine\DBAL\Types\PhpIntegerMappingType;
 use DoctrineMigrations\Initial\Application;
 use DoctrineMigrations\Initial\Blog;
 use DoctrineMigrations\Initial\Migrator;
@@ -30,7 +29,7 @@ final class Version20210911010716 extends AbstractMigration
      */
     private array $migratorsClass = [
         Application::class,
-        Blog::class
+        Blog::class,
     ];
 
     /**
@@ -42,9 +41,9 @@ final class Version20210911010716 extends AbstractMigration
     {
         parent::__construct($connection, $logger);
 
-        foreach($this->migratorsClass as $class){
+        foreach ($this->migratorsClass as $class) {
             $migrator = new $class($this);
-            assert($migrator instanceof Migrator);
+            \assert($migrator instanceof Migrator);
             $this->migrators[] = $migrator;
         }
     }
@@ -67,13 +66,11 @@ final class Version20210911010716 extends AbstractMigration
     private function doRun(string $method, Schema $schema): void
     {
         /** @var AbstractMigration $migrator */
-        foreach($this->migrators as $migrator){
-            foreach($migrator->getMethods() as $methodName){
+        foreach ($this->migrators as $migrator) {
+            foreach ($migrator->getMethods() as $methodName) {
                 $name = $methodName.ucfirst($method);
-                call_user_func_array([$migrator, $name], [$schema]);
+                \call_user_func_array([$migrator, $name], [$schema]);
             }
         }
     }
-
-
 }

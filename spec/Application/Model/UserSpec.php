@@ -9,7 +9,7 @@
 
 declare(strict_types=1);
 
-namespace spec\OpenSID\Security\Model;
+namespace spec\OpenSID\Application\Model;
 
 use OpenSID\Application\Model\User;
 use PhpSpec\ObjectBehavior;

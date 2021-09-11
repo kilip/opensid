@@ -9,7 +9,7 @@
 
 declare(strict_types=1);
 
-namespace spec\OpenSID\Security\DataPersister;
+namespace spec\OpenSID\Application\DataPersister;
 
 use ApiPlatform\Core\DataPersister\ContextAwareDataPersisterInterface;
 use Doctrine\Persistence\ManagerRegistry;

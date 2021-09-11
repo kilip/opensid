@@ -9,12 +9,12 @@
 
 declare(strict_types=1);
 
-namespace spec\OpenSID\Security;
+namespace spec\OpenSID\Application;
 
 use OpenSID\Application\ApplicationModule;
 use PhpSpec\ObjectBehavior;
 
-class UserModuleSpec extends ObjectBehavior
+class ApplicationModuleSpec extends ObjectBehavior
 {
     public function it_is_initializable()
     {

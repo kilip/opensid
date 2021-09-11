@@ -1,13 +1,21 @@
 <?php
 
+/*
+ * This file is part of the OpenSID project.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+declare(strict_types=1);
+
 namespace DoctrineMigrations\Initial;
 
-use Doctrine\DBAL\Schema\Schema;
 use OpenSID\Resource\Doctrine\Migrations\AbstractMigration;
 
 class Migrator
 {
-    protected array $methods = [];
+    protected array $methods       = [];
     protected array $renamedTables = [];
     private AbstractMigration $migration;
 
@@ -21,9 +29,6 @@ class Migrator
         $this->migration->addSql($sql, $params, $types);
     }
 
-    /**
-     * @return array
-     */
     public function getMethods(): array
     {
         return $this->methods;

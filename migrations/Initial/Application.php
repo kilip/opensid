@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the OpenSID project.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+declare(strict_types=1);
+
 namespace DoctrineMigrations\Initial;
 
 use Doctrine\DBAL\Schema\Schema;
@@ -9,7 +18,7 @@ class Application extends Migrator
 {
     protected array $methods = [
         'config',
-        'user'
+        'user',
     ];
 
     public function userUp(Schema $schema): void
@@ -80,8 +89,8 @@ ALTER TABLE app_user
     public function configUp(Schema $schema): void
     {
         $this->addSql('# BEGIN CONFIG UP');
-        $table = $schema->hasTable('app_config') ? 'app_config':'config';
-        if($schema->getTable($table)->hasColumn('nama_camat')){
+        $table = $schema->hasTable('app_config') ? 'app_config' : 'config';
+        if ($schema->getTable($table)->hasColumn('nama_camat')) {
             return;
         }
 
@@ -139,7 +148,7 @@ ALTER TABLE app_config
     CHANGE kantor_desa kantor_desa VARCHAR(100) CHARACTER SET utf8 DEFAULT NULL COLLATE `utf8_general_ci`,
     CHANGE warna warna VARCHAR(10) CHARACTER SET utf8 DEFAULT NULL COLLATE `utf8_general_ci`
 ');
-        if($schema->getTable('app_config')->hasColumn('nama_camat')){
+        if ($schema->getTable('app_config')->hasColumn('nama_camat')) {
             $this->addSql('
 ALTER TABLE app_config
     CHANGE nama_camat nama_kepala_camat VARCHAR(100) CHARACTER SET utf8 NOT NULL COLLATE `utf8_general_ci`,

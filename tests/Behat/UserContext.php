@@ -16,7 +16,6 @@ use Behat\Behat\Hook\Scope\BeforeScenarioScope;
 use Behat\Gherkin\Node\TableNode;
 use Behat\MinkExtension\Context\MinkContext;
 use Behatch\Context\JsonContext;
-use Doctrine\Persistence\ManagerRegistry;
 use OpenSID\Application\Model\User;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Security\Core\Security;
@@ -32,7 +31,6 @@ class UserContext implements Context
     private MinkContext $minkContext;
 
     public function __construct(
-        ManagerRegistry $registry,
         Security $security,
         ContainerInterface $container
     ) {

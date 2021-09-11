@@ -2,7 +2,7 @@
     <services>
         <service
             id="OpenSID\Application\Repository\UserRepository"
-            class="OpenSID\Security\Repository\UserRepository"
+            class="OpenSID\Application\Repository\UserRepository"
             autowire="true"
             autoconfigure="true"
             public="true"
@@ -11,7 +11,7 @@
         </service>
         <service
             id="opensid.user.persister.user"
-            class="OpenSID\Security\DataPersister\UserPersister"
+            class="OpenSID\Application\DataPersister\UserPersister"
             autoconfigure="true"
             autowire="true"
             public="true"

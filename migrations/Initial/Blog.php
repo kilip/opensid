@@ -1,22 +1,28 @@
 <?php
 
+/*
+ * This file is part of the OpenSID project.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+declare(strict_types=1);
+
 namespace DoctrineMigrations\Initial;
 
-use Doctrine\DBAL\DBALException;
 use Doctrine\DBAL\Schema\Schema;
 use Doctrine\DBAL\Types\StringType;
-use Doctrine\Migrations\Exception\MigrationException;
 
 class Blog extends Migrator
 {
-
     protected array $methods = [
-        'blog'
+        'blog',
     ];
 
     public function blogUp(Schema $schema): void
     {
-        if($schema->getTable('blog_kategori')->hasColumn('parrent')){
+        if ($schema->getTable('blog_kategori')->hasColumn('parrent')) {
             $this->addSql('
 ALTER TABLE blog_kategori
     CHANGE parrent parent SMALLINT NOT NULL,
@@ -27,7 +33,7 @@ ALTER TABLE blog_kategori
 
         $idUserType = $schema->getTable('blog_artikel')
             ->getColumn('id_user')->getType();
-        if(!$idUserType instanceof StringType){
+        if ( ! $idUserType instanceof StringType) {
             $this->addSql('
 ALTER TABLE blog_artikel CHANGE id_user id_user VARCHAR(36) DEFAULT NULL
 ');
@@ -71,7 +77,7 @@ ALTER TABLE blog_agenda
 
     public function blogDown(Schema $schema)
     {
-        if($schema->getTable('blog_kategori')->hasColumn('parent')){
+        if ($schema->getTable('blog_kategori')->hasColumn('parent')) {
             $this->addSql('
 ALTER TABLE blog_kategori
 CHANGE parent parrent SMALLINT NOT NULL
