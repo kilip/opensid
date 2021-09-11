@@ -9,7 +9,6 @@ Fitur: Manajemen User
     Dan saya menambahkan header "Accept" dengan nilai "application/json"
 
   Skenario: Menambahkan user baru
-    Given I don't have user with username "test"
     Dengan saya tidak memiliki user "test"
     Ketika saya mengirim permintaan POST ke "/api/register" dengan isi:
     """
