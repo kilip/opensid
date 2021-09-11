@@ -5,6 +5,7 @@
             <generator strategy="UUID"/>
         </id>
         <field name="nama" column="nama" length="20"/>
+        <field name="roles" type="json"/>
         <field name="oldId" type="smallint"/>
     </entity>
 </doctrine-mapping>

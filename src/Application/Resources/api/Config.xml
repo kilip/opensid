@@ -1,23 +1,10 @@
 <resources xmlns="https://api-platform.com/schema/metadata">
     <resource class="OpenSID\Application\Model\Config">
-
-        <attribute name="input_formats">
-            <attribute name="json">
-                <attribute>application/json</attribute>
-
-            </attribute>
-        </attribute>
-        <attribute name="output_formats">
-            <attribute name="json">
-                <attribute>application/json</attribute>
-            </attribute>
-        </attribute>
-
+        <attribute name="security">is_granted('ROLE_ADMIN')</attribute>
         <attribute name="normalization_context">
             <attribute name="group">guest:read</attribute>
         </attribute>
         <collectionOperations>
-
         </collectionOperations>
         <itemOperations>
             <itemOperation name="config_update">

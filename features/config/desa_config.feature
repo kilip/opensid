@@ -4,15 +4,13 @@ Feature: Konfigurasi Identitas Desa
   Saya harus dapat membuat konfigurasi desa
 
   Background:
-    Given I add "Accept" header equal to "application/json"
+    Given saya login sebagai admin
+    And I add "Accept" header equal to "application/json"
     And I add "Content-Type" header equal to "application/json"
-    And saya login sebagai admin
 
 
 
-  Scenario: Konfigurasi Identitas Desa
-    #Given I add "Accept" header equal to "application/json"
-    Given I add "Content-Type" header equal to "application/json"
+  Scenario: Berhasil mengubah konfigurasi identitas Desa
     When I send a POST request to "/api/config" with body:
     """
     {
@@ -45,3 +43,13 @@ Feature: Konfigurasi Identitas Desa
     """
     Then the response status code should be 200
     And the JSON node kodeDesa should be equal to "2345"
+
+  Scenario: Mengubah identitas desa dengan data invalid
+    When I send a POST request to "/api/config" with body:
+    """
+    {
+      "kodePos": "1234567"
+    }
+    """
+    Then the response status code should be 422
+    And the JSON node detail should be equal to 'kodePos: This value is too long. It should have 6 characters or less.'

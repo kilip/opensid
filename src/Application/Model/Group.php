@@ -20,6 +20,7 @@ class Group implements GroupInterface
      */
     private $id;
     private string $nama;
+    private array $roles;
     private int $oldId;
 
     /**
@@ -43,5 +44,18 @@ class Group implements GroupInterface
     public function setNama(string $nama): void
     {
         $this->nama = $nama;
+    }
+
+    public function getRoles(): array
+    {
+        $roles   = $this->roles;
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
+    }
+
+    public function setRoles(array $roles): void
+    {
+        $this->roles = $roles;
     }
 }

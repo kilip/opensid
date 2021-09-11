@@ -283,7 +283,6 @@ jobs:
         run: echo "COVERAGE=1" >> $GITHUB_ENV
       - name: Update project dependencies
         run: composer update --no-interaction --no-progress --ansi
-
       - name: Prepare Test
         run: |
           ./bin/console -e test doctrine:database:create
@@ -294,9 +293,9 @@ jobs:
       - name: Run Behat tests
         run: |
           if [ "$COVERAGE" = '1' ]; then
-            ./vendor/bin/behat --colors --no-interaction --profile=coverage
+            ./vendor/bin/behat -fprogress --colors --no-interaction --profile=coverage
           else
-            ./vendor/bin/behat --colors --no-interaction
+            ./vendor/bin/behat -fprogress --colors --no-interaction
           fi
       - name: Upload coverage results to Codecov
         if: matrix.coverage
@@ -349,6 +348,7 @@ jobs:
           name: jest-node${{ matrix.node }}
           flags: jest
           fail_ci_if_error: false
+
   # deploy
   #deploy:
   #  if: github.ref == 'refs/heads/main'

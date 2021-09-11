@@ -1,0 +1,12 @@
+<constraint-mapping xmlns="http://symfony.com/schema/dic/constraint-mapping">
+    <class name="OpenSID\Application\Model\Config">
+        <property name="kodeDesa">
+            <constraint name="NotBlank"/>
+        </property>
+        <property name="kodePos">
+            <constraint name="Length">
+                <option name="max">6</option>
+            </constraint>
+        </property>
+    </class>
+</constraint-mapping>

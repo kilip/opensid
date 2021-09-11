@@ -73,7 +73,6 @@ class UserContext implements Context
     public function iAmLoggedInAsAdmin(): void
     {
         $user = $this->iHaveUser('admin', 'admin@example.com', 'ROLE_ADMIN');
-
         $body = [
             'username' => $user->getUsername(),
             'password' => 'test',
@@ -81,6 +80,8 @@ class UserContext implements Context
         $body = json_encode($body);
 
         $body     = new PyStringNode([$body], 1);
+        $this->restContext->iAddHeaderEqualTo('Accept', 'application/json');
+        $this->restContext->iAddHeaderEqualTo('Content-Type', 'application/json');
         $response = $this->restContext->iSendARequestTo('POST', '/login-check', $body);
         $content  = $response->getContent();
         $json     = json_decode($content, true);

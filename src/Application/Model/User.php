@@ -80,7 +80,9 @@ class User implements UserInterface
 
     public function addRole(string $role): void
     {
-        $this->roles[] = $role;
+        if ( ! \in_array($role, $this->roles, true)) {
+            $this->roles[] = $role;
+        }
     }
 
     public function getSalt(): ?string

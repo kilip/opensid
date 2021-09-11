@@ -19,6 +19,7 @@
         <field name="foto" length="100" nullable="true"/>
         <field name="session" length="40" nullable="true"/>
         <field name="oldId" type="integer" nullable="true"/>
+        <field name="roles" type="json" nullable="true"/>
         <many-to-one field="group" target-entity="OpenSID\Application\Model\Group"/>
     </entity>
 </doctrine-mapping>
