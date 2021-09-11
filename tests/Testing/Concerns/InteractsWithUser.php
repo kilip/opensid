@@ -11,11 +11,9 @@ declare(strict_types=1);
 
 namespace Tests\OpenSID\Testing\Concerns;
 
-use Doctrine\Persistence\ObjectManager;
-use OpenSID\Security\Contracts\UserInterface;
-use OpenSID\Security\DataPersister\UserPersister;
-use OpenSID\Security\Model\User;
-use Psr\Container\ContainerInterface;
+use OpenSID\Application\Contracts\UserInterface;
+use OpenSID\Application\DataPersister\UserPersister;
+use OpenSID\Application\Model\User;
 
 trait InteractsWithUser
 {

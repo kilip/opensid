@@ -11,11 +11,24 @@ declare(strict_types=1);
 
 namespace OpenSID\Resource\Doctrine\Migrations;
 
+use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Schema\Schema;
 use Doctrine\Migrations\AbstractMigration as BaseAbstractMigration;
+use Psr\Log\LoggerInterface;
 
 abstract class AbstractMigration extends BaseAbstractMigration
 {
+    protected LoggerInterface $logger;
+    protected array $renamedTables = [];
+
+    public function __construct(Connection $connection, LoggerInterface $logger)
+    {
+        $this->connection = $connection;
+        $this->sm         = $this->connection->getSchemaManager();
+        $this->platform   = $this->connection->getDatabasePlatform();
+        $this->logger     = $logger;
+    }
+
     public function preUp(Schema $schema): void
     {
         $this->addSql('set FOREIGN_KEY_CHECKS=0');
@@ -36,8 +49,8 @@ abstract class AbstractMigration extends BaseAbstractMigration
         $this->addSql('set FOREIGN_KEY_CHECKS=1');
     }
 
-    public function renameTable(Schema $schema, string $from, string $to): void
+    public function addSql(string $sql, array $params = [], array $types = []): void
     {
-        $this->addSql('alter table '.$from.' rename to '.$to);
+        parent::addSql($sql, $params, $types);
     }
 }

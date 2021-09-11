@@ -11,13 +11,13 @@ declare(strict_types=1);
 
 namespace spec\OpenSID\Security;
 
-use OpenSID\Security\UserModule;
+use OpenSID\Application\ApplicationModule;
 use PhpSpec\ObjectBehavior;
 
 class UserModuleSpec extends ObjectBehavior
 {
     public function it_is_initializable()
     {
-        $this->shouldHaveType(UserModule::class);
+        $this->shouldHaveType(ApplicationModule::class);
     }
 }

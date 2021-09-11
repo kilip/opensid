@@ -14,8 +14,8 @@ namespace spec\OpenSID\Security\DataPersister;
 use ApiPlatform\Core\DataPersister\ContextAwareDataPersisterInterface;
 use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\Persistence\ObjectManager;
-use OpenSID\Security\Contracts\UserInterface;
-use OpenSID\Security\DataPersister\UserPersister;
+use OpenSID\Application\Contracts\UserInterface;
+use OpenSID\Application\DataPersister\UserPersister;
 use PhpSpec\ObjectBehavior;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 

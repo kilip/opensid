@@ -1,7 +1,7 @@
 <container xmlns="http://symfony.com/schema/dic/services">
     <services>
         <service
-            id="OpenSID\Security\Repository\UserRepository"
+            id="OpenSID\Application\Repository\UserRepository"
             class="OpenSID\Security\Repository\UserRepository"
             autowire="true"
             autoconfigure="true"

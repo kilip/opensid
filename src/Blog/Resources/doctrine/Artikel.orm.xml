@@ -11,7 +11,7 @@
         <many-to-one field="kategori" target-entity="OpenSID\Blog\Model\Kategori">
             <join-column name="id_kategori"/>
         </many-to-one>
-        <many-to-one field="user" target-entity="OpenSID\Security\Contracts\UserInterface">
+        <many-to-one field="user" target-entity="OpenSID\Application\Contracts\UserInterface">
             <join-column name="id_user"/>
         </many-to-one>
         <field name="judul" length="100"/>

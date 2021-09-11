@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace OpenSID\Blog\Model;
 
-use OpenSID\Security\Contracts\UserInterface;
+use OpenSID\Application\Contracts\UserInterface;
 
 class Artikel
 {

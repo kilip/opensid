@@ -7,7 +7,7 @@ security:
   providers:
     users:
       entity:
-        class: 'OpenSID\Security\Contracts\UserInterface'
+        class: 'OpenSID\Application\Contracts\UserInterface'
   firewalls:
     dev:
       pattern: ^/(_(profiler|wdt)|css|images|js)/

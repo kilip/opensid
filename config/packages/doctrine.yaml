@@ -3,7 +3,7 @@ doctrine:
     url: '%env(resolve:DATABASE_URL)%'
     mapping_types:
       enum: string
-    schema_filter: '/(^blog|^passport|^doctrine|^user)/'
+    schema_filter: '/^(blog|app|doctrine).+$/'
     #  tinyint: tinyint
     #types:
     #  tinyint: 'OpenSID\Resource\Doctrine\Type\TinyIntType'

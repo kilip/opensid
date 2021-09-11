@@ -9,12 +9,12 @@
 
 declare(strict_types=1);
 
-namespace OpenSID\Security\DataPersister;
+namespace OpenSID\Application\DataPersister;
 
 use ApiPlatform\Core\DataPersister\ContextAwareDataPersisterInterface;
 use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\Persistence\ObjectManager;
-use OpenSID\Security\Contracts\UserInterface;
+use OpenSID\Application\Contracts\UserInterface;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class UserPersister implements ContextAwareDataPersisterInterface

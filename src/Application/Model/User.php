@@ -9,11 +9,11 @@
 
 declare(strict_types=1);
 
-namespace OpenSID\Security\Model;
+namespace OpenSID\Application\Model;
 
 use DateTimeImmutable;
-use OpenSID\Security\Contracts\GroupInterface;
-use OpenSID\Security\Contracts\UserInterface;
+use OpenSID\Application\Contracts\GroupInterface;
+use OpenSID\Application\Contracts\UserInterface;
 
 class User implements UserInterface
 {

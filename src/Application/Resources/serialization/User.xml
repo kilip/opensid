@@ -1,5 +1,5 @@
 <serializer xmlns="http://symfony.com/schema/dic/serializer-mapping">
-    <class name="OpenSID\Security\Model\User">
+    <class name="OpenSID\Application\Model\User">
         <attribute name="id">
             <group>user:read</group>
             <group>admin:user:read</group>

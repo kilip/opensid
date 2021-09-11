@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace spec\OpenSID\Security\Model;
 
-use OpenSID\Security\Model\User;
+use OpenSID\Application\Model\User;
 use PhpSpec\ObjectBehavior;
 
 class UserSpec extends ObjectBehavior

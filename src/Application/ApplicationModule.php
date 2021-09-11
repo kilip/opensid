@@ -9,16 +9,16 @@
 
 declare(strict_types=1);
 
-namespace OpenSID\Security;
+namespace OpenSID\Application;
 
 use Doyo\Bundle\Modular\Application\ModuleInterface;
 use Doyo\Bundle\Modular\Application\ModuleTrait;
-use OpenSID\Security\Contracts\GroupInterface;
-use OpenSID\Security\Contracts\UserInterface;
-use OpenSID\Security\Model\Group;
-use OpenSID\Security\Model\User;
+use OpenSID\Application\Contracts\GroupInterface;
+use OpenSID\Application\Contracts\UserInterface;
+use OpenSID\Application\Model\Group;
+use OpenSID\Application\Model\User;
 
-class UserModule implements ModuleInterface
+class ApplicationModule implements ModuleInterface
 {
     use ModuleTrait;
 

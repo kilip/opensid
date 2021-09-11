@@ -9,13 +9,13 @@
 
 declare(strict_types=1);
 
-namespace OpenSID\Security\Repository;
+namespace OpenSID\Application\Repository;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\NonUniqueResultException;
-use OpenSID\Security\Contracts\UserInterface;
-use OpenSID\Security\Model\User;
+use OpenSID\Application\Contracts\UserInterface;
+use OpenSID\Application\Model\User;
 use Symfony\Bridge\Doctrine\Security\User\UserLoaderInterface;
 
 class UserRepository extends EntityRepository implements UserLoaderInterface
@@ -35,7 +35,7 @@ class UserRepository extends EntityRepository implements UserLoaderInterface
     {
         $query = <<<EOC
 SELECT u
-FROM OpenSID\Security\Model\User u
+FROM OpenSID\Application\Model\User u
 WHERE u.username = :username
 EOC;
 

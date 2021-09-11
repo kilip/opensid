@@ -9,9 +9,9 @@
 
 declare(strict_types=1);
 
-namespace OpenSID\Security\Model;
+namespace OpenSID\Application\Model;
 
-use OpenSID\Security\Contracts\GroupInterface;
+use OpenSID\Application\Contracts\GroupInterface;
 
 class Group implements GroupInterface
 {
