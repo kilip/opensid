@@ -22,9 +22,9 @@ class Application extends Migrator
             $this->userConvertID($schema);
         }
         $this->addSql('ALTER TABLE app_user DROP FOREIGN KEY IF EXISTS FK_7871BE50FE54D947');
-        $this->addSql('DROP INDEX IF EXISTS idx_7871be50fe54d947 ON app_user');
+        $this->addSql('DROP INDEX IF EXISTS idx_88bdf3e9fe54d947 ON app_user');
         $this->addSql('CREATE INDEX IF NOT EXISTS IDX_88BDF3E9FE54D947 ON app_user (group_id)');
-        $this->addSql('ALTER TABLE app_user ADD CONSTRAINT FK_7871BE50FE54D947 FOREIGN KEY IF NOT EXISTS (group_id) REFERENCES app_group (id)');
+        $this->addSql('ALTER TABLE app_user ADD CONSTRAINT FK_88BDF3E9FE54D947 FOREIGN KEY IF NOT EXISTS (group_id) REFERENCES app_user_group (id)');
 
         $this->addSql('
 ALTER TABLE app_user
@@ -41,7 +41,7 @@ ALTER TABLE app_user
         $this->addSql('# BEGIN USER DOWN');
         $this->addSql('ALTER TABLE app_user DROP FOREIGN KEY IF EXISTS FK_88BDF3E9FE54D947');
         $this->addSql('DROP INDEX IF EXISTS idx_88bdf3e9fe54d947 ON app_user');
-        $this->addSql('CREATE INDEX IF NOT EXISTS IDX_7871BE50FE54D947 ON app_user (group_id)');
+        $this->addSql('CREATE INDEX IF NOT EXISTS idx_88bdf3e9fe54d947 ON app_user (group_id)');
         $this->addSql('ALTER TABLE app_user ADD CONSTRAINT FK_88BDF3E9FE54D947 FOREIGN KEY IF NOT EXISTS (group_id) REFERENCES app_user_group (id)');
         $this->addSql('ALTER TABLE app_user CHANGE active active TINYINT(1) DEFAULT \'0\', CHANGE foto foto VARCHAR(100) CHARACTER SET utf8 NOT NULL COLLATE `utf8_general_ci`, CHANGE session session VARCHAR(40) CHARACTER SET utf8 NOT NULL COLLATE `utf8_general_ci`');
         $this->addSql('# END USER DOWN');
@@ -87,6 +87,15 @@ ALTER TABLE app_user
 
         $this->addSql('
 ALTER TABLE app_config
+    CHANGE nama_desa nama_desa VARCHAR(100) DEFAULT NULL,
+    CHANGE kode_desa kode_desa VARCHAR(100) DEFAULT NULL,
+    CHANGE nama_kepala_desa nama_kepala_desa VARCHAR(100) DEFAULT NULL,
+    CHANGE nip_kepala_desa nip_kepala_desa VARCHAR(100) DEFAULT NULL,
+    CHANGE kode_pos kode_pos VARCHAR(6) DEFAULT NULL,
+    CHANGE nama_kecamatan nama_kecamatan VARCHAR(100) DEFAULT NULL,
+    CHANGE kode_kecamatan kode_kecamatan VARCHAR(100) DEFAULT NULL,
+    CHANGE nama_kabupaten nama_kabupaten VARCHAR(100) DEFAULT NULL,
+    CHANGE kode_kabupaten kode_kabupaten VARCHAR(100) DEFAULT NULL,
     CHANGE nama_kepala_camat nama_camat VARCHAR(100) DEFAULT NULL,
     CHANGE nip_kepala_camat nip_camat VARCHAR(100) DEFAULT NULL,
     CHANGE kode_propinsi kode_provinsi VARCHAR(100) DEFAULT NULL,
@@ -112,6 +121,15 @@ ALTER TABLE app_config
         $this->addSql('# BEGIN CONFIG DOWN');
         $this->addSql('
 ALTER TABLE app_config
+    CHANGE kode_desa kode_desa VARCHAR(100) CHARACTER SET utf8 NOT NULL COLLATE `utf8_general_ci`,
+    CHANGE nama_desa nama_desa VARCHAR(100) CHARACTER SET utf8 NOT NULL COLLATE `utf8_general_ci`,
+    CHANGE nama_kepala_desa nama_kepala_desa VARCHAR(100) CHARACTER SET utf8 NOT NULL COLLATE `utf8_general_ci`,
+    CHANGE nip_kepala_desa nip_kepala_desa VARCHAR(100) CHARACTER SET utf8 NOT NULL COLLATE `utf8_general_ci`,
+    CHANGE kode_pos kode_pos VARCHAR(6) CHARACTER SET utf8 NOT NULL COLLATE `utf8_general_ci`,
+    CHANGE kode_kecamatan kode_kecamatan VARCHAR(100) CHARACTER SET utf8 NOT NULL COLLATE `utf8_general_ci`,
+    CHANGE nama_kecamatan nama_kecamatan VARCHAR(100) CHARACTER SET utf8 NOT NULL COLLATE `utf8_general_ci`,
+    CHANGE kode_kabupaten kode_kabupaten VARCHAR(100) CHARACTER SET utf8 NOT NULL COLLATE `utf8_general_ci`,
+    CHANGE nama_kabupaten nama_kabupaten VARCHAR(100) CHARACTER SET utf8 NOT NULL COLLATE `utf8_general_ci`,
     CHANGE logo logo VARCHAR(100) CHARACTER SET utf8 DEFAULT NULL COLLATE `utf8_general_ci`,
     CHANGE zoom zoom TINYINT(1) DEFAULT NULL, CHANGE path path TEXT CHARACTER SET utf8 DEFAULT NULL COLLATE `utf8_general_ci`,
     CHANGE alamat_kantor alamat_kantor VARCHAR(200) CHARACTER SET utf8 DEFAULT NULL COLLATE `utf8_general_ci`,
