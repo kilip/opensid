@@ -159,7 +159,7 @@ jobs:
         if: matrix.coverage
         uses: codecov/codecov-action@v1
         with:
-          files: ./api/build/logs/coverage-phpspec.xml
+          files: ./build/logs/coverage-phpspec.xml
           name: phpspec-php${{ matrix.php }}
           flags: phpspec
           fail_ci_if_error: false
@@ -230,7 +230,7 @@ jobs:
         if: matrix.coverage
         uses: codecov/codecov-action@v1
         with:
-          files: ./api/build/logs/coverage-phpunit.xml
+          files: ./build/logs/coverage-phpunit.xml
           name: phpunit-php${{ matrix.php }}
           flags: phpunit
           fail_ci_if_error: false
@@ -302,7 +302,7 @@ jobs:
         if: matrix.coverage
         uses: codecov/codecov-action@v1
         with:
-          files: ./api/build/logs/coverage-behat.xml
+          files: ./build/logs/coverage-behat.xml
           name: behat-php${{ matrix.php }}
           flags: behat
           fail_ci_if_error: false
