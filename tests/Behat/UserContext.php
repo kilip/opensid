@@ -19,15 +19,14 @@ use Behatch\Context\JsonContext;
 use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\Persistence\ObjectManager;
 use OpenSID\Security\Model\User;
-use Psr\Container\ContainerInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Security\Core\Security;
+use Tests\OpenSID\Testing\Concerns\InteractsWithContainer;
 use Tests\OpenSID\Testing\Concerns\InteractsWithUser;
 
 class UserContext implements Context
 {
-    use InteractsWithUser;
-
-    private ObjectManager $manager;
+    use InteractsWithContainer, InteractsWithUser;
     private Security $security;
     private JsonContext $jsonContext;
     private MinkContext $minkContext;
@@ -37,8 +36,7 @@ class UserContext implements Context
         Security $security,
         ContainerInterface $container
     ) {
-        $this->manager = $registry->getManagerForClass(User::class);
-        $this->initContainer($container);
+        $this->setContainer($container);
         $this->security = $security;
     }
 

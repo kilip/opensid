@@ -23,7 +23,7 @@ class UserTest extends ApiTestCase
     {
         $this->iDonTHaveUser('test');
         $client   = static::createClient();
-        $client->request('POST', '/register', [
+        $client->request('POST', '/api/register', [
             'json' => [
                 'username' => 'test',
                 'email' => 'test@example.com',

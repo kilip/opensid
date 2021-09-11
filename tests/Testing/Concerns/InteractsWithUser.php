@@ -19,18 +19,16 @@ use Psr\Container\ContainerInterface;
 
 trait InteractsWithUser
 {
-    protected UserPersister $userPersister;
-    protected ?ObjectManager $userManager = null;
+    use InteractsWithDoctrine;
 
-    public function initContainer(ContainerInterface $container): void
+    protected function getUserPersister(): UserPersister
     {
-        $this->userPersister = $container->get('opensid.user.persister.user');
-        $this->userManager   = $container->get('doctrine')->getManager();
+        return static::getContainer()->get('opensid.user.persister.user');
     }
 
     public function iDonTHaveUser(string $username): void
     {
-        $manager    = $this->getUserManager();
+        $manager    = $this->getManager();
         $repository = $manager->getRepository(User::class);
         $user       = $repository->findOneBy([
             'username' => $username,
@@ -44,7 +42,7 @@ trait InteractsWithUser
 
     public function iHaveUser(string $username = 'test', string $email = 'test@example.com', string $password = 'test'): UserInterface
     {
-        $manager    = $this->getUserManager();
+        $manager    = $this->getManager();
         $repository = $manager->getRepository(User::class);
         $user       = $repository->findOneBy([
             'username' => $username,
@@ -55,21 +53,9 @@ trait InteractsWithUser
             $user->setUsername($username);
             $user->setEmail($email);
             $user->setPlainPassword($password);
-            $this->userPersister->persist($user);
+            $this->getUserPersister()->persist($user);
         }
 
         return $user;
-    }
-
-    protected function getUserManager(): ObjectManager
-    {
-        if (null === $this->userManager) {
-            if (method_exists($this, 'getContainer')) {
-                $container          = $this->getContainer();
-                $this->userManager  = $container->get('doctrine')->getManager();
-            }
-        }
-
-        return $this->userManager;
     }
 }
