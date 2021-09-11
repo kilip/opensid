@@ -42,10 +42,8 @@ jobs:
           key: composer-cache-php${{ matrix.php }}
       - name: Install dependencies
         run: composer install --prefer-dist --no-interaction --no-progress
-        working-directory: api
       - name: Run PHP-CS-Fixer
         run: ./vendor/bin/php-cs-fixer fix --dry-run --diff --ansi
-        working-directory: api
 
   # psalm
   psalm:
@@ -75,10 +73,8 @@ jobs:
           key: composer-cache-php${{ matrix.php }}
       - name: Install dependencies
         run: composer install --prefer-dist --no-interaction --no-progress
-        working-directory: api
       - name: Run Psalm Tests
         run: ./vendor/bin/psalm --threads=2 --shepherd --stats
-        working-directory: api
 
   # phpstan
   phpstan:
@@ -108,10 +104,8 @@ jobs:
           key: composer-cache-php${{ matrix.php }}
       - name: Install dependencies
         run: composer install --prefer-dist --no-interaction --no-progress
-        working-directory: api
       - name: Run PHP Stan Analysis
         run: ./vendor/bin/phpstan analyse --no-interaction --no-progress --ansi
-        working-directory: api
 
   # phpspec
   phpspec:
@@ -151,7 +145,6 @@ jobs:
         run: echo "COVERAGE=1" >> $GITHUB_ENV
       - name: Update project dependencies
         run: composer update --no-interaction --no-progress --ansi
-        working-directory: api
       - name: Create build dir
         if: matrix.coverage
         run: mkdir -p build/logs
@@ -162,12 +155,11 @@ jobs:
           else
             ./vendor/bin/phpspec run -fpretty --ansi
           fi
-        working-directory: api
       - name: Upload coverage results to Codecov
         if: matrix.coverage
         uses: codecov/codecov-action@v1
         with:
-          files: ./api/build/logs/coverage-phpspec.xml
+          files: ./build/logs/coverage-phpspec.xml
           name: phpspec-php${{ matrix.php }}
           flags: phpspec
           fail_ci_if_error: false
@@ -220,12 +212,10 @@ jobs:
         run: echo "COVERAGE=1" >> $GITHUB_ENV
       - name: Update project dependencies
         run: composer update --no-interaction --no-progress --ansi
-        working-directory: api
       - name: Prepare Test
         run: |
           ./bin/console -e test doctrine:database:create
           ./bin/console -e test doctrine:schema:create
-        working-directory: api
       - name: Create build dir
         if: matrix.coverage
         run: mkdir -p build/logs
@@ -236,12 +226,11 @@ jobs:
           else
             ./vendor/bin/phpunit
           fi
-        working-directory: api
       - name: Upload coverage results to Codecov
         if: matrix.coverage
         uses: codecov/codecov-action@v1
         with:
-          files: ./api/build/logs/coverage-phpunit.xml
+          files: ./build/logs/coverage-phpunit.xml
           name: phpunit-php${{ matrix.php }}
           flags: phpunit
           fail_ci_if_error: false
@@ -294,12 +283,11 @@ jobs:
         run: echo "COVERAGE=1" >> $GITHUB_ENV
       - name: Update project dependencies
         run: composer update --no-interaction --no-progress --ansi
-        working-directory: api
+
       - name: Prepare Test
         run: |
           ./bin/console -e test doctrine:database:create
           ./bin/console -e test doctrine:schema:create
-        working-directory: api
       - name: Create build dir
         if: matrix.coverage
         run: mkdir -p build/logs
@@ -310,12 +298,11 @@ jobs:
           else
             ./vendor/bin/behat --colors --no-interaction
           fi
-        working-directory: api
       - name: Upload coverage results to Codecov
         if: matrix.coverage
         uses: codecov/codecov-action@v1
         with:
-          files: ./api/build/logs/coverage-behat.xml
+          files: ./build/logs/coverage-behat.xml
           name: behat-php${{ matrix.php }}
           flags: behat
           fail_ci_if_error: false
