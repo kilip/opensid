@@ -1,5 +1,6 @@
 {
   "private": true,
+  "node": ">=14",
   "scripts": {
     "build": "encore production --progress",
     "test": "jest",
