@@ -4,7 +4,7 @@
         <id name="id" type="integer" length="5">
             <generator strategy="IDENTITY"/>
         </id>
-        <field name="kategori" length="100"/>
+        <field name="nama" length="100"/>
         <field name="tipe" type="integer" length="4"/>
         <field name="urut" type="smallint" length="4"/>
         <field name="enabled" type="boolean"/>

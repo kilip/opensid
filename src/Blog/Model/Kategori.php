@@ -14,7 +14,7 @@ namespace OpenSID\Blog\Model;
 class Kategori
 {
     protected int $id;
-    protected string $kategori;
+    protected string $nama;
     protected int $tipe = 1;
     protected int $urut;
     protected bool $enabled = true;
@@ -31,14 +31,14 @@ class Kategori
         $this->id = $id;
     }
 
-    public function getKategori(): string
+    public function getNama(): string
     {
-        return $this->kategori;
+        return $this->nama;
     }
 
-    public function setKategori(string $kategori): void
+    public function setNama(string $nama): void
     {
-        $this->kategori = $kategori;
+        $this->nama = $nama;
     }
 
     public function getTipe(): int

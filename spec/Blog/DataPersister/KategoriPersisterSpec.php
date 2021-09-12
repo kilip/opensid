@@ -68,7 +68,7 @@ class KategoriPersisterSpec extends ObjectBehavior
         $kategori->setUrut(Argument::any())->shouldBeCalled();
         $kategori->setParent(Argument::any())->shouldBeCalled();
         $kategori->setSlug('berita-desa')->shouldBeCalled();
-        $kategori->getKategori()
+        $kategori->getNama()
             ->shouldBeCalled()
             ->willReturn('Berita Desa');
 

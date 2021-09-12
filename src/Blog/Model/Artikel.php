@@ -22,7 +22,7 @@ class Artikel implements ResourceInterface
     protected string $judul;
     protected string $isi;
     protected bool $enabled = true;
-    protected \DateTimeInterface $tanggalUpload;
+    protected \DateTimeInterface $createdAt;
     protected Kategori $kategori;
     protected ?UserInterface $user = null;
     protected ?string $gambar      = null;
@@ -35,11 +35,6 @@ class Artikel implements ResourceInterface
     protected ?string $slug        = null;
     protected int $hit             = 0;
     protected ?int $headline       = 0;
-
-    public function __construct()
-    {
-        $this->tanggalUpload = new \DateTimeImmutable();
-    }
 
     public function getIsi(): string
     {
@@ -61,14 +56,17 @@ class Artikel implements ResourceInterface
         $this->enabled = $enabled;
     }
 
-    public function getTanggalUpload(): \DateTimeInterface
+    public function getCreatedAt(): \DateTimeInterface
     {
-        return $this->tanggalUpload;
+        return $this->createdAt;
     }
 
-    public function setTanggalUpload(\DateTimeInterface $tanggalUpload): void
+    public function setCreatedAt(\DateTimeInterface $createdAt): void
     {
-        $this->tanggalUpload = $tanggalUpload;
+        if($createdAt instanceof \DateTime){
+            $createdAt = \DateTimeImmutable::createFromMutable($createdAt);
+        }
+        $this->createdAt = $createdAt;
     }
 
     public function getKategori(): Kategori

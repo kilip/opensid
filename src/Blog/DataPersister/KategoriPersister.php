@@ -48,7 +48,7 @@ class KategoriPersister implements ContextAwareDataPersisterInterface
     {
         $manager = $this->manager;
         $slugger = new AsciiSlugger('id');
-        $slug    = $slugger->slug($data->getKategori())->lower()->toString();
+        $slug    = $slugger->slug($data->getNama())->lower()->toString();
 
         // TODO: implementasi urut, dll
         $data->setTipe(1);

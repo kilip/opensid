@@ -30,11 +30,11 @@ trait InteractsWithBlog
     public function sayaMemilikiKategori(string $nama = 'Berita Desa'): Kategori
     {
         $repo     = $this->getKategoriRepository();
-        $kategori = $repo->findOneBy(['kategori' => $nama]);
+        $kategori = $repo->findOneBy(['nama' => $nama]);
 
         if (null === $kategori) {
             $kategori = new Kategori();
-            $kategori->setKategori($nama);
+            $kategori->setNama($nama);
             $this->getKategoriPersister()->persist($kategori);
         }
 

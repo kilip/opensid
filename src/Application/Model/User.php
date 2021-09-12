@@ -81,9 +81,9 @@ class User implements UserInterface
     }
 
     /**
-     * @psalm-return non-empty-list<mixed|string>
+     * @psalm-suppress MixedReturnTypeCoercion
      */
-    public function getRoles(): array
+    public function getRoles()
     {
         $group   = $this->group;
         $roles   = $this->roles;
@@ -93,7 +93,6 @@ class User implements UserInterface
         }
 
         $roles[] = self::ROLE_DEFAULT;
-
         return array_values(array_unique($roles));
     }
 

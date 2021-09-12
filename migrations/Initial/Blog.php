@@ -25,6 +25,7 @@ class Blog extends Migrator
         if ($schema->getTable('blog_kategori')->hasColumn('parrent')) {
             $this->addSql('
 ALTER TABLE blog_kategori
+    CHANGE kategori nama VARCHAR(100) NOT NULL,
     CHANGE parrent parent SMALLINT NOT NULL,
     CHANGE tipe tipe INT NOT NULL,
     CHANGE urut urut SMALLINT NOT NULL
@@ -35,7 +36,8 @@ ALTER TABLE blog_kategori
             ->getColumn('id_user')->getType();
         if ( ! $idUserType instanceof StringType) {
             $this->addSql('
-ALTER TABLE blog_artikel CHANGE id_user id_user VARCHAR(36) DEFAULT NULL
+ALTER TABLE blog_artikel
+    CHANGE id_user id_user VARCHAR(36) DEFAULT NULL
 ');
 
             $this->addSql('
@@ -46,7 +48,7 @@ UPDATE blog_artikel
         $this->addSql('
 ALTER TABLE blog_artikel
     CHANGE enabled enabled TINYINT(1) NOT NULL,
-    CHANGE tgl_upload tgl_upload DATETIME NOT NULL,
+    CHANGE tgl_upload created_at DATETIME NOT NULL,
     CHANGE id_kategori id_kategori INT DEFAULT NULL,
     CHANGE headline headline INT NOT NULL,
     CHANGE boleh_komentar boleh_komentar TINYINT(1) NOT NULL,
@@ -73,6 +75,13 @@ ALTER TABLE blog_agenda
         $this->addSql('CREATE INDEX IDX_B9A26DB67AAAF543 ON blog_agenda (id_artikel)');
         $this->addSql('ALTER TABLE blog_agenda ADD CONSTRAINT id_artikel_fk FOREIGN KEY IF NOT EXISTS (id_artikel) REFERENCES blog_artikel (id) ON UPDATE CASCADE ON DELETE CASCADE');
         $this->addSql('ALTER TABLE blog_agenda DROP FOREIGN KEY IF EXISTS id_artikel_fk');
+
+        // migrasi ke doctrine bool
+        $this->addSql('
+update blog_artikel
+    set enabled=0
+    where enabled=2
+');
     }
 
     public function blogDown(Schema $schema)
@@ -80,7 +89,8 @@ ALTER TABLE blog_agenda
         if ($schema->getTable('blog_kategori')->hasColumn('parent')) {
             $this->addSql('
 ALTER TABLE blog_kategori
-CHANGE parent parrent SMALLINT NOT NULL
+    CHANGE parent parrent SMALLINT NOT NULL,
+    CHANGE nama kategori VARCHAR(100) CHARACTER SET utf8 NOT NULL COLLATE `utf8_general_ci`
 ');
         }
 
@@ -111,8 +121,8 @@ ALTER TABLE blog_agenda
         $this->addSql('
 ALTER TABLE blog_artikel
     CHANGE id_kategori id_kategori INT NOT NULL,
+    CHANGE created_at tgl_upload DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
     CHANGE enabled enabled INT DEFAULT 1 NOT NULL,
-    CHANGE tgl_upload tgl_upload DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
     CHANGE headline headline INT DEFAULT 0 NOT NULL,
     CHANGE boleh_komentar boleh_komentar TINYINT(1) DEFAULT \'1\' NOT NULL,
     CHANGE hit hit INT DEFAULT 0'
