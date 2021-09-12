@@ -336,10 +336,9 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
           cache: 'yarn'
-          cache-dependency-path: pwa/yarn.lock
+          cache-dependency-path: yarn.lock
       - name: Install dependencies
         run: yarn
-        working-directory: client
       - name: Enable code coverage
         if: matrix.coverage
         run: echo "COVERAGE=1" >> $GITHUB_ENV
@@ -350,7 +349,6 @@ jobs:
           else
             yarn test --coverage=false
           fi
-        working-directory: client
       - name: Upload coverage results to Codecov
         if: matrix.coverage
         uses: codecov/codecov-action@v1
