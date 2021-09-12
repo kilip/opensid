@@ -63,7 +63,7 @@ class Artikel implements ResourceInterface
 
     public function setCreatedAt(\DateTimeInterface $createdAt): void
     {
-        if($createdAt instanceof \DateTime){
+        if ($createdAt instanceof \DateTime) {
             $createdAt = \DateTimeImmutable::createFromMutable($createdAt);
         }
         $this->createdAt = $createdAt;

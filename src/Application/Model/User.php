@@ -93,6 +93,7 @@ class User implements UserInterface
         }
 
         $roles[] = self::ROLE_DEFAULT;
+
         return array_values(array_unique($roles));
     }
 
