@@ -6,7 +6,6 @@ on:
     tags:
   pull_request:
     branches: ['main']
-
 env:
   COMPOSER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   SYMFONY_DEPRECATIONS_HELPER: disabled=1
@@ -35,6 +34,8 @@ jobs:
           ini-values: memory_limit=-1
           tools: pecl, composer
           coverage: none
+        env:
+          COMPOSER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Cache Composer cache
         uses: actions/cache@v2
         with:
@@ -66,6 +67,8 @@ jobs:
           ini-values: memory_limit=-1
           tools: pecl, composer
           coverage: none
+        env:
+          COMPOSER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Cache Composer cache
         uses: actions/cache@v2
         with:
@@ -97,6 +100,8 @@ jobs:
           ini-values: memory_limit=-1
           tools: pecl, composer
           coverage: none
+        env:
+          COMPOSER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Cache Composer cache
         uses: actions/cache@v2
         with:
@@ -131,6 +136,8 @@ jobs:
           extensions: intl, bcmath, curl, openssl, mbstring, pdo_pgsql
           coverage: pcov
           ini-values: memory_limit=-1
+        env:
+          COMPOSER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Get composer cache directory
         id: composercache
         run: echo "::set-output name=dir::$(composer config cache-files-dir)"
@@ -198,6 +205,8 @@ jobs:
           extensions: intl, bcmath, curl, openssl, mbstring, pdo_pgsql
           coverage: pcov
           ini-values: memory_limit=-1
+        env:
+          COMPOSER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Get composer cache directory
         id: composercache
         run: echo "::set-output name=dir::$(composer config cache-files-dir)"
@@ -269,6 +278,8 @@ jobs:
           extensions: intl, bcmath, curl, openssl, mbstring, pdo_pgsql
           coverage: pcov
           ini-values: memory_limit=-1
+        env:
+          COMPOSER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Get composer cache directory
         id: composercache
         run: echo "::set-output name=dir::$(composer config cache-files-dir)"
