@@ -319,7 +319,7 @@ jobs:
 
   # jest
   jest:
-    name: Jest (Node ${{ matrix.node }})
+    name: Client Test (Node ${{ matrix.node }})
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -339,7 +339,7 @@ jobs:
           cache-dependency-path: pwa/yarn.lock
       - name: Install dependencies
         run: yarn
-        working-directory: pwa
+        working-directory: client
       - name: Enable code coverage
         if: matrix.coverage
         run: echo "COVERAGE=1" >> $GITHUB_ENV
@@ -350,12 +350,12 @@ jobs:
           else
             yarn test --coverage=false
           fi
-        working-directory: pwa
+        working-directory: client
       - name: Upload coverage results to Codecov
         if: matrix.coverage
         uses: codecov/codecov-action@v1
         with:
-          files: ./pwa/coverage/clover.xml
+          files: ./build/jest/clover.xml
           name: jest-node${{ matrix.node }}
           flags: jest
           fail_ci_if_error: false

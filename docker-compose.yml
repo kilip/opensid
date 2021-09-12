@@ -33,9 +33,9 @@ services:
             dockerfile: ./etc/docker/Dockerfile
         depends_on:
             - php
-            - pwa
+            - client
         environment:
-            PWA_UPSTREAM: pwa:3000
+            PWA_UPSTREAM: client:3000
             SERVER_NAME: ${SERVER_NAME:-localhost, caddy:80}
             MERCURE_PUBLISHER_JWT_KEY: ${MERCURE_PUBLISHER_JWT_KEY:-!ChangeMe!}
             MERCURE_SUBSCRIBER_JWT_KEY: ${MERCURE_SUBSCRIBER_JWT_KEY:-!ChangeMe!}
@@ -61,19 +61,19 @@ services:
               published: 443
               protocol: udp
 
-    pwa:
-        image: ghcr.io/kilip/opensid/pwa
-        container_name: opensid.pwa
+    client:
+        image: ghcr.io/kilip/opensid/client
+        container_name: opensid.client
         restart: unless-stopped
         build:
             context: ./
-            target: opensid_pwa_dev
-            dockerfile: ./etc/docker/pwa/Dockerfile
-        environment:
-            OPENSID_CLIENT_GENERATOR_ENTRYPOINT: http://caddy
-            NEXT_PUBLIC_ENTRYPOINT: http://caddy
+            target: opensid_client
+            dockerfile: ./etc/docker/client/Dockerfile
         volumes:
-            - ./pwa:/usr/src/pwa:rw,cached
+            - ./:/client:rw
+        ports:
+            - "3000:3000"
+            - "8080:8080"
     database:
         container_name: 'opensid.database'
         image: 'mariadb:10.3.31'
