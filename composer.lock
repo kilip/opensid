@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "03e30c20d6f4c2b016543af72b5eacee",
+    "content-hash": "6fedba91e2938f49a30244c19dfaa1f7",
     "packages": [
         {
             "name": "api-platform/core",
@@ -9077,6 +9077,7 @@
                     "Behatch\\": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "beerware"
             ],

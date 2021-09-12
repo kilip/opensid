@@ -50,12 +50,6 @@
             "require": "5.3.*"
         }
     },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/kilip/soyuka-contexts"
-        }
-    ],
     "require": {
         "php": ">=7.4",
         "ext-ctype": "*",
