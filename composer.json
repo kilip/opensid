@@ -95,6 +95,7 @@
     },
     "require-dev": {
         "doyo/compose": "dev-master",
+        "doyo/soyuka-contexts": "dev-patch as 3.3.3",
         "friends-of-behat/mink-browserkit-driver": "^1.5",
         "friends-of-behat/mink-extension": "^2.5",
         "friends-of-behat/symfony-extension": "^2.2",
@@ -110,7 +111,6 @@
         "phpunit/phpunit": "^9.5",
         "psalm/plugin-phpunit": "^0.16.1",
         "psalm/plugin-symfony": "^3.0",
-        "soyuka/contexts": "dev-id-translation as 3.3.3",
         "symfony/browser-kit": "5.3.*",
         "symfony/css-selector": "5.3.*",
         "symfony/debug-bundle": "5.3.*",

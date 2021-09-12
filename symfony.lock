@@ -135,6 +135,9 @@
     "doyo/modular-bundle": {
         "version": "1.0-dev"
     },
+    "doyo/soyuka-contexts": {
+        "version": "3.3.3"
+    },
     "fakerphp/faker": {
         "version": "v1.16.0"
     },
@@ -398,9 +401,6 @@
     },
     "sebastian/version": {
         "version": "3.0.2"
-    },
-    "soyuka/contexts": {
-        "version": "3.3.3"
     },
     "stof/doctrine-extensions-bundle": {
         "version": "1.2",
