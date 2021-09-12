@@ -1,0 +1,64 @@
+<serializer xmlns="http://symfony.com/schema/dic/serializer-mapping">
+    <class name="OpenSID\Blog\Model\Artikel">
+        <attribute name="judul">
+            <group>blog:read</group>
+            <group>blog:write</group>
+        </attribute>
+        <attribute name="isi">
+            <group>blog:read</group>
+            <group>blog:write</group>
+        </attribute>
+        <attribute name="tanggalUpload">
+            <group>blog:read</group>
+            <group>blog:write</group>
+        </attribute>
+        <attribute name="kategori">
+            <group>blog:read</group>
+            <group>blog:write</group>
+        </attribute>
+        <attribute name="user">
+            <group>blog:read</group>
+            <group>blog:write</group>
+        </attribute>
+        <attribute name="gambar">
+            <group>blog:read</group>
+            <group>blog:write</group>
+        </attribute>
+        <attribute name="gambar1">
+            <group>blog:read</group>
+            <group>blog:write</group>
+        </attribute>
+        <attribute name="gambar2">
+            <group>blog:read</group>
+            <group>blog:write</group>
+        </attribute>
+        <attribute name="gambar3">
+            <group>blog:read</group>
+            <group>blog:write</group>
+        </attribute>
+        <attribute name="dokumen">
+            <group>blog:read</group>
+            <group>blog:write</group>
+        </attribute>
+        <attribute name="linkDokumen">
+            <group>blog:read</group>
+            <group>blog:write</group>
+        </attribute>
+        <attribute name="bolehKomentar">
+            <group>blog:read</group>
+            <group>blog:write</group>
+        </attribute>
+        <attribute name="hit">
+            <group>blog:read</group>
+            <group>blog:write</group>
+        </attribute>
+        <attribute name="headline">
+            <group>blog:read</group>
+            <group>blog:write</group>
+        </attribute>
+        <attribute name="slug">
+            <group>blog:read</group>
+            <group>blog:write</group>
+        </attribute>
+    </class>
+</serializer>

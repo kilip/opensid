@@ -40,8 +40,14 @@ ALTER TABLE app_user
     CHANGE active active TINYINT(1) DEFAULT NULL,
     CHANGE foto foto VARCHAR(100) DEFAULT NULL,
     CHANGE session session VARCHAR(40) DEFAULT NULL,
-    CHANGE old_id old_id INT DEFAULT NULL
+    CHANGE old_id old_id INT DEFAULT NULL,
+    ADD roles LONGTEXT DEFAULT NULL COMMENT "(DC2Type:json)"
 ');
+        $this->addSql('
+ALTER TABLE app_user_group
+    ADD roles LONGTEXT NOT NULL COMMENT \'(DC2Type:json)\'
+');
+        $this->addUserRoles();
         $this->addSql('# END USER UP');
     }
 
@@ -53,6 +59,8 @@ ALTER TABLE app_user
         $this->addSql('CREATE INDEX IF NOT EXISTS idx_88bdf3e9fe54d947 ON app_user (group_id)');
         $this->addSql('ALTER TABLE app_user ADD CONSTRAINT FK_88BDF3E9FE54D947 FOREIGN KEY IF NOT EXISTS (group_id) REFERENCES app_user_group (id)');
         $this->addSql('ALTER TABLE app_user CHANGE active active TINYINT(1) DEFAULT \'0\', CHANGE foto foto VARCHAR(100) CHARACTER SET utf8 NOT NULL COLLATE `utf8_general_ci`, CHANGE session session VARCHAR(40) CHARACTER SET utf8 NOT NULL COLLATE `utf8_general_ci`');
+        $this->addSql('ALTER TABLE app_user DROP roles');
+        $this->addSql('ALTER TABLE app_user_group DROP roles');
         $this->addSql('# END USER DOWN');
     }
 
@@ -161,5 +169,39 @@ ALTER TABLE app_config
 ');
         }
         $this->addSql('# END CONFIG DOWN');
+    }
+
+    private function addUserRoles()
+    {
+        $this->addSql('
+UPDATE app_user
+set roles=\'["admin"]\'
+where username=\'admin\'
+');
+        $this->addSql('
+UPDATE app_user_group
+set roles=\'["admin"]\'
+where nama=\'Administrator\'
+');
+        $this->addSql('
+UPDATE app_user_group
+set roles=\'["operator"]\'
+where nama=\'Operator\'
+');
+        $this->addSql('
+UPDATE app_user_group
+set roles=\'["redaktur"]\'
+where nama=\'Redaksi\'
+');
+        $this->addSql('
+UPDATE app_user_group
+set roles=\'["kontributor"]\'
+where nama=\'kontributor\'
+');
+        $this->addSql('
+UPDATE app_user_group
+set roles=\'["satgas-covid"]\'
+where nama=\'Satgas Covid-19\'
+');
     }
 }

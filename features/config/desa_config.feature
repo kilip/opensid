@@ -6,11 +6,11 @@ Fitur: Konfigurasi Identitas Desa
 
   Dasar:
     Dengan saya login sebagai admin
-    Dan Saya menambahkan header "Accept" dengan nilai "application/json"
-    Dan Saya menambahkan header "Content-Type" dengan nilai "application/json"
+    Dan saya menambahkan header "Accept" dengan nilai "application/json"
+    Dan saya menambahkan header "Content-Type" dengan nilai "application/json"
 
   Skenario: Berhasil mengubah konfigurasi identitas Desa
-    Dengan Saya mengirim permintaan POST ke "/api/config" dengan isi:
+    Dengan saya mengirim permintaan POST ke "/api/config" dengan isi:
     """
     {
       "kodeDesa": "2345",
@@ -44,7 +44,7 @@ Fitur: Konfigurasi Identitas Desa
     Dan nilai JSON pada kodeDesa harusnya sama dengan "2345"
 
   Skenario: Mengubah identitas desa dengan data invalid
-    Dengan Saya mengirim permintaan POST ke "/api/config" dengan isi:
+    Dengan saya mengirim permintaan POST ke "/api/config" dengan isi:
     """
     {
       "kodePos": "1234567"

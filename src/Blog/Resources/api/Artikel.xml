@@ -1,0 +1,18 @@
+<resources xmlns="https://api-platform.com/schema/metadata">
+    <resource class="OpenSID\Blog\Model\Artikel">
+        <attribute>is_granted('ROLE_ADMIN')</attribute>
+        <attribute name="normalization_context">
+            <attribute name="groups">blog:read</attribute>
+        </attribute>
+        <collectionOperations>
+            <collectionOperation name="get">
+                <attribute>is_granted('IS_ANONYMOUS') or is_granted('ROLE_USER')</attribute>
+            </collectionOperation>
+            <collectionOperation name="post">
+                <attribute name="denormalization_context">
+                    <attribute name="groups">blog:write</attribute>
+                </attribute>
+            </collectionOperation>
+        </collectionOperations>
+    </resource>
+</resources>

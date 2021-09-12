@@ -11,6 +11,17 @@ declare(strict_types=1);
 
 namespace OpenSID\Application\Contracts;
 
-interface GroupInterface
+use OpenSID\Resource\Contracts\ResourceInterface;
+
+interface GroupInterface extends ResourceInterface
 {
+    public function getRoles(): array;
+
+    public function setRoles(array $roles): void;
+
+    public function addRole(string $role): void;
+
+    public function hasRole(string $role): bool;
+
+    public function removeRole(string $role): void;
 }

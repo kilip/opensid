@@ -18,6 +18,7 @@ use Behat\Gherkin\Node\TableNode;
 use Behat\MinkExtension\Context\MinkContext;
 use Behatch\Context\JsonContext;
 use Behatch\Context\RestContext;
+use OpenSID\Application\Contracts\UserInterface;
 use OpenSID\Application\Model\User;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Security\Core\Security;
@@ -72,7 +73,22 @@ class UserContext implements Context
      */
     public function iAmLoggedInAsAdmin(): void
     {
-        $user = $this->iHaveUser('admin', 'admin@example.com', 'ROLE_ADMIN');
+        $user = $this->iHaveUser('admin', 'admin@example.com', UserInterface::ROLE_ADMIN);
+        $this->doLogin($user);
+    }
+
+    /**
+     * @Given saya login sebagai user
+     * @Given saya login sebagai user :username
+     */
+    public function loginSebagaiUser(string $username = 'test'): void
+    {
+        $user = $this->iHaveUser($username);
+        $this->doLogin($user);
+    }
+
+    private function doLogin(UserInterface $user)
+    {
         $body = [
             'username' => $user->getUsername(),
             'password' => 'test',

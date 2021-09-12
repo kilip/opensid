@@ -33,6 +33,7 @@
             <group>admin:user:write</group>
         </attribute>
         <attribute name="nama">
+            <group>blog:read</group>
             <group>user:read</group>
             <group>user:write</group>
             <group>admin:user:read</group>

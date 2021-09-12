@@ -1,0 +1,7 @@
+<constraint-mapping xmlns="http://symfony.com/schema/dic/constraint-mapping">
+    <class name="OpenSID\Blog\Model\Artikel">
+        <property name="isi">
+            <constraint name="NotBlank"/>
+        </property>
+    </class>
+</constraint-mapping>

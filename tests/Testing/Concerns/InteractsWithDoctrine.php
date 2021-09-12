@@ -15,6 +15,8 @@ use Doctrine\Persistence\ObjectManager;
 
 trait InteractsWithDoctrine
 {
+    use InteractsWithContainer;
+
     protected function getManager(): ObjectManager
     {
         return static::getContainer()->get('doctrine')->getManager();

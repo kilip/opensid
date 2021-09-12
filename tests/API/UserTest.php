@@ -21,6 +21,7 @@ class UserTest extends ApiTestCase
 
     public function test_register()
     {
+        static::bootKernel();
         $this->iDonTHaveUser('test');
         $client   = static::createClient();
         $client->request('POST', '/api/register', [

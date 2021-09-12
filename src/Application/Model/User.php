@@ -11,7 +11,6 @@ declare(strict_types=1);
 
 namespace OpenSID\Application\Model;
 
-use DateTimeImmutable;
 use OpenSID\Application\Contracts\GroupInterface;
 use OpenSID\Application\Contracts\UserInterface;
 
@@ -23,26 +22,22 @@ class User implements UserInterface
     protected $id;
     protected string $username;
     protected string $email;
-    protected ?string $password             = null;
-    protected ?string $plainPassword        = null;
-    protected ?GroupInterface $group        = null;
-    protected ?DateTimeImmutable $lastLogin = null;
-    protected bool $active                  = true;
-    protected ?string $nama                 = null;
-    protected ?string $company              = null;
-    protected ?string $phone                = null;
-    protected ?string $foto                 = null;
-    protected ?string $session              = null;
+    protected ?string $password              = null;
+    protected ?string $plainPassword         = null;
+    protected ?GroupInterface $group         = null;
+    protected ?\DateTimeInterface $lastLogin = null;
+    protected bool $active                   = true;
+    protected ?string $nama                  = null;
+    protected ?string $company               = null;
+    protected ?string $phone                 = null;
+    protected ?string $foto                  = null;
+    protected ?string $session               = null;
     protected int $oldId;
 
     /**
      * @var string[]
      */
     protected array $roles = [];
-
-    public function __construct()
-    {
-    }
 
     /**
      * @return int|string
@@ -60,9 +55,24 @@ class User implements UserInterface
         return $this->oldId;
     }
 
+    public function removeRole(string $role): void
+    {
+        if (false !== $key = array_search(strtoupper($role), $this->getRoles(), true)) {
+            unset($this->roles[$key]);
+            $this->roles = array_values($this->roles);
+        }
+    }
+
     public function hasRole(string $role): bool
     {
-        return \in_array($role, $this->getRoles(), true);
+        return \in_array(strtoupper($role), $this->getRoles(), true);
+    }
+
+    public function addRole(string $role): void
+    {
+        if ( ! $this->hasRole($role)) {
+            $this->roles[] = $role;
+        }
     }
 
     public function setRoles(array $roles): void
@@ -70,19 +80,21 @@ class User implements UserInterface
         $this->roles = $roles;
     }
 
+    /**
+     * @psalm-return non-empty-list<mixed|string>
+     */
     public function getRoles(): array
     {
+        $group   = $this->group;
         $roles   = $this->roles;
-        $roles[] = 'ROLE_USER';
 
-        return array_unique($roles);
-    }
-
-    public function addRole(string $role): void
-    {
-        if ( ! \in_array($role, $this->roles, true)) {
-            $this->roles[] = $role;
+        if (null !== $group) {
+            $roles = array_merge($roles, $group->getRoles());
         }
+
+        $roles[] = self::ROLE_DEFAULT;
+
+        return array_values(array_unique($roles));
     }
 
     public function getSalt(): ?string
@@ -157,12 +169,12 @@ class User implements UserInterface
         $this->email = $email;
     }
 
-    public function getLastLogin(): ?DateTimeImmutable
+    public function getLastLogin(): ?\DateTimeInterface
     {
         return $this->lastLogin;
     }
 
-    public function setLastLogin(?DateTimeImmutable $lastLogin): void
+    public function setLastLogin(?\DateTimeInterface $lastLogin): void
     {
         $this->lastLogin = $lastLogin;
     }

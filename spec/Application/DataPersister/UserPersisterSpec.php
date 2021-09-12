@@ -62,4 +62,14 @@ class UserPersisterSpec extends ObjectBehavior
 
         $this->persist($user, []);
     }
+
+    public function it_should_remove_user(
+        ObjectManager $manager,
+        UserInterface $user
+    ) {
+        $manager->remove($user)->shouldBeCalled();
+        $manager->flush()->shouldBeCalled();
+
+        $this->remove($user);
+    }
 }

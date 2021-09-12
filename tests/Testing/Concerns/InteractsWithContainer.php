@@ -15,7 +15,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 
 trait InteractsWithContainer
 {
-    protected static ContainerInterface $container;
+    protected static $container;
 
     protected function setContainer(ContainerInterface $container): void
     {

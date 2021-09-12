@@ -20,7 +20,7 @@ class Group implements GroupInterface
      */
     private $id;
     private string $nama;
-    private array $roles;
+    private array $roles = [];
     private int $oldId;
 
     /**
@@ -46,12 +46,29 @@ class Group implements GroupInterface
         $this->nama = $nama;
     }
 
+    public function addRole(string $role): void
+    {
+        if ( ! $this->hasRole($role)) {
+            $this->roles[] = $role;
+        }
+    }
+
+    public function hasRole(string $role): bool
+    {
+        return \in_array(strtoupper($role), $this->getRoles(), true);
+    }
+
+    public function removeRole(string $role): void
+    {
+        if (false !== $key = array_search(strtoupper($role), $this->getRoles(), true)) {
+            unset($this->roles[$key]);
+            $this->roles = array_values($this->roles);
+        }
+    }
+
     public function getRoles(): array
     {
-        $roles   = $this->roles;
-        $roles[] = 'ROLE_USER';
-
-        return array_unique($roles);
+        return $this->roles;
     }
 
     public function setRoles(array $roles): void

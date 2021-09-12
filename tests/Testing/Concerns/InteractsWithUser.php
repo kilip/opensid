@@ -38,7 +38,7 @@ trait InteractsWithUser
         }
     }
 
-    public function iHaveUser(string $username = 'test', string $email = 'test@example.com', $role = 'ROLE_USER', string $password = 'test'): UserInterface
+    public function iHaveUser(string $username = 'test', string $email = 'test@example.com', $role = UserInterface::ROLE_DEFAULT, string $password = 'test'): UserInterface
     {
         $manager    = $this->getManager();
         $repository = $manager->getRepository(User::class);
@@ -48,11 +48,11 @@ trait InteractsWithUser
 
         if (null === $user) {
             $user = new User();
-            $user->setUsername($username);
-            $user->setEmail($email);
-            $user->setPlainPassword($password);
         }
-
+        $user->setNama(ucfirst($username));
+        $user->setUsername($username);
+        $user->setEmail($email);
+        $user->setPlainPassword($password);
         $user->addRole($role);
         $this->getUserPersister()->persist($user);
 

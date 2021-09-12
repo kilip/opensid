@@ -62,5 +62,9 @@ class UserPersister implements ContextAwareDataPersisterInterface
      */
     public function remove($data, array $context = []): void
     {
+        $manager = $this->manager;
+
+        $manager->remove($data);
+        $manager->flush();
     }
 }
