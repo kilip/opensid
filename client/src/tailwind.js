@@ -47,4 +47,4 @@ const components = {
   TDialog,
 };
 
-Vue.use(VueTailwind, components)
+export default components;
