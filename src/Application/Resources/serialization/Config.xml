@@ -1,0 +1,9 @@
+<serializer xmlns="http://symfony.com/schema/dic/serializer-mapping">
+    <class name="OpenSID\Application\Model\Application">
+        <attribute name="kodeDesa">
+            <group>guest:read</group>
+            <group>admin:read</group>
+            <group>admin:write</group>
+        </attribute>
+    </class>
+</serializer>

@@ -1,4 +1,6 @@
 default:
+  translation:
+    locale: id
   suites:
     default:
       contexts:
@@ -6,6 +8,8 @@ default:
         - behatch:context:table
         - behatch:context:rest
         - Tests\OpenSID\Behat\UserContext
+        - Tests\OpenSID\Behat\RestContext
+        - Tests\OpenSID\Behat\BlogContext
         - Behat\MinkExtension\Context\MinkContext
 
   extensions:
@@ -30,5 +34,7 @@ coverage:
         - behatch:context:table
         - behatch:context:rest
         - Tests\OpenSID\Behat\UserContext
+        - Tests\OpenSID\Behat\RestContext
+        - Tests\OpenSID\Behat\BlogContext
         - Behat\MinkExtension\Context\MinkContext
         - Tests\OpenSID\Behat\CoverageContext

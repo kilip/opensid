@@ -1,0 +1,41 @@
+<resources xmlns="https://api-platform.com/schema/metadata">
+    <resource
+        class="OpenSID\Blog\Model\Artikel"
+        shortName="artikel"
+        description="Artikel Resource"
+        iri="https://schema.org/NewsArticle"
+    >
+        <attribute>is_granted('ROLE_ADMIN')</attribute>
+        <attribute name="normalization_context">
+            <attribute name="groups">blog:read</attribute>
+        </attribute>
+        <collectionOperations>
+            <collectionOperation name="get">
+                <attribute>is_granted('IS_ANONYMOUS') or is_granted('ROLE_USER')</attribute>
+                <attribute name="normalization_context">
+                    <attribute name="groups">blog:read</attribute>
+                </attribute>
+            </collectionOperation>
+            <collectionOperation name="post">
+                <attribute name="denormalization_context">
+                    <attribute name="groups">blog:write</attribute>
+                </attribute>
+            </collectionOperation>
+        </collectionOperations>
+
+        <itemOperations>
+            <itemOperation name="get"/>
+            <itemOperation name="put">
+                <attribute name="denormalization_context">
+                    <attribute name="groups">blog:write</attribute>
+                </attribute>
+            </itemOperation>
+        </itemOperations>
+
+        <property name="user" iri="https://schema.org/creator"/>
+        <property name="createdAt" iri="https://schema.org/dateCreated"/>
+        <property name="hit">
+            <attribute name="type">integer</attribute>
+        </property>
+    </resource>
+</resources>

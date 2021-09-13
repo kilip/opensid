@@ -135,6 +135,9 @@
     "doyo/modular-bundle": {
         "version": "1.0-dev"
     },
+    "doyo/soyuka-contexts": {
+        "version": "3.3.3"
+    },
     "fakerphp/faker": {
         "version": "v1.16.0"
     },
@@ -185,6 +188,9 @@
     },
     "friendsofphp/proxy-manager-lts": {
         "version": "v1.0.5"
+    },
+    "gedmo/doctrine-extensions": {
+        "version": "v3.1.0"
     },
     "justinrainbow/json-schema": {
         "version": "5.2.11"
@@ -396,8 +402,17 @@
     "sebastian/version": {
         "version": "3.0.2"
     },
-    "soyuka/contexts": {
-        "version": "3.3.3"
+    "stof/doctrine-extensions-bundle": {
+        "version": "1.2",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "1.2",
+            "ref": "6c1ceb662f8997085f739cd089bfbef67f245983"
+        },
+        "files": [
+            "config/packages/stof_doctrine_extensions.yaml"
+        ]
     },
     "symfony/asset": {
         "version": "v5.3.4"
@@ -716,6 +731,28 @@
             "config/packages/dev/web_profiler.yaml",
             "config/packages/test/web_profiler.yaml",
             "config/routes/dev/web_profiler.yaml"
+        ]
+    },
+    "symfony/webpack-encore-bundle": {
+        "version": "1.9",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "1.9",
+            "ref": "404714014dd6ff7de9aa0f9582d592147359e617"
+        },
+        "files": [
+            "assets/app.js",
+            "assets/bootstrap.js",
+            "assets/controllers.json",
+            "assets/controllers/hello_controller.js",
+            "assets/styles/app.css",
+            "config/packages/assets.yaml",
+            "config/packages/prod/webpack_encore.yaml",
+            "config/packages/test/webpack_encore.yaml",
+            "config/packages/webpack_encore.yaml",
+            "package.json",
+            "webpack.config.js"
         ]
     },
     "symfony/yaml": {

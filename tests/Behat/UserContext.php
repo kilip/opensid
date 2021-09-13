@@ -13,32 +13,32 @@ namespace Tests\OpenSID\Behat;
 
 use Behat\Behat\Context\Context;
 use Behat\Behat\Hook\Scope\BeforeScenarioScope;
+use Behat\Gherkin\Node\PyStringNode;
 use Behat\Gherkin\Node\TableNode;
 use Behat\MinkExtension\Context\MinkContext;
 use Behatch\Context\JsonContext;
-use Doctrine\Persistence\ManagerRegistry;
-use Doctrine\Persistence\ObjectManager;
-use OpenSID\Security\Model\User;
-use Psr\Container\ContainerInterface;
+use Behatch\Context\RestContext;
+use OpenSID\Application\Contracts\UserInterface;
+use OpenSID\Application\Model\User;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Security\Core\Security;
+use Tests\OpenSID\Testing\Concerns\InteractsWithContainer;
 use Tests\OpenSID\Testing\Concerns\InteractsWithUser;
 
 class UserContext implements Context
 {
+    use InteractsWithContainer;
     use InteractsWithUser;
-
-    private ObjectManager $manager;
     private Security $security;
     private JsonContext $jsonContext;
     private MinkContext $minkContext;
+    private RestContext $restContext;
 
     public function __construct(
-        ManagerRegistry $registry,
         Security $security,
         ContainerInterface $container
     ) {
-        $this->manager = $registry->getManagerForClass(User::class);
-        $this->initContainer($container);
+        $this->setContainer($container);
         $this->security = $security;
     }
 
@@ -49,10 +49,11 @@ class UserContext implements Context
     {
         $this->jsonContext = $scope->getEnvironment()->getContext(JsonContext::class);
         $this->minkContext = $scope->getEnvironment()->getContext(MinkContext::class);
+        $this->restContext = $scope->getEnvironment()->getContext(RestContext::class);
     }
 
     /**
-     * @Given I don't have user with username :username
+     * @Given Saya tidak memiliki user :username
      */
     public function iDonTHaveUserWith(string $username)
     {
@@ -60,10 +61,47 @@ class UserContext implements Context
     }
 
     /**
-     * @Given I have user with:
+     * @Given Saya memiliki user dengan:
      */
     public function iHaveUserWith(TableNode $node): void
     {
         $this->iHaveUser('test');
+    }
+
+    /**
+     * @Given saya login sebagai admin
+     */
+    public function iAmLoggedInAsAdmin(): void
+    {
+        $user = $this->iHaveUser('admin', 'admin@example.com', UserInterface::ROLE_ADMIN);
+        $this->doLogin($user);
+    }
+
+    /**
+     * @Given saya login sebagai user
+     * @Given saya login sebagai user :username
+     */
+    public function loginSebagaiUser(string $username = 'test'): void
+    {
+        $user = $this->iHaveUser($username);
+        $this->doLogin($user);
+    }
+
+    private function doLogin(UserInterface $user)
+    {
+        $body = [
+            'username' => $user->getUsername(),
+            'password' => 'test',
+        ];
+        $body = json_encode($body);
+
+        $body     = new PyStringNode([$body], 1);
+        $this->restContext->iAddHeaderEqualTo('Accept', 'application/json');
+        $this->restContext->iAddHeaderEqualTo('Content-Type', 'application/json');
+        $response = $this->restContext->iSendARequestTo('POST', '/login-check', $body);
+        $content  = $response->getContent();
+        $json     = json_decode($content, true);
+        $token    = $json['token'];
+        $this->restContext->iAddHeaderEqualTo('Authorization', 'Bearer '.$token);
     }
 }

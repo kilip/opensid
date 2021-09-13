@@ -1,0 +1,11 @@
+<serializer xmlns="http://symfony.com/schema/dic/serializer-mapping">
+    <class name="OpenSID\Blog\Model\Kategori">
+        <attribute name="id">
+            <group>blog:read</group>
+        </attribute>
+        <attribute name="nama">
+            <group>blog:read</group>
+            <group>blog:write</group>
+        </attribute>
+    </class>
+</serializer>

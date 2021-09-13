@@ -1,0 +1,12 @@
+<container xmlns="http://symfony.com/schema/dic/services">
+    <services>
+        <defaults public="true" autowire="true" autoconfigure="true"/>
+
+        <service id="opensid.app.controllers.update_config" class="OpenSID\Application\Controller\UpdateConfigController">
+            <tag name="controller.service_arguments"/>
+        </service>
+        <service id="opensid.app.controllers.homepage" class="OpenSID\Application\Controller\HomepageController">
+            <tag name="controller.service_arguments"/>
+        </service>
+    </services>
+</container>

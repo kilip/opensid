@@ -1,0 +1,14 @@
+<container xmlns="http://symfony.com/schema/dic/services">
+    <services>
+        <defaults public="true" autoconfigure="true" autowire="true">
+            <tag name="api_platform.data_persister"/>
+        </defaults>
+        <service
+            id="opensid.blog.persister.kategori"
+            class="OpenSID\Blog\DataPersister\KategoriPersister"/>
+        <service
+            id="opensid.blog.persister.artikel"
+            class="OpenSID\Blog\DataPersister\ArtikelPersister"
+        />
+    </services>
+</container>

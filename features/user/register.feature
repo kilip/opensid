@@ -1,15 +1,16 @@
-Feature:
-  In order to manage user
-  As a admin
-  I should able to add user
+# language: id
+Fitur: Manajemen User
+  Agar dapat mengatur user
+  Sebagai admin
+  Saya harus dapat mengubah data user
 
-  Background:
-    Given I add "Content-Type" header equal to "application/json"
-    And I add "Accept" header equal to "application/json"
+  Dasar:
+    Dengan saya menambahkan header "Content-Type" dengan nilai "application/json"
+    Dan saya menambahkan header "Accept" dengan nilai "application/json"
 
-  Scenario: Add new user
-    Given I don't have user with username "test"
-    When I send a POST request to "/register" with body:
+  Skenario: Menambahkan user baru
+    Dengan saya tidak memiliki user "test"
+    Ketika saya mengirim permintaan POST ke "/api/register" dengan isi:
     """
     {
       "username": "test",
@@ -17,7 +18,7 @@ Feature:
       "plainPassword": "test"
     }
     """
-    Then the response status code should be 201
-    And the JSON node "username" should be equal to "test"
-    And the JSON node "email" should be equal to "test@example.org"
+    Maka kode status respon harus 201
+    Dan nilai JSON pada username harusnya sama dengan "test"
+    Dan nilai JSON pada "email" harusnya sama dengan "test@example.org"
 

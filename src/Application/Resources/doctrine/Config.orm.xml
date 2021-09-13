@@ -1,0 +1,32 @@
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping">
+    <entity name="OpenSID\Application\Model\Config" table="app_config">
+        <id name="id" type="integer" length="5">
+            <generator strategy="IDENTITY"/>
+        </id>
+        <field name="kodeDesa" length="100" nullable="true"/>
+        <field name="namaDesa" length="100" nullable="true"/>
+        <field name="namaKepalaDesa" length="100" nullable="true"/>
+        <field name="nipKepalaDesa" length="100" nullable="true"/>
+        <field name="kodePos" length="6" nullable="true"/>
+        <field name="kodeKecamatan" length="100" nullable="true"/>
+        <field name="namaKecamatan" length="100" nullable="true"/>
+        <field name="namaCamat" length="100" nullable="true"/>
+        <field name="nipCamat" length="100" nullable="true"/>
+        <field name="kodeKabupaten" length="100" nullable="true"/>
+        <field name="namaKabupaten" length="100" nullable="true"/>
+        <field name="kodeProvinsi" length="100" nullable="true"/>
+        <field name="namaProvinsi" length="100" nullable="true"/>
+        <field name="logo" length="100" nullable="true"/>
+        <field name="latitude" length="20" nullable="true"/>
+        <field name="longitude" length="20" nullable="true"/>
+        <field name="zoom" type="smallint" nullable="true"/>
+        <field name="mapType" length="20" nullable="true"/>
+        <field name="path" type="text" nullable="true"/>
+        <field name="alamatKantor" length="100" nullable="true"/>
+        <field name="emailDesa" length="50" nullable="true"/>
+        <field name="telepon" length="50" nullable="true"/>
+        <field name="website" length="100" nullable="true"/>
+        <field name="kantorDesa" length="100" nullable="true"/>
+        <field name="warna" length="10" nullable="true"/>
+    </entity>
+</doctrine-mapping>

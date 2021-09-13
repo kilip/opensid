@@ -1,0 +1,8 @@
+<resources xmlns="https://api-platform.com/schema/metadata">
+    <resource class="OpenSID\Blog\Model\Kategori">
+        <attribute>is_granted('ROLE_ADMIN')</attribute>
+        <attribute name="normalization_context">
+            <attribute name="group">blog:read</attribute>
+        </attribute>
+    </resource>
+</resources>

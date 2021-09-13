@@ -15,3 +15,7 @@ services:
     # this creates a service per class whose id is the fully-qualified class name
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    custom_data_provider:
+      class: OpenSID\Application\DataProvider\ConfigItemDataProvider
+      tags: ['api_platform.item_data_provider']

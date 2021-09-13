@@ -1,0 +1,22 @@
+<container xmlns="http://symfony.com/schema/dic/services">
+    <services>
+        <service
+            id="OpenSID\Application\Repository\UserRepository"
+            class="OpenSID\Application\Repository\UserRepository"
+            autowire="true"
+            autoconfigure="true"
+            public="true"
+        >
+            <tag name="doctrine.repository_service"/>
+        </service>
+        <service
+            id="opensid.user.persister.user"
+            class="OpenSID\Application\DataPersister\UserPersister"
+            autoconfigure="true"
+            autowire="true"
+            public="true"
+        >
+            <tag name="api_platform.data_persister"/>
+        </service>
+    </services>
+</container>
