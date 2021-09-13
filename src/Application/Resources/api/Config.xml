@@ -8,6 +8,7 @@
         </collectionOperations>
         <itemOperations>
             <itemOperation name="config_update">
+                <attribute name="path">config</attribute>
                 <attribute name="normalization_context">
                     <attribute name="group">admin:read</attribute>
                 </attribute>

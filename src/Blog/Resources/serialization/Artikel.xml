@@ -8,9 +8,12 @@
             <group>blog:read</group>
             <group>blog:write</group>
         </attribute>
-        <attribute name="tanggalUpload">
+        <attribute name="enabled">
             <group>blog:read</group>
             <group>blog:write</group>
+        </attribute>
+        <attribute name="tanggalUpload">
+            <group>blog:read</group>
         </attribute>
         <attribute name="kategori">
             <group>blog:read</group>
@@ -18,7 +21,6 @@
         </attribute>
         <attribute name="user">
             <group>blog:read</group>
-            <group>blog:write</group>
         </attribute>
         <attribute name="gambar">
             <group>blog:read</group>
@@ -42,7 +44,6 @@
         </attribute>
         <attribute name="linkDokumen">
             <group>blog:read</group>
-            <group>blog:write</group>
         </attribute>
         <attribute name="bolehKomentar">
             <group>blog:read</group>
@@ -50,15 +51,12 @@
         </attribute>
         <attribute name="hit">
             <group>blog:read</group>
-            <group>blog:write</group>
         </attribute>
         <attribute name="headline">
             <group>blog:read</group>
-            <group>blog:write</group>
         </attribute>
         <attribute name="slug">
             <group>blog:read</group>
-            <group>blog:write</group>
         </attribute>
     </class>
 </serializer>

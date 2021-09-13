@@ -1,7 +1,15 @@
 <constraint-mapping xmlns="http://symfony.com/schema/dic/constraint-mapping">
     <class name="OpenSID\Blog\Model\Artikel">
+        <property name="judul">
+            <constraint name="NotBlank"/>
+        </property>
         <property name="isi">
             <constraint name="NotBlank"/>
+        </property>
+        <property name="hit">
+            <constraint name="Type">
+                <option name="type">integer</option>
+            </constraint>
         </property>
     </class>
 </constraint-mapping>

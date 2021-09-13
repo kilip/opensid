@@ -1,0 +1,8 @@
+<container xmlns="http://symfony.com/schema/dic/services">
+    <services>
+        <service
+            id="opensid.resource.segment_name_generator"
+            class="OpenSID\Resource\Operation\SingularPathSegmentNameGenerator"
+        />
+    </services>
+</container>

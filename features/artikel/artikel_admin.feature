@@ -17,7 +17,7 @@ Fitur: Administrasi artikel
     {
       "judul": "Test Artikel",
       "isi": "isi",
-      "kategori": "/api/kategoris/1"
+      "kategori": "/api/kategori/1"
     }
     """
     Maka kode status respon harus 201

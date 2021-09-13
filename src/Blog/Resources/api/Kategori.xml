@@ -2,7 +2,7 @@
     <resource class="OpenSID\Blog\Model\Kategori">
         <attribute>is_granted('ROLE_ADMIN')</attribute>
         <attribute name="normalization_context">
-            <attribute name="group">group:read</attribute>
+            <attribute name="group">blog:read</attribute>
         </attribute>
     </resource>
 </resources>

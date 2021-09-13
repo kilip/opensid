@@ -23,7 +23,7 @@ class Artikel implements ResourceInterface
     protected string $isi;
     protected bool $enabled = true;
     protected \DateTimeInterface $createdAt;
-    protected Kategori $kategori;
+    protected ?Kategori $kategori  = null;
     protected ?UserInterface $user = null;
     protected ?string $gambar      = null;
     protected ?string $gambar1     = null;
@@ -69,12 +69,12 @@ class Artikel implements ResourceInterface
         $this->createdAt = $createdAt;
     }
 
-    public function getKategori(): Kategori
+    public function getKategori(): ?Kategori
     {
         return $this->kategori;
     }
 
-    public function setKategori(Kategori $kategori): void
+    public function setKategori(?Kategori $kategori): void
     {
         $this->kategori = $kategori;
     }

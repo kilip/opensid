@@ -318,8 +318,8 @@ jobs:
           fail_ci_if_error: false
 
   # jest
-  jest:
-    name: Client Test (Node ${{ matrix.node }})
+  client:
+    name: Frontend (Node ${{ matrix.node }})
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -336,7 +336,7 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
           cache: 'yarn'
-          cache-dependency-path: yarn.lock
+          cache-dependency-path: client/yarn.lock
       - name: Install dependencies
         run: yarn
       - name: Enable code coverage
@@ -349,13 +349,14 @@ jobs:
           else
             yarn test --coverage=false
           fi
+        working-directory: client
       - name: Upload coverage results to Codecov
         if: matrix.coverage
         uses: codecov/codecov-action@v1
         with:
-          files: ./build/jest/clover.xml
+          files: ./client/coverage/clover.xml
           name: jest-node${{ matrix.node }}
-          flags: jest
+          flags: frontend
           fail_ci_if_error: false
 
   # deploy

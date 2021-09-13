@@ -94,13 +94,6 @@ ALTER TABLE blog_kategori
 ');
         }
 
-        $this->addSql('
-update blog_artikel
-    set id_user = (
-            select old_id from app_user
-            where app_user.id=blog_artikel.id_user
-        )
-');
         $this->addSql('ALTER TABLE blog_agenda DROP FOREIGN KEY IF EXISTS FK_B9A26DB67AAAF543');
         $this->addSql('ALTER TABLE blog_agenda DROP FOREIGN KEY IF EXISTS FK_B9A26DB67AAAF543');
         $this->addSql('

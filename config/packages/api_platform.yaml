@@ -1,11 +1,15 @@
 api_platform:
+  defaults:
+    pagination_items_per_page: 5
+    pagination_maximum_items_per_page: 5
+  path_segment_name_generator: 'opensid.resource.segment_name_generator'
   formats:
-    json:
-      mime_types:
-        - application/json
     jsonld:
       mime_types:
         - application/ld+json
+    json:
+      mime_types:
+        - application/json
     html:
       mime_types:
         - text/html
@@ -13,3 +17,6 @@ api_platform:
     json: ['application/merge-patch+json']
   swagger:
     versions: [3]
+  collection:
+    pagination:
+      maximum_items_per_page: 5
