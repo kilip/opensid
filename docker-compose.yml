@@ -70,7 +70,8 @@ services:
             target: opensid_client
             dockerfile: ./etc/docker/client/Dockerfile
         volumes:
-            - ./:/client:rw
+            - ./client:/client:rw
+            - ./public/build:/public/build:rw
         ports:
             - "3000:3000"
             - "8080:8080"

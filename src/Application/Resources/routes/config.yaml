@@ -1,5 +1,5 @@
 opensid_config_update:
-  path: '/config'
+  path: '"%opensid.api_prefix%/config'
   methods: 'POST'
   defaults:
     _controller: 'opensid.app.controllers.update_config'

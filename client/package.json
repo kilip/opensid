@@ -1,17 +1,17 @@
 {
   "name": "opensid",
-  "description": "OpenSID Frontend",
   "version": "1.0.0",
-  "author": "Anthonius Munthi <me@itstoni.com>",
-  "license": "MIT",
   "private": true,
+  "description": "OpenSID Frontend",
+  "author": "Anthonius Munthi <me@itstoni.com>",
   "scripts": {
-    "dev:vue": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
-    "build:vue": "cross-env NODE_ENV=production webpack --progress --hide-modules",
     "build": "encore production --progress",
-    "test": "jest",
+    "test:unit": "vue-cli-service test:unit",
+    "build:vue": "cross-env NODE_ENV=production webpack --progress --hide-modules",
     "dev": "encore dev",
     "dev-server": "encore dev-server",
+    "dev:vue": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
+    "test": "jest",
     "watch": "encore dev-server --https --host 0.0.0.0"
   },
   "dependencies": {
@@ -28,11 +28,6 @@
     "vuex": "^3.6.2",
     "vuex-map-fields": "^1.4.1"
   },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not ie <= 8"
-  ],
   "devDependencies": {
     "@symfony/stimulus-bridge": "^2.0.0",
     "@symfony/webpack-encore": "^1.0.0",
@@ -48,5 +43,11 @@
     "vue-loader": "^15.9.5",
     "vue-template-compiler": "^2.6.14",
     "webpack-notifier": "^1.6.0"
-  }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ],
+  "license": "MIT"
 }
