@@ -339,6 +339,7 @@ jobs:
           cache-dependency-path: client/yarn.lock
       - name: Install dependencies
         run: yarn
+        working-directory: client
       - name: Enable code coverage
         if: matrix.coverage
         run: echo "COVERAGE=1" >> $GITHUB_ENV
