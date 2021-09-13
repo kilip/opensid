@@ -1,0 +1,2 @@
+parameters:
+  opensid.api_prefix: '%env(resolve:OPENSID_API_PREFIX)%'
