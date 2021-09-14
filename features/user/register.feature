@@ -7,6 +7,7 @@ Fitur: Manajemen User
   Dasar:
     Dengan saya menambahkan header "Content-Type" dengan nilai "application/json"
     Dan saya menambahkan header "Accept" dengan nilai "application/json"
+    Dan saya keluar dari aplikasi
 
   Skenario: Menambahkan user baru
     Dengan saya tidak memiliki user "test"

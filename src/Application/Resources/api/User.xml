@@ -1,6 +1,5 @@
 <resources xmlns="https://api-platform.com/schema/metadata">
     <resource class="OpenSID\Application\Model\User">
-        <attribute name="security">is_granted('ROLE_ADMIN')</attribute>
         <attribute name="normalization_context">
             <attribute name="groups">admin:user:read</attribute>
         </attribute>
@@ -9,8 +8,12 @@
         </attribute>
 
         <collectionOperations>
-            <collectionOperation name="get"/>
-            <collectionOperation name="post"/>
+            <collectionOperation name="get">
+                <attribute name="security">is_granted('ROLE_ADMIN')</attribute>
+            </collectionOperation>
+            <collectionOperation name="post">
+                <attribute name="security">is_granted('ROLE_ADMIN')</attribute>
+            </collectionOperation>
             <collectionOperation name="register">
                 <attribute name="security">is_granted('IS_AUTHENTICATED_ANONYMOUSLY')</attribute>
                 <attribute name="method">POST</attribute>

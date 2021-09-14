@@ -97,6 +97,15 @@ class UserContext implements Context
         assertNotNull($mink->getSession()->getCookie($name));
     }
 
+    /**
+     * @Given saya keluar dari aplikasi
+     */
+    public function danSayaKeluarDariAplikasi()
+    {
+        //$this->restContext->iAddHeaderEqualTo('Authorization', '');
+        $this->minkContext->getSession()->setCookie('token', null);
+    }
+
     private function doLogin(UserInterface $user)
     {
         $body = [
@@ -108,7 +117,7 @@ class UserContext implements Context
         $body     = new PyStringNode([$body], 1);
         $this->restContext->iAddHeaderEqualTo('Accept', 'application/json');
         $this->restContext->iAddHeaderEqualTo('Content-Type', 'application/json');
-        $response = $this->restContext->iSendARequestTo('POST', '/login-check', $body);
+        $this->restContext->iSendARequestTo('POST', '/login-check', $body);
         //$json     = json_decode($content, true);
         //$token    = $json['token'];
         $token = $this->minkContext->getSession()->getCookie('token');

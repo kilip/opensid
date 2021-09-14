@@ -27,5 +27,6 @@ security:
       jwt: ~
   access_control:
     - { path: ^/login, roles: IS_ANONYMOUS }
+    - { path: ^/api/register, roles: IS_ANONYMOUS }
   # - { path: ^/admin, roles: ROLE_ADMIN }
   # - { path: ^/profile, roles: ROLE_USER }
