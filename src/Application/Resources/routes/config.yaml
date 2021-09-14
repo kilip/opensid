@@ -6,3 +6,11 @@ opensid_config_update:
     _api_resource_class: 'OpenSID\Application\Model\Config'
     _api_item_operation_name: 'config_update'
     id: 0
+opensid_config_show:
+  path: '%opensid.api_prefix%/config'
+  methods: 'GET'
+  defaults:
+    _controller: 'opensid.app.controllers.show_config'
+    _api_resource_class: 'OpenSID\Application\Model\Config'
+    _api_item_operation_name: 'config_show'
+    id: 0

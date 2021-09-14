@@ -24,9 +24,15 @@
             </collectionOperation>
         </collectionOperations>
         <itemOperations>
-            <itemOperation name="get"/>
-            <itemOperation name="patch"/>
-            <itemOperation name="delete"/>
+            <itemOperation name="get">
+                <attribute name="security">is_granted('ROLE_ADMIN') or object === user</attribute>
+            </itemOperation>
+            <itemOperation name="patch">
+                <attribute name="security">is_granted('ROLE_ADMIN') or object === user</attribute>
+            </itemOperation>
+            <itemOperation name="delete">
+                <attribute name="security">is_granted('ROLE_ADMIN')</attribute>
+            </itemOperation>
         </itemOperations>
     </resource>
 </resources>

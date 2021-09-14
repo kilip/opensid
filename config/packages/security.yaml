@@ -26,5 +26,6 @@ security:
       stateless: true
       jwt: ~
   access_control:
+    - { path: ^/login, roles: IS_ANONYMOUS }
   # - { path: ^/admin, roles: ROLE_ADMIN }
   # - { path: ^/profile, roles: ROLE_USER }

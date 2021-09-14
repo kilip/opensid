@@ -24,6 +24,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Security\Core\Security;
 use Tests\OpenSID\Testing\Concerns\InteractsWithContainer;
 use Tests\OpenSID\Testing\Concerns\InteractsWithUser;
+use function PHPUnit\Framework\assertNotNull;
 
 class UserContext implements Context
 {
@@ -87,6 +88,15 @@ class UserContext implements Context
         $this->doLogin($user);
     }
 
+    /**
+     * @Then nilai cookie :name harusnya tidak nihil
+     */
+    public function nilaiCookieHarusnyaTidakNihil(string $name)
+    {
+        $mink = $this->minkContext;
+        assertNotNull($mink->getSession()->getCookie($name));
+    }
+
     private function doLogin(UserInterface $user)
     {
         $body = [
@@ -99,9 +109,10 @@ class UserContext implements Context
         $this->restContext->iAddHeaderEqualTo('Accept', 'application/json');
         $this->restContext->iAddHeaderEqualTo('Content-Type', 'application/json');
         $response = $this->restContext->iSendARequestTo('POST', '/login-check', $body);
-        $content  = $response->getContent();
-        $json     = json_decode($content, true);
-        $token    = $json['token'];
+        //$json     = json_decode($content, true);
+        //$token    = $json['token'];
+        $token = $this->minkContext->getSession()->getCookie('token');
+
         $this->restContext->iAddHeaderEqualTo('Authorization', 'Bearer '.$token);
     }
 }

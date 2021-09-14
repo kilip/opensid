@@ -1,13 +1,13 @@
 export default [
   {
     name: "KategoriList",
-    path: "/kategori/",
+    path: "kategori/",
     component: () =>
       import(/* webpackChunkName: "kategori" */ "../components/kategori/List"),
   },
   {
     name: "KategoriCreate",
-    path: "/kategori/create",
+    path: "kategori/create",
     component: () =>
       import(
         /* webpackChunkName: "kategori" */ "../components/kategori/Create"
@@ -15,7 +15,7 @@ export default [
   },
   {
     name: "KategoriUpdate",
-    path: "/kategori/edit/:id",
+    path: "kategori/edit/:id",
     component: () =>
       import(
         /* webpackChunkName: "kategori" */ "../components/kategori/Update"
@@ -23,7 +23,7 @@ export default [
   },
   {
     name: "KategoriShow",
-    path: "/kategori/show/:id",
+    path: "kategori/show/:id",
     component: () =>
       import(/* webpackChunkName: "kategori" */ "../components/kategori/Show"),
   },

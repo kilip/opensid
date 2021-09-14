@@ -15,9 +15,9 @@ Encore
   .enableSourceMaps(!Encore.isProduction())
   .enableVersioning(Encore.isProduction())
   .enableSassLoader()
-  .configureBabel((config) => {
-    config.plugins.push('@babel/plugin-proposal-class-properties');
-  })
+  //.configureBabel((config) => {
+  //  config.plugins.push('@babel/plugin-proposal-class-properties');
+  //})
   .enableVueLoader(() => {},{
     version: 2
   })

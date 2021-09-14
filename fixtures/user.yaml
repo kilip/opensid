@@ -1,0 +1,8 @@
+parameters:
+  hashed_password: '$2y$13$9MnUTz7QfsHRmdGMtPMuZeG.fP89e09Eu2z5dUPNyy6TqFO4DFEWW'
+OpenSID\Application\Model\User:
+  test:
+    nama: Test User
+    username: test
+    email: test@example.com
+    password: <{hashed_password}>
