@@ -2,7 +2,7 @@
   <div class="bg-white p-4 rounded-lg shadow-xl">
     <h1 class="text-xl font-bold border-b-2 border-gray-200 mb-8">Daftar Artikel</h1>
     <div class="flex flex-row justify-center justify-items-center">
-      <table>
+      <table class="_opensid">
         <thead>
           <tr>
             <th/>
@@ -12,16 +12,19 @@
           </tr>
         </thead>
         <tbody>
-        <tr v-for="item in items">
-          <td>
-            <router-link :to="{name: 'ArtikelUpdate', params: {id: item['@id']}}">
-              Edit
-            </router-link>
-          </td>
-          <td>{{ item['judul']}}</td>
-          <td class="text-center">{{ item['hit']}}</td>
-          <td class="text-center">{{ item['createdAt'] | formatDate  }}</td>
-        </tr>
+          <tr v-for="item in items" class="mb-8">
+            <td>
+              <router-link
+                :to="{name: 'ArtikelUpdate', params: {id: item['@id']}}"
+                class="bg-green-700 p-1 text-sm text-white mr-2"
+              >
+                Edit
+              </router-link>
+            </td>
+            <td>{{ item['judul']}}</td>
+            <td class="text-center">{{ item['hit']}}</td>
+            <td class="text-center">{{ item['createdAt'] | formatDate  }}</td>
+          </tr>
         </tbody>
       </table>
     </div>

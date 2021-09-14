@@ -2,11 +2,22 @@ import {ENTRYPOINT} from "../config/entrypoint";
 import { getField } from "vuex-map-fields";
 
 const TYPE_LOGGING_IN = 'loggingIn';
-const TYPE_LOGIN_SUCCESS = 'success';
-const TYPE_LOGIN_FAILURE = 'failure'
+const TYPE_LOGIN_SUCCESS = 'login_success';
+const TYPE_LOGIN_FAILURE = 'login_failure'
 const TYPE_FETCHING_USER = 'fetch_user';
 const TYPE_FETCH_USER_SUCCESS = 'fetch_user_success';
 const TYPE_FETCH_USER_FAILURE = 'fetch_user_failure';
+const TYPE_LOGGING_OUT = 'loggingOut';
+const TYPE_LOGOUT_SUCCESS = 'logout_success';
+const TYPE_LOGOUT_FAILURE = 'logout_failure'
+
+const initialState = {
+  loading: false,
+  loggedIn: false,
+  token: null,
+  user: null,
+  error: null
+};
 
 const login = async ({commit}, payload) => {
   commit(TYPE_LOGGING_IN, true);
@@ -34,6 +45,20 @@ const login = async ({commit}, payload) => {
       }
     });
 }
+
+const logout = async({commit}, payload) => {
+  commit(TYPE_LOGGING_OUT, true);
+  const uri = new URL('/logout', ENTRYPOINT);
+
+  const options = {
+    method: 'GET'
+  };
+  return await fetch(uri, options)
+    .then(() => {
+      commit(TYPE_LOGOUT_SUCCESS);
+      commit(TYPE_LOGGING_OUT, false);
+    });
+};
 
 const fetchUser = async ({commit})=> {
   commit(TYPE_FETCHING_USER, true);
@@ -80,22 +105,27 @@ const mutations = {
   },
   [TYPE_FETCH_USER_FAILURE](state, error){
     Object.assign(state, { error });
+  },
+  [TYPE_LOGGING_OUT](state, loading){
+    Object.assign(state, { loading });
+  },
+  [TYPE_LOGOUT_SUCCESS](state){
+    const user = null;
+    Object.assign(state, { user });
+  },
+  [TYPE_LOGOUT_FAILURE](state, error){
+    Object.assign(state, { error });
   }
 };
 
-const state = {
-  loading: false,
-  loggedIn: false,
-  token: null,
-  user: null,
-  error: null
-};
+
 
 export default {
   namespaced: true,
-  state,
+  state: initialState,
   actions: {
     login,
+    logout,
     fetchUser
   },
   mutations,

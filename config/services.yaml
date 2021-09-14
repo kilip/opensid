@@ -34,3 +34,7 @@ services:
     parent: 'api_platform.doctrine.orm.exists_filter'
     arguments: [ { kategori: ~ } ]
     tags:  [ 'api_platform.filter' ]
+  opensid.app.controllers.logout:
+    class: OpenSID\Application\Controller\LogoutController
+    tags: ['controller.service_arguments']
+

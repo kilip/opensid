@@ -6,6 +6,7 @@ import tailwindComponents from './tailwind';
 import VueTailwind from "vue-tailwind";
 import moment from 'moment';
 import {Vuelidate} from "vuelidate";
+import CKEditor from '@ckeditor/ckeditor5-vue2';
 
 Vue.use(VueTailwind, tailwindComponents);
 Vue.filter('formatDate', function(value) {
@@ -14,6 +15,7 @@ Vue.filter('formatDate', function(value) {
   }
 });
 Vue.use(Vuelidate);
+Vue.use(CKEditor);
 
 new Vue({
   store,

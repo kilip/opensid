@@ -8,23 +8,22 @@
         id="artikel_judul"
         v-model="item['judul']"
         type="text"
-        placeholder="judul artikel">
+        placeholder="judul artikel"
+        class="w-full"
+      >
       <span class="text-red-500" v-if="judulErrors">
         {{ judulErrors.length ? judulErrors:"" }}
       </span>
+      <error-render :errors="judulErrors"/>
     </div>
     <div class="form-group">
       <label
         for="artikel_isi"
         class="form-control-label">isi</label>
-      <input
-        id="artikel_isi"
-        v-model="item.isi"
-        type="text"
-        required="required"
-        placeholder="">
+      <ckeditor :editor="editor" v-model="item['isi']" :config="editorConfig"></ckeditor>
       <div
-        class="invalid-feedback">{{ violations.isi }}</div>
+        class="invalid-feedback">{{ violations.isi }}
+      </div>
     </div>
     <div class="form-group">
       <label
@@ -57,11 +56,14 @@
 import has from 'lodash/has';
 import { validationMixin } from 'vuelidate';
 import { required } from 'vuelidate/lib/validators';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import ErrorRender from "../ErrorRender";
 
 export default {
   name: 'ArtikelForm',
   mixins: [validationMixin],
   components: {
+    ErrorRender
   },
   props: {
     values: {
@@ -85,6 +87,10 @@ export default {
     isi: null,
     enabled: null,
     bolehKomentar: null,
+    editor: ClassicEditor,
+    editorConfig: {
+
+    }
   }),
   computed: {
 

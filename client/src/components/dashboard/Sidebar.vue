@@ -16,6 +16,12 @@
       </svg>
       <span class="text-gray-700">Dashboard</span>
     </router-link>
+    <button
+      class="w-full flex items-center text-blue-400 h-10 pl-4 hover:bg-gray-200 rounded-lg cursor-pointer"
+      v-on:click="doLogout"
+    >
+      Logout
+    </button>
     <div class="mb-4 px-4">
       <p class="pl-4 text-sm font-semibold mb-1">Berita</p>
       <router-link
@@ -106,6 +112,7 @@
 </template>
 <script>
 import {mapFields} from "vuex-map-fields";
+import {mapActions} from "vuex";
 export default {
   name: 'Sidebar',
   computed: {
@@ -114,8 +121,13 @@ export default {
     })
   },
   methods: {
-    isActive(route){
-
+    ...mapActions('auth', {
+      logout: 'logout'
+    }),
+    async doLogout(){
+      await this.logout().then(() => {
+        this.$router.push('/');
+      });
     }
   }
 }
