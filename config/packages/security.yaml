@@ -21,10 +21,16 @@ security:
         success_handler: lexik_jwt_authentication.handler.authentication_success
         failure_handler: lexik_jwt_authentication.handler.authentication_failure
 
-    api:
+    main:
       pattern: ^/api
       stateless: true
       jwt: ~
+      logout:
+        path: app_logout
+
   access_control:
+    - { path: ^/login, roles: IS_ANONYMOUS }
+    - { path: ^/logout, roles: IS_ANONYMOUS}
+    - { path: ^/api/register, roles: IS_ANONYMOUS }
   # - { path: ^/admin, roles: ROLE_ADMIN }
   # - { path: ^/profile, roles: ROLE_USER }

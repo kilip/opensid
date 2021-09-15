@@ -1,5 +1,8 @@
 <resources xmlns="https://api-platform.com/schema/metadata">
-    <resource class="OpenSID\Application\Model\Config">
+    <resource
+        class="OpenSID\Application\Model\Config"
+        shortName="config"
+    >
         <attribute name="security">is_granted('ROLE_ADMIN')</attribute>
         <attribute name="normalization_context">
             <attribute name="group">guest:read</attribute>
@@ -19,7 +22,16 @@
                 <attribute name="route_name">opensid_config_update</attribute>
                 <attribute name="status">200</attribute>
             </itemOperation>
-            <itemOperation name="get"/>
+            <itemOperation name="config_show">
+                <attribute name="security">is_granted('IS_ANONYMOUS') or is_granted('ROLE_USER')</attribute>
+                <attribute name="path">config</attribute>
+                <attribute name="normalization_context">
+                    <attribute name="group">guest:read</attribute>
+                </attribute>
+                <attribute name="method">GET</attribute>
+                <attribute name="route_name">opensid_config_show</attribute>
+                <attribute name="status">200</attribute>
+            </itemOperation>
         </itemOperations>
     </resource>
 </resources>

@@ -20,5 +20,5 @@ Fitur: Otenfikasi User
       "password": "test"
     }
     """
-    Maka kode status respon harus 200
-    Dan nilai JSON pada token harusnya tidak nihil
+    Maka kode status respon harus 204
+    Dan nilai cookie token harusnya tidak nihil

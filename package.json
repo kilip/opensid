@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "moment": "^2.29.1",
+    "vuex-map-fields": "^1.4.1"
+  }
+}

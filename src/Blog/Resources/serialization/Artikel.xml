@@ -12,7 +12,7 @@
             <group>blog:read</group>
             <group>blog:write</group>
         </attribute>
-        <attribute name="tanggalUpload">
+        <attribute name="createdAt">
             <group>blog:read</group>
         </attribute>
         <attribute name="kategori">

@@ -5,18 +5,23 @@
         description="Artikel Resource"
         iri="https://schema.org/NewsArticle"
     >
-        <attribute>is_granted('ROLE_ADMIN')</attribute>
         <attribute name="normalization_context">
             <attribute name="groups">blog:read</attribute>
         </attribute>
         <collectionOperations>
             <collectionOperation name="get">
                 <attribute>is_granted('IS_ANONYMOUS') or is_granted('ROLE_USER')</attribute>
+                <attribute name="filters">
+                    <attribute>artikel.search_filter</attribute>
+                    <attribute>artikel.order_filter</attribute>
+                    <attribute>artikel.exists_filter</attribute>
+                </attribute>
                 <attribute name="normalization_context">
                     <attribute name="groups">blog:read</attribute>
                 </attribute>
             </collectionOperation>
             <collectionOperation name="post">
+                <attribute>is_granted('ROLE_ADMIN')</attribute>
                 <attribute name="denormalization_context">
                     <attribute name="groups">blog:write</attribute>
                 </attribute>
@@ -24,8 +29,11 @@
         </collectionOperations>
 
         <itemOperations>
-            <itemOperation name="get"/>
+            <itemOperation name="get">
+                <attribute>is_granted('IS_ANONYMOUS') or is_granted('ROLE_USER')</attribute>
+            </itemOperation>
             <itemOperation name="put">
+                <attribute name="security">is_granted('ROLE_ADMIN')</attribute>
                 <attribute name="denormalization_context">
                     <attribute name="groups">blog:write</attribute>
                 </attribute>
