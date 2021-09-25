@@ -1,9 +1,3 @@
-app_logout:
-  path: /logout
-  methods: ['GET']
-  defaults:
-    _controller: 'opensid.app.controllers.logout'
-
 api_platform:
   resource: .
   type: api_platform

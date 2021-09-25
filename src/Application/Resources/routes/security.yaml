@@ -2,4 +2,10 @@ api_login_check:
   path: /login-check
   methods: ['POST']
 
+app_logout:
+  path: /logout
+  methods: ['GET']
+  defaults:
+    _controller: 'opensid.app.controllers.logout'
+
 

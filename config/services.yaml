@@ -10,31 +10,9 @@ services:
     autowire: true      # Automatically injects dependencies in your services.
     autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
     public: false
-  app.data_providers.config_item:
-    class: OpenSID\Application\DataProvider\ConfigItemDataProvider
-    tags: ['api_platform.item_data_provider']
-  app.data_providers.user_item:
-    class: OpenSID\Application\DataProvider\UserItemDataProvider
-    tags: ['api_platform.item_data_provider']
 
+  #app.data_providers.config_item:
+  #  class: OpenSID\Application\DataProvider\ConfigItemDataProvider
+  #  tags: ['api_platform.item_data_provider']
 
-  # artikel filters
-  artikel.order_filter:
-    parent: 'api_platform.doctrine.orm.order_filter'
-    arguments:
-      $properties:
-        createdAt: ~
-      $orderParameterName: order
-    tags:  [ 'api_platform.filter' ]
-  artikel.search_filter:
-    parent: 'api_platform.doctrine.orm.search_filter'
-    arguments: [ { kategori: exact } ]
-    tags:  [ 'api_platform.filter' ]
-  artikel.exists_filter:
-    parent: 'api_platform.doctrine.orm.exists_filter'
-    arguments: [ { kategori: ~ } ]
-    tags:  [ 'api_platform.filter' ]
-  opensid.app.controllers.logout:
-    class: OpenSID\Application\Controller\LogoutController
-    tags: ['controller.service_arguments']
 

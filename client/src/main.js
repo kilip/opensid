@@ -1,25 +1,21 @@
-import Vue from 'vue'
-import App from './components/App.vue'
-import router from './router';
-import store from './store';
-import tailwindComponents from './tailwind';
-import VueTailwind from "vue-tailwind";
-import moment from 'moment';
-import {Vuelidate} from "vuelidate";
-import CKEditor from '@ckeditor/ckeditor5-vue2';
+import { createApp } from 'vue'
+import App from './App.vue'
+import router from './router'
+import store from './store'
 
-Vue.use(VueTailwind, tailwindComponents);
-Vue.filter('formatDate', function(value) {
-  if (value) {
-    return moment(String(value)).format('DD/MM/YYYY hh:mm')
-  }
-});
-Vue.use(Vuelidate);
-Vue.use(CKEditor);
+import CoreuiVue from '@coreui/vue'
+import { CIcon } from '@coreui/icons-vue'
+import { iconsSet as icons } from './assets/icons'
+import DocsCallout from './ui/DocsCallout'
+import DocsExample from './ui/DocsExample'
 
-new Vue({
-  store,
-  router,
-  el: '#app',
-  render: h => h(App)
-})
+const app = createApp(App)
+app.use(store)
+app.use(router)
+app.use(CoreuiVue)
+app.provide('icons', icons)
+app.component('CIcon', CIcon)
+app.component('DocsCallout', DocsCallout)
+app.component('DocsExample', DocsExample)
+
+app.mount('#app')

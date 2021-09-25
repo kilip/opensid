@@ -1,86 +1,36 @@
-import Vue from "vue";
-import VueRouter from "vue-router";
-import auth from '../utils/auth';
-import artikel from './artikel';
-import kategori from './kategori';
-import dashboard from "./dashboard";
+//import { h, resolveComponent } from 'vue'
+import { createRouter, createWebHashHistory } from 'vue-router'
 
-Vue.use(VueRouter);
+//import DefaultLayout from '@/layouts/DefaultLayout'
 
-// Add routes to VueRouter
-const router = new VueRouter({
-  // ...
-  routes: [
-    {
-      path: "/",
-      redirect: {
-        name: 'Terbaru'
+const routes = [
+  {
+    path: '/',
+    name: 'Home',
+    component: () =>  import(/* webpackChunkName: "DefaultLayout" */ "../ui/layouts/DefaultLayout"),
+    redirect: '/dashboard',
+    children: [
+      {
+        path: '/dashboard',
+        name: 'Dashboard',
+        // route level code-splitting
+        // this generates a separate chunk (about.[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        component: () =>
+          import(/* webpackChunkName: "dashboard" */ '../views/Dashboard.vue'),
       },
-      component: () => import(/* webpackChunkName: "homepage" */ "../pages/Frontend"),
-      children: [
-        {
-          path: "/",
-          name: 'Terbaru',
-          component: () => import(/* webpackChunkName: "homepage" */ "../components/frontend/Terbaru")
-        },
-        {
-          path: "/artikel",
-          name: 'Artikel',
-          component: () => import(/* webpackChunkName: "homepage" */ "../components/frontend/Artikel")
-        }
-      ]
-    },
-    {
-      path: "/dashboard",
-      name: "dashboard",
-      meta: {
-        requiresAuth: true
-      },
-      component: () => import(/* webpackChunkName: "homepage" */ "../pages/Backend"),
-      redirect: {
-        name: 'DashboardMain'
-      },
-      children: [
-        {
-          path: '/',
-          name: 'DashboardMain',
-          component: () => import(/* webpackChunkName: "homepage" */ "../pages/Dashboard"),
-        },
-        {
-          path: '/admin',
-          component: () => import(/* webpackChunkName: "homepage" */ "../pages/Admin"),
-          children: [
-            ...artikel,
-            ...kategori
-          ]
-        }
-      ]
-    },
-    {
-      name: "login",
-      path: '/login',
-      component: () => import(/* webpackChunkName: "Login" */ "../pages/Login"),
-    }
-  ]
-});
-
-router.beforeEach((to, from, next) => {
-  if (to.matched.some(record => record.meta['requiresAuth'])) {
-    // this route requires auth, check if logged in
-    // if not, redirect to login page.
-    auth.checkLogin().then(state => {
-      if (!state) {
-        next({
-          path: '/login',
-          query: { redirect: to.fullPath }
-        })
-      } else {
-        next()
-      }
-    });
-  } else {
-    next() // make sure to always call next()!
+    ]
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: () =>  import(/* webpackChunkName: "login" */ "../views/Login"),
   }
-});
+]
 
-export default router;
+const router = createRouter({
+  history: createWebHashHistory(process.env.BASE_URL),
+  routes,
+})
+
+export default router

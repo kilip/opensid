@@ -1,1 +1,1 @@
-export const ENTRYPOINT = "https://localhost/api";
+export const ENTRYPOINT = process.env.ENTRYPOINT || 'https://localhost/api';

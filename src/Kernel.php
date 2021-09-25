@@ -20,6 +20,11 @@ class Kernel extends BaseKernel
 {
     use MicroKernelTrait;
 
+    /**
+     * @var string
+     */
+    private string $foo;
+
     protected function configureContainer(ContainerConfigurator $container): void
     {
         $container->import('../config/{packages}/*.yaml');

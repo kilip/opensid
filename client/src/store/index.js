@@ -1,24 +1,10 @@
-import Vue from "vue";
-import Vuex from "vuex";
+import { createStore } from 'vuex';
+import ui from './modules/ui';
+import auth from './modules/auth';
 
-import artikel from "./artikel";
-import kategori from "./kategori";
-import config from './config';
-import auth from './auth';
-import dashboard from "./dashboard";
-import notifications from "./notifications";
-
-Vue.use(Vuex);
-
-export const store = new Vuex.Store({
+export default createStore({
   modules: {
-    notifications,
-    dashboard,
-    auth,
-    artikel,
-    kategori,
-    config,
+    ui,
+    auth
   }
-});
-
-export default store;
+})

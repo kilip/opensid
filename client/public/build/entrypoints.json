@@ -1,0 +1,21 @@
+{
+  "entrypoints": {
+    "app": {
+      "js": [
+        "https://0.0.0.0:8080/build/runtime.js",
+        "https://0.0.0.0:8080/build/vendors-node_modules_webpack-dev-server_client_index_js_protocol_wss_3A_hostname_0_0_0_0_port-71467b.js",
+        "https://0.0.0.0:8080/build/vendors-node_modules_coreui_icons-vue_dist_coreui-icons-vue_common_js-node_modules_coreui_ico-0880bd.js",
+        "https://0.0.0.0:8080/build/app.js"
+      ]
+    },
+    "style": {
+      "js": [
+        "https://0.0.0.0:8080/build/runtime.js",
+        "https://0.0.0.0:8080/build/vendors-node_modules_webpack-dev-server_client_index_js_protocol_wss_3A_hostname_0_0_0_0_port-71467b.js"
+      ],
+      "css": [
+        "https://0.0.0.0:8080/build/style.css"
+      ]
+    }
+  }
+}

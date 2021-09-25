@@ -7,7 +7,7 @@ Encore
   .setOutputPath('../public/build/')
   .setPublicPath('/build')
   .addEntry('app', './src/main.js')
-  .addStyleEntry('tailwind', './src/assets/css/tailwind.css')
+  .addStyleEntry('style', './src/assets/styles/style.scss')
   .splitEntryChunks()
   .enableSingleRuntimeChunk()
   .cleanupOutputBeforeBuild()
@@ -15,20 +15,14 @@ Encore
   .enableSourceMaps(!Encore.isProduction())
   .enableVersioning(Encore.isProduction())
   .enableSassLoader()
-  //.configureBabel((config) => {
-  //  config.plugins.push('@babel/plugin-proposal-class-properties');
-  //})
+  .configureBabel((config) => {
+    //config.plugins.push('@babel/plugin-proposal-class-properties');
+  })
   .enableVueLoader(() => {},{
-    version: 2
+    version: 3
   })
   .configureDevServerOptions(options => {
     options.allowedHosts = 'all';
-  })
-  .enablePostCssLoader((options) => {
-    options.postcssOptions = {
-      // directory where the postcss.config.js file is stored
-      config: './postcss.config.js'
-    };
   })
 ;
 
